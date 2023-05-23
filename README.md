@@ -1,2 +1,2 @@
-# cub3d
+# miniRT
 Work in Progress.
