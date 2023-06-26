@@ -6,27 +6,26 @@
 #    By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/30 14:51:06 by kichkiro          #+#    #+#              #
-#    Updated: 2023/06/26 09:50:44 by kichkiro         ###   ########.fr        #
+#    Updated: 2023/06/26 15:39:47 by kichkiro         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # Config ---------------------------------------------------------------------->
 
 NAME		:= minirt
-SRCS		:= \
+SRCS        := \
 				main.c
 SRC_DIR     := src
 SRCS        := $(SRCS:%=$(SRC_DIR)/%)
 BUILD_DIR   := .build
 OBJS        := $(SRCS:$(SRC_DIR)/%.c=$(BUILD_DIR)/%.o)
 DEPS        := $(OBJS:.o=.d)
-LIB_TARGET  := ./lib/libft.a ./lib/libmlx.a
+LIB  		:= ./lib/libft.a ./lib/libmlx.a
 INCS        := ./include ./lib
 CC          := gcc
 CFLAGS      := -g -Wall -Wextra -Werror
 MLXFLAGS    := -lXext -lX11 -lm -lbsd
 CPPFLAGS    := $(addprefix -I,$(INCS)) -MMD -MP
-LDLIBS      := -L./lib -lft
 RM          := rm -rf
 MAKEFLAGS   := --no-print-directory
 DIR_DUP     = mkdir -p $(@D)
@@ -39,7 +38,7 @@ DIR_DUP     = mkdir -p $(@D)
 all: banner $(NAME)
 
 $(NAME): $(OBJS)
-	$(CC) -o $(NAME) $(OBJS) $(LIB_TARGET) $(LDLIBS) $(MLXFLAGS)
+	$(CC) -o $(NAME) $(OBJS) $(LIB) $(MLXFLAGS)
 	${info }
 	${info ${BOLD}Creating  -> ${YELLOW}$(NAME)${NO_COLOR}}
 
