@@ -6,7 +6,7 @@
 /*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 00:00:19 by kichkiro          #+#    #+#             */
-/*   Updated: 2023/07/01 10:06:38 by kichkiro         ###   ########.fr       */
+/*   Updated: 2023/07/01 17:18:28 by kichkiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,20 @@ typedef struct s_mlx
 	void	*win_ptr;
 	void	*img_ptr;
 }	t_mlx;
+
+// Linked Lists --------------------------------------------------------------->
+
+typedef struct s_scene
+{
+	char			id;
+	bool			unique;
+	void			*data;
+	struct s_scene	*prev;
+	struct s_scene	*next;
+}	t_scene;
+
+t_scene		*t_scene_new(char id, bool unique, void *data);
+void		t_scene_add_back(t_scene **lst, t_scene *new);
 
 // Functions ------------------------------------------------------------------>
 

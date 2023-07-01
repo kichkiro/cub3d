@@ -6,7 +6,7 @@
 /*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/28 14:18:44 by kichkiro          #+#    #+#             */
-/*   Updated: 2023/07/01 13:40:05 by kichkiro         ###   ########.fr       */
+/*   Updated: 2023/07/01 17:08:49 by kichkiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,9 +60,9 @@ static void	*get_data(char *line, char id)
 t_scene	*get_scene(char	*filename)
 {
 	t_scene	*scene;
-	int		fd;
 	char	*line;
 	char	id;
+	int		fd;
 
 	fd = open(filename, O_RDONLY);
 	if (fd == -1)
@@ -73,6 +73,11 @@ t_scene	*get_scene(char	*filename)
 		line = ft_get_next_line(fd);
 		if (!line)
 			break ;
+		else if (*line == 10)
+		{
+			ft_free((void **)&line);
+			continue ;
+		}
 		id = get_identifier(line);
 		t_scene_add_back(&scene, t_scene_new(id, get_unique(line), \
 			get_data(line, id)));

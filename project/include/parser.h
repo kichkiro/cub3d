@@ -6,7 +6,7 @@
 /*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/30 09:45:57 by kichkiro          #+#    #+#             */
-/*   Updated: 2023/07/01 13:19:30 by kichkiro         ###   ########.fr       */
+/*   Updated: 2023/07/01 17:18:31 by kichkiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,20 +85,6 @@ typedef struct s_cylinder
 	double			height;
 	t_rgb			*rgb;
 }	t_cylinder;
-
-// Linked Lists --------------------------------------------------------------->
-
-typedef struct s_scene
-{
-	char			id;
-	bool			unique;
-	void			*data;
-	struct s_scene	*prev;
-	struct s_scene	*next;
-}	t_scene;
-
-t_scene		*t_scene_new(char id, bool unique, void *data);
-void		t_scene_add_back(t_scene **lst, t_scene *new);
 
 // Functions ------------------------------------------------------------------>
 
