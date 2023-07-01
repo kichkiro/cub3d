@@ -1,31 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   t_scene_new.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/18 23:59:30 by kichkiro          #+#    #+#             */
-/*   Updated: 2023/07/01 13:44:45 by kichkiro         ###   ########.fr       */
+/*   Created: 2023/06/30 19:38:34 by kichkiro          #+#    #+#             */
+/*   Updated: 2023/06/30 19:53:15 by kichkiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minirt.h"
+#include "parser.h"
 
-int	main(int argc, char **argv)
+t_scene	*t_scene_new(char id, bool unique, void *data)
 {
 	t_scene	*scene;
-	t_mlx	*mlx;
 
-	if (argc != 2)
-	{
-		ft_putstr_fd("usage: ./minirt <scene>", 2);
-		return (1);
-	}
-	scene = get_scene(argv[1]);
-	mlx = (t_mlx *)ft_calloc(sizeof(t_mlx), 1);
-	window_init(mlx);
-	hooks_init(mlx);
-
-	return (0);
+	scene = (t_scene *)malloc(sizeof(t_scene));
+	if (!scene)
+		ft_fatal("malloc()");
+	scene->id = id;
+	scene->unique = unique;
+	scene->data = data;
+	scene->prev = NULL;
+	scene->next = NULL;
+	return (scene);
 }

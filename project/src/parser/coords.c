@@ -1,31 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   coords.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/18 23:59:30 by kichkiro          #+#    #+#             */
-/*   Updated: 2023/07/01 13:44:45 by kichkiro         ###   ########.fr       */
+/*   Created: 2023/07/01 10:59:55 by kichkiro          #+#    #+#             */
+/*   Updated: 2023/07/01 13:19:30 by kichkiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minirt.h"
+#include "parser.h"
 
-int	main(int argc, char **argv)
+t_coords	*get_coords(char **line)
 {
-	t_scene	*scene;
-	t_mlx	*mlx;
+	t_coords	*coords;
 
-	if (argc != 2)
-	{
-		ft_putstr_fd("usage: ./minirt <scene>", 2);
-		return (1);
-	}
-	scene = get_scene(argv[1]);
-	mlx = (t_mlx *)ft_calloc(sizeof(t_mlx), 1);
-	window_init(mlx);
-	hooks_init(mlx);
-
-	return (0);
+	coords = (t_coords *)malloc(sizeof(t_coords));
+	if (!coords)
+		ft_fatal("malloc()");
+	while (line && *line && (**line == 9 || **line == 32))
+		(*line)++;
+	coords->x = get_value(line);
+	coords->y = get_value(line);
+	coords->z = get_value(line);
+	// printf("x: %f\ny: %f\nz: %f\n", coords->x, coords->y, coords->z);
+	return (coords);
 }

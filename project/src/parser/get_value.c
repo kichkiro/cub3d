@@ -1,31 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   get_value.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/18 23:59:30 by kichkiro          #+#    #+#             */
-/*   Updated: 2023/07/01 13:44:45 by kichkiro         ###   ########.fr       */
+/*   Created: 2023/07/01 13:07:49 by kichkiro          #+#    #+#             */
+/*   Updated: 2023/07/01 13:19:38 by kichkiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minirt.h"
+#include "parser.h"
 
-int	main(int argc, char **argv)
+double	get_value(char **line)
 {
-	t_scene	*scene;
-	t_mlx	*mlx;
+	char	*tmp;
+	double	value;
 
-	if (argc != 2)
+	tmp = ft_calloc(1, sizeof(char));
+	while (line && *line && **line != 44 && **line != 32 && **line != 9)
 	{
-		ft_putstr_fd("usage: ./minirt <scene>", 2);
-		return (1);
+		tmp = ft_char_append(tmp, **line, true);
+		(*line)++;
 	}
-	scene = get_scene(argv[1]);
-	mlx = (t_mlx *)ft_calloc(sizeof(t_mlx), 1);
-	window_init(mlx);
-	hooks_init(mlx);
-
-	return (0);
+	(*line)++;
+	value = ft_atof(tmp);
+	ft_free((void **)&tmp);
+	return (value);
 }
