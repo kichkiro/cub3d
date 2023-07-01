@@ -6,7 +6,7 @@
 /*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/28 14:18:44 by kichkiro          #+#    #+#             */
-/*   Updated: 2023/07/01 12:40:21 by kichkiro         ###   ########.fr       */
+/*   Updated: 2023/07/01 13:40:05 by kichkiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,18 @@
 
 static char	get_identifier(char *line)
 {
-	if (!ft_strncmp(line, "A", 1) || !ft_strncmp(line, "a", 1))
-		return (AMBIENT_LIGHTNING);
-	else if (!ft_strncmp(line, "C", 1) || !ft_strncmp(line, "c", 1))
-		return (CAMERA);
-	else if (!ft_strncmp(line, "L", 1) || !ft_strncmp(line, "l", 1))
-		return (LIGHT);
-	else if (!ft_strncmp(line, "SP", 2) || !ft_strncmp(line, "sp", 2))
+	if (!ft_strncmp(line, "SP", 2) || !ft_strncmp(line, "sp", 2))
 		return (SPHERE);
 	else if (!ft_strncmp(line, "PL", 2) || !ft_strncmp(line, "pl", 2))
 		return (PLANE);
 	else if (!ft_strncmp(line, "CY", 2) || !ft_strncmp(line, "cy", 2))
 		return (CYLINDER);
+	else if (!ft_strncmp(line, "A", 1) || !ft_strncmp(line, "a", 1))
+		return (AMBIENT_LIGHTNING);
+	else if (!ft_strncmp(line, "C", 1) || !ft_strncmp(line, "c", 1))
+		return (CAMERA);
+	else if (!ft_strncmp(line, "L", 1) || !ft_strncmp(line, "l", 1))
+		return (LIGHT);
 	else
 		ft_fatal("Invalid identifier");
 	return (0);

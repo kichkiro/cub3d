@@ -6,7 +6,7 @@
 #    By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/30 14:51:06 by kichkiro          #+#    #+#              #
-#    Updated: 2023/07/01 13:19:48 by kichkiro         ###   ########.fr        #
+#    Updated: 2023/07/01 13:29:21 by kichkiro         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,7 +36,7 @@ DEPS        := $(OBJS:.o=.d)
 LIB  		:= ./lib/libft.a ./lib/libmlx.a
 INCS        := ./include ./lib
 CC          := gcc
-CFLAGS      := -g -Wall -Wextra -Werror
+CFLAGS      := -g #-Wall -Wextra -Werror
 MLXFLAGS    := -lXext -lX11 -lm -lbsd
 CPPFLAGS    := $(addprefix -I,$(INCS)) -MMD -MP
 RM          := rm -rf

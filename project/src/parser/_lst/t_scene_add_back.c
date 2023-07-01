@@ -6,7 +6,7 @@
 /*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/30 19:47:25 by kichkiro          #+#    #+#             */
-/*   Updated: 2023/07/01 12:27:41 by kichkiro         ###   ########.fr       */
+/*   Updated: 2023/07/01 13:36:42 by kichkiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,5 +23,5 @@ void	t_scene_add_back(t_scene **lst, t_scene *new)
 	}
 	else
 		*lst = new;
-	*lst = (*lst)->next;
+	// *lst = (*lst)->next;
 }

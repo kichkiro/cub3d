@@ -6,7 +6,7 @@
 /*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 23:59:30 by kichkiro          #+#    #+#             */
-/*   Updated: 2023/06/30 18:28:37 by kichkiro         ###   ########.fr       */
+/*   Updated: 2023/07/01 13:44:45 by kichkiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,16 @@
 
 int	main(int argc, char **argv)
 {
+	t_scene	*scene;
 	t_mlx	*mlx;
 
 	if (argc != 2)
 	{
-		strerror(1);
+		ft_putstr_fd("usage: ./minirt <scene>", 2);
 		return (1);
 	}
-	get_scene(argv[1]);
-
-	mlx = (t_mlx *)calloc(sizeof(t_mlx), 1);
+	scene = get_scene(argv[1]);
+	mlx = (t_mlx *)ft_calloc(sizeof(t_mlx), 1);
 	window_init(mlx);
 	hooks_init(mlx);
 
