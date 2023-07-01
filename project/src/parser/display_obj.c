@@ -1,33 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   shapes.c                                           :+:      :+:    :+:   */
+/*   display_obj.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/30 20:44:38 by kichkiro          #+#    #+#             */
-/*   Updated: 2023/07/01 11:25:42 by kichkiro         ###   ########.fr       */
+/*   Created: 2023/07/01 12:46:19 by kichkiro          #+#    #+#             */
+/*   Updated: 2023/07/01 13:19:58 by kichkiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parser.h"
 
-void	*parse_sphere(char *line)
+void	*parse_camera(char *line)
 {
-	t_sphere	*spere;
-	char		*tmp;
+	t_camera	*camera;
 
-	spere->coords = get_coords(&line);
+	camera = (t_camera *)malloc(sizeof(t_camera));
+	if (!camera)
+		ft_fatal("malloc()");
+	camera->coords = get_coords(&line);
 	while (line && *line && (*line == 9 || *line == 32))
 		line++;
-	tmp = NULL;
-	while (line && *line && *line != 44 && *line != 32 && *line != 9)
-	{
-		tmp = ft_char_append(tmp, *line, true);
+	camera->norm_vect = get_coords(&line);
+	while (line && *line && (*line == 9 || *line == 32))
 		line++;
-	}
-	spere->diameter = ft_atof(tmp);
-	ft_free((void **)&tmp);
-	spere->rgb = get_rgb(&line);
-	return ((void *)spere);
+	camera->fov = get_value(&line);
+	return ((void *)camera);
 }

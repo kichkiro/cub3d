@@ -6,7 +6,7 @@
 /*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/30 09:45:57 by kichkiro          #+#    #+#             */
-/*   Updated: 2023/07/01 11:14:25 by kichkiro         ###   ########.fr       */
+/*   Updated: 2023/07/01 13:19:30 by kichkiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,12 +98,19 @@ typedef struct s_scene
 }	t_scene;
 
 t_scene		*t_scene_new(char id, bool unique, void *data);
+void		t_scene_add_back(t_scene **lst, t_scene *new);
 
 // Functions ------------------------------------------------------------------>
 
 t_scene		*get_scene(char	*filename);
 t_coords	*get_coords(char **line);
 t_rgb		*get_rgb(char **line);
+double		get_value(char **line);
+void		*parse_ambient_lightning(char *line);
+void		*parse_camera(char *line);
+void		*parse_light(char *line);
 void		*parse_sphere(char *line);
+void		*parse_plane(char *line);
+void		*parse_cylinder(char *line);
 
 #endif

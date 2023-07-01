@@ -1,27 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   t_scene_add_back.c                                 :+:      :+:    :+:   */
+/*   get_value.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/30 19:47:25 by kichkiro          #+#    #+#             */
-/*   Updated: 2023/07/01 12:27:41 by kichkiro         ###   ########.fr       */
+/*   Created: 2023/07/01 13:07:49 by kichkiro          #+#    #+#             */
+/*   Updated: 2023/07/01 13:19:38 by kichkiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parser.h"
 
-void	t_scene_add_back(t_scene **lst, t_scene *new)
+double	get_value(char **line)
 {
-	if (lst && *lst)
+	char	*tmp;
+	double	value;
+
+	tmp = ft_calloc(1, sizeof(char));
+	while (line && *line && **line != 44 && **line != 32 && **line != 9)
 	{
-		while ((*lst)->next)
-			*lst = (*lst)->next;
-		new->prev = *lst;
-		(*lst)->next = new;
+		tmp = ft_char_append(tmp, **line, true);
+		(*line)++;
 	}
-	else
-		*lst = new;
-	*lst = (*lst)->next;
+	(*line)++;
+	value = ft_atof(tmp);
+	ft_free((void **)&tmp);
+	return (value);
 }

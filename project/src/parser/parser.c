@@ -6,7 +6,7 @@
 /*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/28 14:18:44 by kichkiro          #+#    #+#             */
-/*   Updated: 2023/07/01 11:47:10 by kichkiro         ###   ########.fr       */
+/*   Updated: 2023/07/01 12:40:21 by kichkiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,10 +42,18 @@ static void	*get_data(char *line, char id)
 {
 	while (*line != 32 && *line != 9)
 		line++;
-	// if (id == AMBIENT_LIGHTNING)
-		// return ();
-	if (id == SPHERE)
+	if (id == AMBIENT_LIGHTNING)
+		return (parse_ambient_lightning(line));
+	else if (id == CAMERA)
+		return (parse_camera(line));
+	else if (id == LIGHT)
+		return (parse_light(line));
+	else if (id == SPHERE)
 		return (parse_sphere(line));
+	else if (id == PLANE)
+		return (parse_plane(line));
+	else if (id == CYLINDER)
+		return (parse_cylinder(line));
 	return (NULL);
 }
 
@@ -66,8 +74,8 @@ t_scene	*get_scene(char	*filename)
 		if (!line)
 			break ;
 		id = get_identifier(line);
-		get_data(line, id);
-		t_scene_add_back(&scene, t_scene_new(id, get_unique(line), get_data(line, id)));
+		t_scene_add_back(&scene, t_scene_new(id, get_unique(line), \
+			get_data(line, id)));
 		ft_free((void **)&line);
 	}
 	return (scene);

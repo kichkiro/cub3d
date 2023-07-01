@@ -6,7 +6,7 @@
 #    By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/30 14:51:06 by kichkiro          #+#    #+#              #
-#    Updated: 2023/07/01 11:25:58 by kichkiro         ###   ########.fr        #
+#    Updated: 2023/07/01 13:19:48 by kichkiro         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,9 +19,12 @@ SRCS        := \
 				hooks.c \
 				utils.c \
 				parser/parser.c \
+				parser/get_value.c \
 				parser/coords.c \
 				parser/rgb.c \
-				parser/shapes.c \
+				parser/display_obj.c \
+				parser/geometric_obj.c \
+				parser/lighting_obj.c \
 				parser/_lst/t_scene_new.c \
 				parser/_lst/t_scene_add_back.c \
 				add_to_libft/ft_atof.c
