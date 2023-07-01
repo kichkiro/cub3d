@@ -1,31 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/18 23:59:30 by kichkiro          #+#    #+#             */
-/*   Updated: 2023/06/30 18:28:37 by kichkiro         ###   ########.fr       */
+/*   Created: 2023/06/30 11:09:31 by kichkiro          #+#    #+#             */
+/*   Updated: 2023/06/30 18:21:02 by kichkiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-int	main(int argc, char **argv)
+void	ft_fatal(char *msg)
 {
-	t_mlx	*mlx;
+	ft_putstr_fd(RED_B, 2);
+	ft_putstr_fd("Error\n", 2);
+	perror(msg);
+	ft_putstr_fd(RESET, 2);
 
-	if (argc != 2)
-	{
-		strerror(1);
-		return (1);
-	}
-	get_scene(argv[1]);
+	// free all
 
-	mlx = (t_mlx *)calloc(sizeof(t_mlx), 1);
-	window_init(mlx);
-	hooks_init(mlx);
-
-	return (0);
+	exit(1);
 }
