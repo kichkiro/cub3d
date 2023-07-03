@@ -6,16 +6,26 @@
 #    By: anvannin <anvannin@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/30 14:51:06 by kichkiro          #+#    #+#              #
-#    Updated: 2023/06/27 17:02:05 by anvannin         ###   ########.fr        #
+#    Updated: 2023/07/03 18:17:42 by anvannin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # Config ---------------------------------------------------------------------->
 
 NAME		:= minirt
-SRCS        :=	main.c\
-			window.c\
-			hooks.c
+SRCS        := \
+				main.c \
+				window.c \
+				hooks.c \
+				utils.c \
+				_lst/t_scene_add_back.c \
+				_lst/t_scene_new.c \
+				parser/parser.c \
+				parser/get_value.c \
+				parser/display_obj.c \
+				parser/geometric_obj.c \
+				parser/lighting_obj.c \
+				add_to_libft/ft_atof.c
 SRC_DIR     := src
 SRCS        := $(SRCS:%=$(SRC_DIR)/%)
 BUILD_DIR   := .build
@@ -24,7 +34,7 @@ DEPS        := $(OBJS:.o=.d)
 LIB  		:= ./lib/libft.a ./lib/libmlx.a
 INCS        := ./include ./lib
 CC          := gcc
-CFLAGS      := -g -Wall -Wextra -Werror
+CFLAGS      := -g #-Wall -Wextra -Werror
 MLXFLAGS    := -lXext -lX11 -lm -lbsd
 CPPFLAGS    := $(addprefix -I,$(INCS)) -MMD -MP
 RM          := rm -rf

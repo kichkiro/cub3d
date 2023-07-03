@@ -1,30 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   t_scene_add_back.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/18 23:59:30 by kichkiro          #+#    #+#             */
-/*   Updated: 2023/07/01 17:13:24 by kichkiro         ###   ########.fr       */
+/*   Created: 2023/06/30 19:47:25 by kichkiro          #+#    #+#             */
+/*   Updated: 2023/07/01 13:36:42 by kichkiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minirt.h"
+#include "parser.h"
 
-int	main(int argc, char **argv)
+void	t_scene_add_back(t_scene **lst, t_scene *new)
 {
-	t_scene	*scene;
-	t_mlx	*mlx;
-
-	if (argc != 2)
+	if (lst && *lst)
 	{
-		ft_putstr_fd(YELLOW"usage: ./minirt <path_scene>.rt\n"RESET, 2);
-		return (1);
+		while ((*lst)->next)
+			*lst = (*lst)->next;
+		new->prev = *lst;
+		(*lst)->next = new;
 	}
-	scene = get_scene(argv[1]);
-	mlx = (t_mlx *)ft_calloc(sizeof(t_mlx), 1);
-	window_init(mlx);
-	hooks_init(mlx);
-	return (0);
+	else
+		*lst = new;
+	// *lst = (*lst)->next;
 }
