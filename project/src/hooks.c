@@ -6,7 +6,7 @@
 /*   By: anvannin <anvannin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/26 19:40:47 by anvannin          #+#    #+#             */
-/*   Updated: 2023/06/26 20:58:31 by anvannin         ###   ########.fr       */
+/*   Updated: 2023/06/27 14:47:24 by anvannin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ static int	mouse_handler(int key, int x, int y, t_mlx *mlx)
 
 static int	key_hook(int keycode, t_mlx *mlx)
 {
-	if (keycode == ESCAPE)
+	if (keycode == XK_Escape)
 		return (mlx_exit(mlx));
 	else
 		return (0);

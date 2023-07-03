@@ -6,7 +6,7 @@
 #    By: anvannin <anvannin@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/30 14:51:06 by kichkiro          #+#    #+#              #
-#    Updated: 2023/06/26 20:05:29 by anvannin         ###   ########.fr        #
+#    Updated: 2023/06/27 17:02:05 by anvannin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -69,12 +69,23 @@ bonus: all
 RED 		:= ${shell tput setaf 1}
 YELLOW		:= ${shell tput setaf 3}
 BLUE		:= ${shell tput setaf 4}
+CYAN		:= ${shell tput setaf 6}
 NO_COLOR	:= ${shell tput sgr0}
 BOLD		:= ${shell tput bold}
 
 banner:
 	${info ${BLUE}}
-	${info miniRT}
-	${info ${NO_COLOR}}
+${info                                            }
+${info                           ____    ______   }
+${info            __          __/\  _`\ /\__  _\  }
+${info   ___ ___ /\_\    ___ /\_\ \ \L\ \/_/\ \/  }
+${info /' __` __`\/\ \ /' _ `\/\ \ \ ,  /  \ \ \  }
+${info /\ \/\ \/\ \ \ \/\ \/\ \ \ \ \ \\ \  \ \ \ }
+${info \ \_\ \_\ \_\ \_\ \_\ \_\ \_\ \_\ \_\ \ \_\}
+${info  \/_/\/_/\/_/\/_/\/_/\/_/\/_/\/_/\/ /  \/_/}
+${info                                            }
+${info                                            }
+${info ${CYAN}${BOLD}   ✨ My first RayTracer with miniLibX ✨    }
+${info ${NO_COLOR}}
 
 # ------------------------------------------------------------------------------

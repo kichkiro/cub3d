@@ -6,7 +6,7 @@
 /*   By: anvannin <anvannin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 00:00:19 by kichkiro          #+#    #+#             */
-/*   Updated: 2023/06/26 19:54:58 by anvannin         ###   ########.fr       */
+/*   Updated: 2023/06/27 14:47:14 by anvannin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@
 # include <stdbool.h>
 # include <stdio.h>
 # include <math.h>
+# include <X11/keysym.h>
+# include <X11/X.h>
 
 # define WIN_WIDTH 500
 # define WIN_HEIGHT 500
