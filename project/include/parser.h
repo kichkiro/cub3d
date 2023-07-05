@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: anvannin <anvannin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/30 09:45:57 by kichkiro          #+#    #+#             */
-/*   Updated: 2023/07/01 17:18:31 by kichkiro         ###   ########.fr       */
+/*   Updated: 2023/07/05 19:18:53 by anvannin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,9 @@
 
 typedef struct s_coords
 {
-	double			x;
-	double			y;
-	double			z;
+	double	x;
+	double	y;
+	double	z;
 }	t_coords;
 
 typedef struct s_rgb
@@ -45,8 +45,8 @@ typedef struct s_rgb
 
 typedef struct s_ambient_lightning
 {
-	double			ratio;
-	t_rgb			*rgb;
+	double	ratio;
+	t_rgb	*rgb;
 }	t_ambient_lightning;
 
 typedef struct s_camera
@@ -58,33 +58,54 @@ typedef struct s_camera
 
 typedef struct s_light
 {
-	t_coords		*coords;
-	double			brightness;
-	t_rgb			*rgb;
+	t_coords	*coords;
+	double		brightness;
+	t_rgb		*rgb;
 }	t_light;
 
 typedef struct s_sphere
 {
-	t_coords		*coords;
-	double			diameter;
-	t_rgb			*rgb;
+	t_coords	*coords;
+	double		diameter;
+	t_rgb		*rgb;
 }	t_sphere;
 
 typedef struct s_plane
 {
-	t_coords		*coords;
-	t_coords		*norm_vect;
-	t_rgb			*rgb;
+	t_coords	*coords;
+	t_coords	*norm_vect;
+	t_rgb		*rgb;
 }	t_plane;
 
 typedef struct s_cylinder
 {
-	t_coords		*coords;
-	t_coords		*norm_vect;
-	double			diameter;
-	double			height;
-	t_rgb			*rgb;
+	t_coords	*coords;
+	t_coords	*norm_vect;
+	double		diameter;
+	double		height;
+	t_rgb		*rgb;
 }	t_cylinder;
+
+typedef struct s_scene
+{
+	char			id;
+	bool			unique;
+	void			*data;
+	struct s_scene	*prev;
+	struct s_scene	*next;
+}	t_scene;
+
+t_scene		*t_scene_new(char id, bool unique, void *data);
+void		t_scene_add_back(t_scene **lst, t_scene *new);
+
+// Functions ------------------------------------------------------------------>
+
+//ft_atof.c ---> add to libft ------------------------------------------------->
+double		ft_atof(char *s);
+
+
+// utils.c -------------------------------------------------------------------->
+void		ft_fatal(char *msg);
 
 // Functions ------------------------------------------------------------------>
 

@@ -6,7 +6,7 @@
 /*   By: anvannin <anvannin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/26 19:40:47 by anvannin          #+#    #+#             */
-/*   Updated: 2023/06/27 14:47:24 by anvannin         ###   ########.fr       */
+/*   Updated: 2023/07/05 20:09:48 by anvannin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static int	mlx_exit(t_mlx *mlx)
 	mlx_loop_end(mlx->mlx_ptr);
 	mlx_clear_window(mlx->mlx_ptr, mlx->win_ptr);
 	mlx_destroy_window(mlx->mlx_ptr, mlx->win_ptr);
-	mlx_destroy_image(mlx->mlx_ptr, mlx->img_ptr);
+	mlx_destroy_image(mlx->mlx_ptr, mlx->img.img_ptr);
 	mlx_destroy_display(mlx->mlx_ptr);
 	free(mlx->mlx_ptr);
 	free(mlx);
@@ -32,8 +32,8 @@ static int	mouse_handler(int key, int x, int y, t_mlx *mlx)
 		printf("left button pressed: %d %d\n", x, y);
 	else
 		return (0);
-	mlx_exit(mlx);
 	return (1);
+	mlx_exit(mlx);
 }
 
 static int	key_hook(int keycode, t_mlx *mlx)

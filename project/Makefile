@@ -6,7 +6,7 @@
 #    By: anvannin <anvannin@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/30 14:51:06 by kichkiro          #+#    #+#              #
-#    Updated: 2023/07/03 18:17:42 by anvannin         ###   ########.fr        #
+#    Updated: 2023/07/05 20:32:26 by anvannin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,9 +15,10 @@
 NAME		:= minirt
 SRCS        := \
 				main.c \
-				window.c \
-				hooks.c \
 				utils.c \
+				error/error.c \
+				window/window.c \
+				window/hooks.c \
 				_lst/t_scene_add_back.c \
 				_lst/t_scene_new.c \
 				parser/parser.c \
@@ -84,18 +85,14 @@ NO_COLOR	:= ${shell tput sgr0}
 BOLD		:= ${shell tput bold}
 
 banner:
-	${info ${BLUE}}
+${info ${BLUE}}
+${info ███    ███ ██ ███    ██ ██ ██████  ████████}
+${info ████  ████ ██ ████   ██ ██ ██   ██    ██   }
+${info ██ ████ ██ ██ ██ ██  ██ ██ ██████     ██   }
+${info ██  ██  ██ ██ ██  ██ ██ ██ ██   ██    ██   }
+${info ██      ██ ██ ██   ████ ██ ██   ██    ██   }
 ${info                                            }
-${info                           ____    ______   }
-${info            __          __/\  _`\ /\__  _\  }
-${info   ___ ___ /\_\    ___ /\_\ \ \L\ \/_/\ \/  }
-${info /' __` __`\/\ \ /' _ `\/\ \ \ ,  /  \ \ \  }
-${info /\ \/\ \/\ \ \ \/\ \/\ \ \ \ \ \\ \  \ \ \ }
-${info \ \_\ \_\ \_\ \_\ \_\ \_\ \_\ \_\ \_\ \ \_\}
-${info  \/_/\/_/\/_/\/_/\/_/\/_/\/_/\/_/\/ /  \/_/}
-${info                                            }
-${info                                            }
-${info ${CYAN}${BOLD}   ✨ My first RayTracer with miniLibX ✨    }
+${info ${CYAN}${BOLD}  ✨ My first RayTracer with miniLibX ✨}
 ${info ${NO_COLOR}}
 
 # ------------------------------------------------------------------------------
