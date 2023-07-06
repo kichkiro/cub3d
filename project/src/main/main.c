@@ -1,25 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/30 11:09:31 by kichkiro          #+#    #+#             */
-/*   Updated: 2023/07/01 17:11:27 by kichkiro         ###   ########.fr       */
+/*   Created: 2023/05/18 23:59:30 by kichkiro          #+#    #+#             */
+/*   Updated: 2023/07/06 14:37:24 by kichkiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-void	ft_fatal(char *msg)
+static void	free_all(t_scene **scene, t_mlx *mlx)
 {
-	ft_putstr_fd(RED, 2);
-	ft_putstr_fd("Error\n", 2);
-	ft_putstr_fd(msg, 2);
-	ft_putstr_fd(RESET, 2);
+	t_scene_free(scene);
+	window_destroy(mlx);
+}
 
-	// free all
+int	main(int argc, char **argv)
+{
+	t_scene	*scene;
+	t_mlx	*mlx;
 
-	exit(1);
+	if (argc != 2)
+		errors_handler("usage", NULL, NULL);
+	scene = get_scene(argv[1]);
+	mlx = (t_mlx *)ft_calloc(sizeof(t_mlx), 1);
+	window_init(mlx);
+	hooks_init(mlx);
+	free_all(&scene, mlx);
+	return (0);
 }

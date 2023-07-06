@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minirt.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anvannin <anvannin@student.42.fr>          +#+  +:+       +#+        */
+/*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 00:00:19 by kichkiro          #+#    #+#             */
-/*   Updated: 2023/07/05 20:37:11 by anvannin         ###   ########.fr       */
+/*   Updated: 2023/07/06 14:28:32 by kichkiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,22 @@ typedef struct s_mlx
 	t_img	img;
 }	t_mlx;
 
+// Linked Lists --------------------------------------------------------------->
+
+typedef struct s_scene
+{
+	char			id;
+	bool			unique;
+	void			*data;
+	struct s_scene	*prev;
+	struct s_scene	*next;
+}	t_scene;
+
+t_scene		*t_scene_new(char id, bool unique, void *data);
+void		t_scene_add_back(t_scene **lst, t_scene *new);
+void		t_scene_set_to_head(t_scene **scene);
+void		t_scene_free(t_scene **scene);
+
 // window.c ------------------------------------------------------------------->
 int		window_init(t_mlx *mlx);
 void	my_pixel_put(t_img img, int x, int y, int color);
@@ -68,7 +84,6 @@ void	window_destroy(t_mlx *mlx);
 // hooks.c -------------------------------------------------------------------->
 int		hooks_init(t_mlx *mlx);
 
-// message.c ------------------------------------------------------------------>
-int		error_message(char *msg_type);
+void	errors_handler(char *msg, t_mlx *mlx, t_scene **scene);
 
 #endif

@@ -1,34 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   errors_handler.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/18 23:59:30 by kichkiro          #+#    #+#             */
-/*   Updated: 2023/07/06 12:36:42 by kichkiro         ###   ########.fr       */
+/*   Created: 2023/06/30 11:09:31 by kichkiro          #+#    #+#             */
+/*   Updated: 2023/07/06 14:21:37 by kichkiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-static void	free_all(t_scene **scene, t_mlx *mlx)
+void	errors_handler(char *msg, t_mlx *mlx, t_scene **scene)
 {
-	t_scene_free(scene);
-	window_destroy(mlx);
-}
+	if (!ft_strncmp(msg, "usage", 6))
+		printf("%susage: ./minirt <path_scene>.rt%s\n", YELLOW, RESET);
 
-int	main(int argc, char **argv)
-{
-	t_scene	*scene;
-	t_mlx	*mlx;
+	ft_putstr_fd(RED, 2);
+	ft_putstr_fd("Error\n", 2);
+	ft_putstr_fd(msg, 2);
+	ft_putstr_fd(RESET, 2);
 
-	if (argc != 2)
-		return (error_message("usage"));
-	scene = get_scene(argv[1]);
-	mlx = (t_mlx *)ft_calloc(sizeof(t_mlx), 1);
-	window_init(mlx);
-	hooks_init(mlx);
-	free_all(&scene, mlx);
-	return (0);
+	if (scene)
+		t_scene_free(scene);
+	if (mlx)
+		window_destroy(mlx);
+
+	exit(1);
 }

@@ -6,7 +6,7 @@
 /*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/30 20:44:38 by kichkiro          #+#    #+#             */
-/*   Updated: 2023/07/01 17:31:08 by kichkiro         ###   ########.fr       */
+/*   Updated: 2023/07/06 14:25:31 by kichkiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	*parse_sphere(char *line)
 
 	spere = (t_sphere *)malloc(sizeof(t_sphere));
 	if (!spere)
-		ft_fatal("malloc()");
+		errors_handler("malloc()", NULL, NULL);
 	spere->coords = get_coords(&line);
 	while (line && *line && (*line == 9 || *line == 32))
 		line++;
@@ -33,7 +33,7 @@ void	*parse_plane(char *line)
 
 	plane = (t_plane *)malloc(sizeof(t_plane));
 	if (!plane)
-		ft_fatal("malloc()");
+		errors_handler("malloc()", NULL, NULL);
 	plane->coords = get_coords(&line);
 	while (line && *line && (*line == 9 || *line == 32))
 		line++;
@@ -50,7 +50,7 @@ void	*parse_cylinder(char *line)
 
 	cylinder = (t_cylinder *)malloc(sizeof(t_cylinder));
 	if (!cylinder)
-		ft_fatal("malloc()");
+		errors_handler("malloc()", NULL, NULL);
 	cylinder->coords = get_coords(&line);
 	while (line && *line && (*line == 9 || *line == 32))
 		line++;

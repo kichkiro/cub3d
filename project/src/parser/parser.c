@@ -6,7 +6,7 @@
 /*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/28 14:18:44 by kichkiro          #+#    #+#             */
-/*   Updated: 2023/07/01 17:08:49 by kichkiro         ###   ########.fr       */
+/*   Updated: 2023/07/06 14:44:07 by kichkiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static char	get_identifier(char *line)
 	else if (!ft_strncmp(line, "L", 1) || !ft_strncmp(line, "l", 1))
 		return (LIGHT);
 	else
-		ft_fatal("Invalid identifier");
+		errors_handler("Invalid identifier", NULL, NULL);
 	return (0);
 }
 
@@ -66,7 +66,7 @@ t_scene	*get_scene(char	*filename)
 
 	fd = open(filename, O_RDONLY);
 	if (fd == -1)
-		ft_fatal("open()");
+		errors_handler("open()", NULL, &scene);
 	scene = NULL;
 	while (true)
 	{

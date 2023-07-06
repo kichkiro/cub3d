@@ -6,7 +6,7 @@
 /*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/01 12:46:19 by kichkiro          #+#    #+#             */
-/*   Updated: 2023/07/01 13:19:58 by kichkiro         ###   ########.fr       */
+/*   Updated: 2023/07/06 14:25:04 by kichkiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	*parse_camera(char *line)
 
 	camera = (t_camera *)malloc(sizeof(t_camera));
 	if (!camera)
-		ft_fatal("malloc()");
+		errors_handler("malloc()", NULL, NULL);
 	camera->coords = get_coords(&line);
 	while (line && *line && (*line == 9 || *line == 32))
 		line++;

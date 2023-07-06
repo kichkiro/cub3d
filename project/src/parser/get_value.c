@@ -6,7 +6,7 @@
 /*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/01 13:07:49 by kichkiro          #+#    #+#             */
-/*   Updated: 2023/07/01 17:32:48 by kichkiro         ###   ########.fr       */
+/*   Updated: 2023/07/06 14:25:43 by kichkiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ t_coords	*get_coords(char **line)
 
 	coords = (t_coords *)malloc(sizeof(t_coords));
 	if (!coords)
-		ft_fatal("malloc()");
+		errors_handler("malloc()", NULL, NULL);
 	while (line && *line && (**line == 9 || **line == 32))
 		(*line)++;
 	coords->x = get_value(line);
@@ -52,7 +52,7 @@ t_rgb	*get_rgb(char **line)
 
 	rgb = (t_rgb *)malloc(sizeof(t_rgb));
 	if (!rgb)
-		ft_fatal("malloc()");
+		errors_handler("malloc()", NULL, NULL);
 	while (line && *line && (**line == 9 || **line == 32))
 		(*line)++;
 	rgb->red = get_value(line);

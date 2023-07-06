@@ -6,7 +6,7 @@
 /*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/30 09:45:57 by kichkiro          #+#    #+#             */
-/*   Updated: 2023/07/06 11:27:12 by kichkiro         ###   ########.fr       */
+/*   Updated: 2023/07/06 14:41:32 by kichkiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@
 
 # include "minirt.h"
 # include <fcntl.h>
+
+typedef struct s_scene	t_scene;
 
 // Defines -------------------------------------------------------------------->
 
@@ -86,29 +88,10 @@ typedef struct s_cylinder
 	t_rgb		*rgb;
 }	t_cylinder;
 
-// Linked Lists --------------------------------------------------------------->
-
-typedef struct s_scene
-{
-	char			id;
-	bool			unique;
-	void			*data;
-	struct s_scene	*prev;
-	struct s_scene	*next;
-}	t_scene;
-
-t_scene		*t_scene_new(char id, bool unique, void *data);
-void		t_scene_add_back(t_scene **lst, t_scene *new);
-void		t_scene_free(t_scene **scene);
-
 // Functions ------------------------------------------------------------------>
 
 //ft_atof.c ---> add to libft ------------------------------------------------->
 double		ft_atof(char *s);
-
-
-// utils.c -------------------------------------------------------------------->
-void		ft_fatal(char *msg);
 
 // Functions ------------------------------------------------------------------>
 

@@ -6,7 +6,7 @@
 #    By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/30 14:51:06 by kichkiro          #+#    #+#              #
-#    Updated: 2023/07/06 11:08:11 by kichkiro         ###   ########.fr        #
+#    Updated: 2023/07/06 14:30:35 by kichkiro         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,19 +14,19 @@
 
 NAME		:= minirt
 SRCS        := \
-				main.c \
-				utils.c \
-				error/error.c \
+				main/main.c \
+				main/errors_handler.c \
 				window/window.c \
 				window/hooks.c \
-				_lst/t_scene_add_back.c \
-				_lst/t_scene_new.c \
-				_lst/t_scene_free.c \
 				parser/parser.c \
 				parser/get_value.c \
 				parser/display_obj.c \
 				parser/geometric_obj.c \
 				parser/lighting_obj.c \
+				_lst/t_scene_add_back.c \
+				_lst/t_scene_new.c \
+				_lst/t_scene_set_to_head.c \
+				_lst/t_scene_free.c \
 				add_to_libft/ft_atof.c
 SRC_DIR     := src
 SRCS        := $(SRCS:%=$(SRC_DIR)/%)

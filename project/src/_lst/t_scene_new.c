@@ -6,7 +6,7 @@
 /*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/30 19:38:34 by kichkiro          #+#    #+#             */
-/*   Updated: 2023/06/30 19:53:15 by kichkiro         ###   ########.fr       */
+/*   Updated: 2023/07/06 14:44:24 by kichkiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ t_scene	*t_scene_new(char id, bool unique, void *data)
 
 	scene = (t_scene *)malloc(sizeof(t_scene));
 	if (!scene)
-		ft_fatal("malloc()");
+		errors_handler("malloc()", NULL, &scene);
 	scene->id = id;
 	scene->unique = unique;
 	scene->data = data;
