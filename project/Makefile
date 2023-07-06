@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: anvannin <anvannin@student.42.fr>          +#+  +:+       +#+         #
+#    By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/30 14:51:06 by kichkiro          #+#    #+#              #
-#    Updated: 2023/07/05 20:32:26 by anvannin         ###   ########.fr        #
+#    Updated: 2023/07/06 11:08:11 by kichkiro         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,6 +21,7 @@ SRCS        := \
 				window/hooks.c \
 				_lst/t_scene_add_back.c \
 				_lst/t_scene_new.c \
+				_lst/t_scene_free.c \
 				parser/parser.c \
 				parser/get_value.c \
 				parser/display_obj.c \
@@ -85,14 +86,14 @@ NO_COLOR	:= ${shell tput sgr0}
 BOLD		:= ${shell tput bold}
 
 banner:
-${info ${BLUE}}
-${info ███    ███ ██ ███    ██ ██ ██████  ████████}
-${info ████  ████ ██ ████   ██ ██ ██   ██    ██   }
-${info ██ ████ ██ ██ ██ ██  ██ ██ ██████     ██   }
-${info ██  ██  ██ ██ ██  ██ ██ ██ ██   ██    ██   }
-${info ██      ██ ██ ██   ████ ██ ██   ██    ██   }
-${info                                            }
-${info ${CYAN}${BOLD}  ✨ My first RayTracer with miniLibX ✨}
-${info ${NO_COLOR}}
+	${info ${BLUE}}
+	${info ███    ███ ██ ███    ██ ██ ██████  ████████}
+	${info ████  ████ ██ ████   ██ ██ ██   ██    ██   }
+	${info ██ ████ ██ ██ ██ ██  ██ ██ ██████     ██   }
+	${info ██  ██  ██ ██ ██  ██ ██ ██ ██   ██    ██   }
+	${info ██      ██ ██ ██   ████ ██ ██   ██    ██   }
+	${info                                            }
+	${info ${CYAN}${BOLD}  ✨ My first RayTracer with miniLibX ✨}
+	${info ${NO_COLOR}}
 
 # ------------------------------------------------------------------------------

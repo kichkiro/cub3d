@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anvannin <anvannin@student.42.fr>          +#+  +:+       +#+        */
+/*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/30 09:45:57 by kichkiro          #+#    #+#             */
-/*   Updated: 2023/07/05 19:18:53 by anvannin         ###   ########.fr       */
+/*   Updated: 2023/07/06 11:27:12 by kichkiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,8 @@ typedef struct s_cylinder
 	t_rgb		*rgb;
 }	t_cylinder;
 
+// Linked Lists --------------------------------------------------------------->
+
 typedef struct s_scene
 {
 	char			id;
@@ -97,6 +99,7 @@ typedef struct s_scene
 
 t_scene		*t_scene_new(char id, bool unique, void *data);
 void		t_scene_add_back(t_scene **lst, t_scene *new);
+void		t_scene_free(t_scene **scene);
 
 // Functions ------------------------------------------------------------------>
 

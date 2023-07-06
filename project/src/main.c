@@ -3,14 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anvannin <anvannin@student.42.fr>          +#+  +:+       +#+        */
+/*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/18 23:59:30 by kichkiro          #+#    #+#             */
-/*   Updated: 2023/07/05 20:33:01 by anvannin         ###   ########.fr       */
+/*   Updated: 2023/07/06 12:36:42 by kichkiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
+
+static void	free_all(t_scene **scene, t_mlx *mlx)
+{
+	t_scene_free(scene);
+	window_destroy(mlx);
+}
 
 int	main(int argc, char **argv)
 {
@@ -23,6 +29,6 @@ int	main(int argc, char **argv)
 	mlx = (t_mlx *)ft_calloc(sizeof(t_mlx), 1);
 	window_init(mlx);
 	hooks_init(mlx);
-	window_destroy(mlx);
+	free_all(&scene, mlx);
 	return (0);
 }

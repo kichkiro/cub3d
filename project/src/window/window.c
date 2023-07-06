@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   window.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anvannin <anvannin@student.42.fr>          +#+  +:+       +#+        */
+/*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/26 19:40:10 by anvannin          #+#    #+#             */
-/*   Updated: 2023/07/05 20:38:37 by anvannin         ###   ########.fr       */
+/*   Updated: 2023/07/06 11:52:14 by kichkiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,5 +66,5 @@ void	window_destroy(t_mlx *mlx)
 	mlx_destroy_display(mlx->mlx_ptr);
 	free(mlx->mlx_ptr);
 	free(mlx);
-	exit(0);
+	// exit(0);
 }
