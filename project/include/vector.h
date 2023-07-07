@@ -1,34 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   vector.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: anvannin <anvannin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/18 23:59:30 by kichkiro          #+#    #+#             */
-/*   Updated: 2023/07/07 19:12:31 by anvannin         ###   ########.fr       */
+/*   Created: 2023/07/07 18:27:32 by anvannin          #+#    #+#             */
+/*   Updated: 2023/07/07 18:57:06 by anvannin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minirt.h"
+#ifndef VECTOR_H
+# define VECTOR_H
 
-static void	free_all(t_scene **scene, t_mlx *mlx)
-{
-	t_scene_free(scene);
-	window_destroy(mlx);
-}
+# include "minirt.h"
 
-int	main(int argc, char **argv)
-{
-	t_scene	*scene;
-	t_mlx	*mlx;
+typedef struct s_coords	t_coords;
 
-	if (argc != 2)
-		errors_handler("usage", NULL, NULL);
-	scene = get_scene(argv[1]);
-	mlx = (t_mlx *)ft_calloc(sizeof(t_mlx), 1);
-	window_init(mlx, scene);
-	hooks_init(mlx);
-	free_all(&scene, mlx);
-	return (0);
-}
+float	distance_between(t_coords a, t_coords b);
+
+#endif

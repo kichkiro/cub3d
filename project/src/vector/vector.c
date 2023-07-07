@@ -1,34 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   vector.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: anvannin <anvannin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/18 23:59:30 by kichkiro          #+#    #+#             */
-/*   Updated: 2023/07/07 19:12:31 by anvannin         ###   ########.fr       */
+/*   Created: 2023/07/07 18:54:13 by anvannin          #+#    #+#             */
+/*   Updated: 2023/07/07 18:56:57 by anvannin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minirt.h"
+#include "vector.h"
 
-static void	free_all(t_scene **scene, t_mlx *mlx)
+float	distance_between(t_coords a, t_coords b)
 {
-	t_scene_free(scene);
-	window_destroy(mlx);
-}
-
-int	main(int argc, char **argv)
-{
-	t_scene	*scene;
-	t_mlx	*mlx;
-
-	if (argc != 2)
-		errors_handler("usage", NULL, NULL);
-	scene = get_scene(argv[1]);
-	mlx = (t_mlx *)ft_calloc(sizeof(t_mlx), 1);
-	window_init(mlx, scene);
-	hooks_init(mlx);
-	free_all(&scene, mlx);
-	return (0);
+	return (sqrt(pow(b.x - a.x, 2) + pow(b.y - a.y, 2) + pow(b.z - a.z, 2)));
 }

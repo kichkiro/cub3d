@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+         #
+#    By: anvannin <anvannin@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/30 14:51:06 by kichkiro          #+#    #+#              #
-#    Updated: 2023/07/06 14:30:35 by kichkiro         ###   ########.fr        #
+#    Updated: 2023/07/07 19:29:46 by anvannin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,9 @@ SRCS        := \
 				_lst/t_scene_new.c \
 				_lst/t_scene_set_to_head.c \
 				_lst/t_scene_free.c \
-				add_to_libft/ft_atof.c
+				color/color.c \
+				add_to_libft/ft_atof.c 
+
 SRC_DIR     := src
 SRCS        := $(SRCS:%=$(SRC_DIR)/%)
 BUILD_DIR   := .build
@@ -46,19 +48,32 @@ DIR_DUP     = mkdir -p $(@D)
 .PHONY: all clean fclean re
 .SILENT:
 
+# Percent functions ----------------------------------------------------------->
+
+define total_files
+$(shell echo "$(SRCS)" | wc -w)
+endef
+
+define obj_files
+$(shell bash -c 'shopt -s nullglob && echo .build/**/*.o | wc -w')
+endef
+
+define percent
+$(shell echo $$(($(obj_files) * 100 / $(total_files))))
+endef
+
 # Rules ----------------------------------------------------------------------->
 
 all: banner $(NAME)
 
 $(NAME): $(OBJS)
 	$(CC) -o $(NAME) $(OBJS) $(LIB) $(MLXFLAGS)
-	${info }
-	${info ${BOLD}Creating  -> ${YELLOW}$(NAME)${NO_COLOR}}
+	${info ${BOLD}[100%]	  Done!   ->  ${GREEN}$(NAME)${NO_COLOR}}
 
 $(BUILD_DIR)/%.o: $(SRC_DIR)/%.c
 	$(DIR_DUP)
 	$(CC) $(CFLAGS) $(CPPFLAGS) -c -o $@ $<
-	${info ${BOLD}Compiling -> ${YELLOW}$@${NO_COLOR}}
+	${info ${BOLD}[$(percent)%]	Compiling -> ${YELLOW}$@${NO_COLOR}}
 
 -include $(DEPS)
 
@@ -79,8 +94,9 @@ bonus: all
 # Style ----------------------------------------------------------------------->
 
 RED 		:= ${shell tput setaf 1}
-YELLOW		:= ${shell tput setaf 3}
+GREEN		:= ${shell tput setaf 2}
 BLUE		:= ${shell tput setaf 4}
+YELLOW		:= ${shell tput setaf 3}
 CYAN		:= ${shell tput setaf 6}
 NO_COLOR	:= ${shell tput sgr0}
 BOLD		:= ${shell tput bold}
