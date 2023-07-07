@@ -6,7 +6,7 @@
 /*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/01 12:46:26 by kichkiro          #+#    #+#             */
-/*   Updated: 2023/07/06 14:25:49 by kichkiro         ###   ########.fr       */
+/*   Updated: 2023/07/07 20:36:28 by kichkiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ void	*parse_ambient_lightning(char *line)
 	if (!ambient_l)
 		errors_handler("malloc()", NULL, NULL);
 	ambient_l->ratio = get_value(&line);
+	while (line && *line && (ft_isdigit(*line) || *line == 46))
+		line++;
 	while (line && *line && (*line == 9 || *line == 32))
 		line++;
 	ambient_l->rgb = get_rgb(&line);
