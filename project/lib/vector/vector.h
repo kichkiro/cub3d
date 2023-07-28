@@ -6,17 +6,30 @@
 /*   By: anvannin <anvannin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 18:27:32 by anvannin          #+#    #+#             */
-/*   Updated: 2023/07/07 18:57:06 by anvannin         ###   ########.fr       */
+/*   Updated: 2023/07/28 20:27:25 by anvannin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef VECTOR_H
 # define VECTOR_H
 
-# include "minirt.h"
+# include <math.h>
 
-typedef struct s_coords	t_coords;
+typedef struct s_coords
+{
+	double	x;
+	double	y;
+	double	z;
+}	t_coords;
 
-float	distance_between(t_coords a, t_coords b);
+// vector.c
+float		v_distance(t_coords a, t_coords b);
+t_coords	v_add(t_coords a, t_coords b);
+t_coords	v_subtract(t_coords a, t_coords b);
+double		v_dot_product(t_coords a, t_coords b);
+t_coords	v_cross(t_coords a, t_coords b);
+
+// vector2.c
+double		v_module(t_coords a);
 
 #endif

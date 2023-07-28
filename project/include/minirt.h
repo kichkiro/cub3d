@@ -6,7 +6,7 @@
 /*   By: anvannin <anvannin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 00:00:19 by kichkiro          #+#    #+#             */
-/*   Updated: 2023/07/07 20:09:54 by anvannin         ###   ########.fr       */
+/*   Updated: 2023/07/28 19:08:49 by anvannin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 
 # include "../lib/libft.h"
 # include "../lib/libmlx.h"
+# include "../lib/vector/vector.h"
 # include "parser.h"
 # include <unistd.h>
 # include <stdlib.h>

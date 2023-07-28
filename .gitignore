@@ -1,3 +1,5 @@
 .build/
 minirt
 .vscode
+**.o
+**.a

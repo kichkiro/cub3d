@@ -1,18 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   vector.c                                           :+:      :+:    :+:   */
+/*   vector2.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: anvannin <anvannin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/07 18:54:13 by anvannin          #+#    #+#             */
-/*   Updated: 2023/07/07 18:56:57 by anvannin         ###   ########.fr       */
+/*   Created: 2023/07/28 18:56:00 by anvannin          #+#    #+#             */
+/*   Updated: 2023/07/28 19:18:37 by anvannin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "vector.h"
 
-float	distance_between(t_coords a, t_coords b)
+/*!
+	@brief	Module of a vector.
+	@param	a	The vector.
+	@return	The module of the vector.
+*/
+double	v_module(t_coords a)
 {
-	return (sqrt(pow(b.x - a.x, 2) + pow(b.y - a.y, 2) + pow(b.z - a.z, 2)));
+	return (sqrt(v_dot_product(a, a)));
 }
