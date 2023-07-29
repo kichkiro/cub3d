@@ -6,7 +6,7 @@
 /*   By: anvannin <anvannin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 18:54:13 by anvannin          #+#    #+#             */
-/*   Updated: 2023/07/28 19:29:11 by anvannin         ###   ########.fr       */
+/*   Updated: 2023/07/29 15:29:26 by anvannin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,12 +47,12 @@ t_coords	v_add(t_coords a, t_coords b)
 */
 t_coords	v_subtract(t_coords a, t_coords b)
 {
-	t_coords	result;
+	t_coords	cross;
 
-	result.x = a.x - b.x;
-	result.y = a.y - b.y;
-	result.z = a.z - b.z;
-	return (result);
+	cross.x = a.x - b.x;
+	cross.y = a.y - b.y;
+	cross.z = a.z - b.z;
+	return (cross);
 }
 
 /*!
@@ -80,10 +80,10 @@ double	v_dot_product(t_coords a, t_coords b)
 */
 t_coords	v_cross(t_coords a, t_coords b)
 {
-	t_coords	result;
+	t_coords	cross;
 
-	result.x = a.y * b.z - a.z * b.y;
-	result.y = a.z * b.x - a.x * b.z;
-	result.z = a.x * b.y - a.y * b.x;
-	return (result);
+	cross.x = a.y * b.z - a.z * b.y;
+	cross.y = a.z * b.x - a.x * b.z;
+	cross.z = a.x * b.y - a.y * b.x;
+	return (cross);
 }

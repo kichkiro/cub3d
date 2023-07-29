@@ -1,9 +1,6 @@
 .build/
 minirt
+miniRT
 .vscode
-<<<<<<< HEAD
 _lab
-=======
-**.o
 **.a
->>>>>>> origin/anvannin

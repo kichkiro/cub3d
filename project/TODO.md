@@ -13,6 +13,8 @@
 - [v] file sorgente, header e Makefile
 - [v] il Makefile di miniRT deve compilare le librerie direttamente
 
+[ ] Invalid read of size 1 at: get_value (get_value.c:21)
+
 ### anvannin ------------------------------------------------------------------>
 [ ] libreria vector
 - [x] Makefile
@@ -22,11 +24,11 @@
 	- [x] addizione e sottrazione
 	- [x] prodotto scalare
 	- [x] prodotto incrociato
-- [ ] funzioni avanzate
+- [x] funzioni avanzate
 	- [x] modulo
-	- [ ] normalizzazione
-	- [ ] seno e coseno
-	- [ ] rotazioni
+	- [x] normalizzazione
+	- [x] seno e coseno
+	- [x] rotazioni
 
 ### altro --------------------------------------------------------------------->
 [ ] raycasting

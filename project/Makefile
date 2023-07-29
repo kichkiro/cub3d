@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+         #
+#    By: anvannin <anvannin@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/30 14:51:06 by kichkiro          #+#    #+#              #
-#    Updated: 2023/07/29 14:27:50 by kichkiro         ###   ########.fr        #
+#    Updated: 2023/07/29 21:44:39 by anvannin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,7 @@ INCS        := \
 				include \
 				lib/libft/include \
 				lib/libmlx/include \
-				lib/libvec/include 
+				lib/libvec/include
 SRC_DIR     := src
 SRCS        := \
 				main/main.c \
@@ -38,7 +38,7 @@ SRCS        := \
 				_lst/t_scene_new.c \
 				_lst/t_scene_set_to_head.c \
 				_lst/t_scene_free.c \
-				color/color.c 
+				color/color.c
 SRCS        := $(SRCS:%=$(SRC_DIR)/%)
 BUILD_DIR   := .build
 OBJS        := $(SRCS:$(SRC_DIR)/%.c=$(BUILD_DIR)/%.o)
@@ -58,7 +58,7 @@ DIR_DUP     = mkdir -p $(@D)
 
 # Rules ----------------------------------------------------------------------->
 
-all: banner $(NAME) 
+all: banner $(NAME)
 
 $(NAME): $(OBJS) $(LIBS_TARGET)
 	$(CC) $(LDFLAGS) $(OBJS) $(LDLIB) -o $(NAME) $(MLXFLAGS)
@@ -67,7 +67,7 @@ $(NAME): $(OBJS) $(LIBS_TARGET)
 
 $(LIBS_TARGET):
 	$(MAKE) -C $(@D)
-	
+
 $(BUILD_DIR)/%.o: $(SRC_DIR)/%.c
 	$(DIR_DUP)
 	@$(CC) $(CFLAGS) $(CPPFLAGS) -c $< -o $@
@@ -93,7 +93,7 @@ clean:
 fclean: clean
 	for f in $(dir $(LIBS_TARGET)); do $(MAKE) -C $$f fclean; done
 	$(RM) $(NAME)
-	
+
 re:
 	$(MAKE) fclean
 	$(MAKE) all
@@ -109,8 +109,7 @@ NO_COLOR	:= ${shell tput sgr0}
 BOLD		:= ${shell tput bold}
 
 banner:
-	@echo '${BLUE}'
-	@echo '    ___       ___       ___       ___       ___       ___   '
+	@echo '${BLUE}    ___       ___       ___       ___       ___       ___   '
 	@echo '   /\__\     /\  \     /\__\     /\  \     /\  \     /\  \  '
 	@echo '  /::L_L_   _\:\  \   /:| _|_   _\:\  \   /::\  \    \:\  \ '
 	@echo ' /:/L:\__\ /\/::\__\ /::|/\__\ /\/::\__\ /::\:\__\   /::\__\'
@@ -118,7 +117,7 @@ banner:
 	@echo '   /:/  /   \:\__\     |:/  /   \:\__\    |:\/__/   \/__/   '
 	@echo '   \/__/     \/__/     \/__/     \/__/     \|__|            '
 	@echo ''
-	@echo '        ✨ My first RayTracer with miniLibX ✨'
+	@echo '            ✨ My first RayTracer with miniLibX ✨'
 	@echo '${NO_COLOR}'
 
 # ------------------------------------------------------------------------------

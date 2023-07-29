@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+         #
+#    By: anvannin <anvannin@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/28 19:07:36 by anvannin          #+#    #+#              #
-#    Updated: 2023/07/29 14:11:30 by kichkiro         ###   ########.fr        #
+#    Updated: 2023/07/29 21:39:59 by anvannin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,8 +14,9 @@
 
 NAME        := libvec.a
 SRCS        := \
-				vector.c \
-				vector2.c
+				vector_base.c \
+				vector_adv.c \
+				vector_rot.c
 SRC_DIR     := src
 BUILD_DIR   := .build
 SRCS        := $(SRCS:%=$(SRC_DIR)/%)
