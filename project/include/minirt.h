@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minirt.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: anvannin <anvannin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 00:00:19 by kichkiro          #+#    #+#             */
-/*   Updated: 2023/07/06 14:28:32 by kichkiro         ###   ########.fr       */
+/*   Updated: 2023/07/28 19:08:49 by anvannin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 
 # include "../lib/libft.h"
 # include "../lib/libmlx.h"
+# include "../lib/vector/vector.h"
 # include "parser.h"
 # include <unistd.h>
 # include <stdlib.h>
@@ -43,6 +44,8 @@
 # define HEX_CYAN 0x0000FFFF
 
 // Structures ----------------------------------------------------------------->
+
+typedef struct s_rgb	t_rgb;
 
 typedef struct s_img
 {
@@ -77,13 +80,18 @@ void		t_scene_set_to_head(t_scene **scene);
 void		t_scene_free(t_scene **scene);
 
 // window.c ------------------------------------------------------------------->
-int		window_init(t_mlx *mlx);
-void	my_pixel_put(t_img img, int x, int y, int color);
-void	window_destroy(t_mlx *mlx);
+int			window_init(t_mlx *mlx, t_scene *scene);
+void		my_pixel_put(t_img img, int x, int y, int color);
+void		window_destroy(t_mlx *mlx);
 
 // hooks.c -------------------------------------------------------------------->
-int		hooks_init(t_mlx *mlx);
+int			hooks_init(t_mlx *mlx);
 
-void	errors_handler(char *msg, t_mlx *mlx, t_scene **scene);
+// color.c -------------------------------------------------------------------->
+
+int			rgb_to_int(t_rgb *rgb);
+
+// errors_handler.c ----------------------------------------------------------->
+void		errors_handler(char *msg, t_mlx *mlx, t_scene **scene);
 
 #endif

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   window.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: anvannin <anvannin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/26 19:40:10 by anvannin          #+#    #+#             */
-/*   Updated: 2023/07/06 14:16:27 by kichkiro         ###   ########.fr       */
+/*   Updated: 2023/07/07 20:29:03 by anvannin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,18 +18,52 @@ static void	window_labels(t_mlx *mlx)
 		"'ESC': close window");
 }
 
-static void	window_center(t_mlx *mlx)
+static void	window_amblight(t_mlx *mlx, t_scene *scene)
 {
+	t_ambient_lightning	*ambient;
+	int					i;
+	int					j;
+	int					color;
+
+	while (scene->next)
+	{
+		if (scene->id == AMBIENT_LIGHTNING)
+			break ;
+		scene = scene->next;
+	}
+
+	ambient = ((t_ambient_lightning *)scene->data);
+	printf("%d\t%d\t%d\n", ambient->rgb->red, ambient->rgb->green,
+		ambient->rgb->blue);
+
+	color = rgb_to_int(ambient->rgb);
+	i = -1;
+	while (++i < WIN_WIDTH)
+	{
+		j = -1;
+		while (++j < WIN_HEIGHT)
+			my_pixel_put(mlx->img, i, j, color);
+	}
+
+	while (scene->prev)
+		scene = scene->prev;
+}
+
+static void	window_center(t_mlx *mlx, t_scene *scene)
+{
+	window_amblight(mlx, scene);
+
 	my_pixel_put(mlx->img, WIN_WIDTH / 2, WIN_HEIGHT / 2, HEX_WHITE);
 	my_pixel_put(mlx->img, WIN_WIDTH / 2 + 1, WIN_HEIGHT / 2, HEX_WHITE);
 	my_pixel_put(mlx->img, WIN_WIDTH / 2 - 1, WIN_HEIGHT / 2, HEX_WHITE);
 	my_pixel_put(mlx->img, WIN_WIDTH / 2, WIN_HEIGHT / 2 + 1, HEX_WHITE);
 	my_pixel_put(mlx->img, WIN_WIDTH / 2, WIN_HEIGHT / 2 - 1, HEX_WHITE);
+
 	mlx_put_image_to_window(mlx->mlx_ptr, mlx->win_ptr, mlx->img.img_ptr, 0, 0);
 	window_labels(mlx);
 }
 
-int	window_init(t_mlx *mlx)
+int	window_init(t_mlx *mlx, t_scene *scene)
 {
 	if (!mlx)
 		return (0);
@@ -45,8 +79,9 @@ int	window_init(t_mlx *mlx)
 		return (0);
 	mlx->img.addr = mlx_get_data_addr(mlx->img.img_ptr,
 			&mlx->img.bits_per_pixel, &mlx->img.line_length, &mlx->img.endian);
-	window_center(mlx);
+	window_center(mlx, scene);
 	return (1);
+	(void)scene;
 }
 
 void	my_pixel_put(t_img img, int x, int y, int color)

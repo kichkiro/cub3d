@@ -1,34 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   vector.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: anvannin <anvannin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/18 23:59:30 by kichkiro          #+#    #+#             */
-/*   Updated: 2023/07/07 19:12:31 by anvannin         ###   ########.fr       */
+/*   Created: 2023/07/07 18:27:32 by anvannin          #+#    #+#             */
+/*   Updated: 2023/07/28 20:27:25 by anvannin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minirt.h"
+#ifndef VECTOR_H
+# define VECTOR_H
 
-static void	free_all(t_scene **scene, t_mlx *mlx)
+# include <math.h>
+
+typedef struct s_coords
 {
-	t_scene_free(scene);
-	window_destroy(mlx);
-}
+	double	x;
+	double	y;
+	double	z;
+}	t_coords;
 
-int	main(int argc, char **argv)
-{
-	t_scene	*scene;
-	t_mlx	*mlx;
+// vector.c
+float		v_distance(t_coords a, t_coords b);
+t_coords	v_add(t_coords a, t_coords b);
+t_coords	v_subtract(t_coords a, t_coords b);
+double		v_dot_product(t_coords a, t_coords b);
+t_coords	v_cross(t_coords a, t_coords b);
 
-	if (argc != 2)
-		errors_handler("usage", NULL, NULL);
-	scene = get_scene(argv[1]);
-	mlx = (t_mlx *)ft_calloc(sizeof(t_mlx), 1);
-	window_init(mlx, scene);
-	hooks_init(mlx);
-	free_all(&scene, mlx);
-	return (0);
-}
+// vector2.c
+double		v_module(t_coords a);
+
+#endif

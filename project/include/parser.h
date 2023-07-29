@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: anvannin <anvannin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/30 09:45:57 by kichkiro          #+#    #+#             */
-/*   Updated: 2023/07/06 14:41:32 by kichkiro         ###   ########.fr       */
+/*   Updated: 2023/07/28 19:34:54 by anvannin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,12 +31,12 @@ typedef struct s_scene	t_scene;
 
 // Structures ----------------------------------------------------------------->
 
-typedef struct s_coords
-{
-	double	x;
-	double	y;
-	double	z;
-}	t_coords;
+// typedef struct s_coords
+// {
+// 	double	x;
+// 	double	y;
+// 	double	z;
+// }	t_coords;
 
 typedef struct s_rgb
 {
