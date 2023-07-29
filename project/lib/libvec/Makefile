@@ -1,0 +1,75 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2023/07/28 19:07:36 by anvannin          #+#    #+#              #
+#    Updated: 2023/07/29 14:11:30 by kichkiro         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
+# Config ---------------------------------------------------------------------->
+
+NAME        := libvec.a
+SRCS        := \
+				vector.c \
+				vector2.c
+SRC_DIR     := src
+BUILD_DIR   := .build
+SRCS        := $(SRCS:%=$(SRC_DIR)/%)
+OBJS        := $(SRCS:$(SRC_DIR)/%.c=$(BUILD_DIR)/%.o)
+DEPS        := $(OBJS:.o=.d)
+CC          := gcc
+CPPFLAGS    := -MMD -MP -I include
+AR          := ar
+ARFLAGS     := -r -c -s
+RM          := rm -rf
+MAKEFLAGS   := --no-print-directory
+DIR_DUP     = mkdir -p $(@D)
+
+.PHONY: clean fclean re
+.SILENT:
+
+# Rules ----------------------------------------------------------------------->
+
+all: $(NAME)
+
+$(NAME): $(OBJS)
+	$(AR) $(ARFLAGS) $(NAME) $(OBJS)
+
+$(BUILD_DIR)/%.o: $(SRC_DIR)/%.c
+	$(DIR_DUP)
+	@$(CC) $(CFLAGS) $(CPPFLAGS) -c $< -o $@
+	@$(eval CURRENT_COUNT := $(shell echo $$(($(CURRENT_COUNT) + 1))))
+	@$(eval TOTAL_COUNT := $(shell echo $(words $(SRCS))))
+	@$(eval PERCENT := $(shell echo $$((($(CURRENT_COUNT) * 100) / \
+	$(TOTAL_COUNT)))))
+	@printf "\r\033[K[${BOLD}%d%%${NO_COLOR}] ${BOLD}${CYAN}LibVEC${NO_COLOR} \
+	${BOLD}-> Compiling -> ${CYAN}$(@:$(BUILD_DIR)/%=%)${NO_COLOR}" $(PERCENT)
+	@if [ $(PERCENT) -eq 100 ]; then \
+		printf "\r\033[K[${BOLD}%d%%${NO_COLOR}] ${BOLD}${CYAN}LibVEC\
+	 -> ./$(NAME)${NO_COLOR}\n" $(PERCENT);\
+	fi
+
+-include $(DEPS)
+
+clean:
+	$(RM) $(BUILD_DIR)
+	$(eval CURRENT_COUNT := 0)
+
+fclean: clean
+	$(RM) $(NAME)
+
+re:
+	$(MAKE) fclean
+	$(MAKE) all
+
+# Style ----------------------------------------------------------------------->
+
+CYAN		:= ${shell tput setaf 6}
+NO_COLOR	:= ${shell tput sgr0}
+BOLD		:= ${shell tput bold}
+
+# ------------------------------------------------------------------------------

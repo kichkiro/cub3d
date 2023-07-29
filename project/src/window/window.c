@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   window.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anvannin <anvannin@student.42.fr>          +#+  +:+       +#+        */
+/*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/26 19:40:10 by anvannin          #+#    #+#             */
-/*   Updated: 2023/07/07 20:29:03 by anvannin         ###   ########.fr       */
+/*   Updated: 2023/07/29 14:16:59 by kichkiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ int	window_init(t_mlx *mlx, t_scene *scene)
 	(void)scene;
 }
 
-void	my_pixel_put(t_img img, int x, int y, int color)
+void	my_pixel_put(t_img100 img, int x, int y, int color)
 {
 	char	*pixel;
 

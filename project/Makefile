@@ -3,16 +3,27 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: anvannin <anvannin@student.42.fr>          +#+  +:+       +#+         #
+#    By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/30 14:51:06 by kichkiro          #+#    #+#              #
-#    Updated: 2023/07/28 20:41:39 by anvannin         ###   ########.fr        #
+#    Updated: 2023/07/29 14:27:50 by kichkiro         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # Config ---------------------------------------------------------------------->
 
-NAME		:= minirt
+NAME        := miniRT
+LIBS        := ft mlx vec
+LIBS_TARGET := \
+				lib/libft/libft.a \
+				lib/libmlx/libmlx.a \
+				lib/libvec/libvec.a
+INCS        := \
+				include \
+				lib/libft/include \
+				lib/libmlx/include \
+				lib/libvec/include 
+SRC_DIR     := src
 SRCS        := \
 				main/main.c \
 				main/errors_handler.c \
@@ -27,79 +38,65 @@ SRCS        := \
 				_lst/t_scene_new.c \
 				_lst/t_scene_set_to_head.c \
 				_lst/t_scene_free.c \
-				color/color.c \
-				add_to_libft/ft_atof.c
-
-SRC_DIR     := src
+				color/color.c 
 SRCS        := $(SRCS:%=$(SRC_DIR)/%)
 BUILD_DIR   := .build
 OBJS        := $(SRCS:$(SRC_DIR)/%.c=$(BUILD_DIR)/%.o)
 DEPS        := $(OBJS:.o=.d)
-LIB  		:= ./lib/libft.a ./lib/libmlx.a
-LIB_VECTOR	:= ./lib/vector
-INCS        := ./include ./lib
 CC          := gcc
 CFLAGS      := -g #-Wall -Wextra -Werror
 MLXFLAGS    := -lXext -lX11 -lm -lbsd
 CPPFLAGS    := $(addprefix -I,$(INCS)) -MMD -MP
+LDFLAGS     := $(addprefix -L,$(dir $(LIBS_TARGET)))
+LDLIB      	:= $(addprefix -l,$(LIBS))
 RM          := rm -rf
 MAKEFLAGS   := --no-print-directory
 DIR_DUP     = mkdir -p $(@D)
 
-.PHONY: all clean fclean re
+.PHONY: clean fclean re
 .SILENT:
-
-# Percent functions ----------------------------------------------------------->
-
-define total_files
-$(shell echo "$(SRCS)" | wc -w)
-endef
-
-define obj_files
-$(shell bash -c 'shopt -s nullglob && echo .build/**/*.o | wc -w')
-endef
-
-define percent
-$(shell echo $$(($(obj_files) * 100 / $(total_files))))
-endef
 
 # Rules ----------------------------------------------------------------------->
 
-all: banner vector $(NAME)
+all: banner $(NAME) 
 
-$(NAME): $(OBJS)
-	$(CC) -o $(NAME) $(OBJS) $(LIB) $(MLXFLAGS)
-	${info ${BOLD}[100%]	  Done!   ->  ${GREEN}$(NAME)${NO_COLOR}}
+$(NAME): $(OBJS) $(LIBS_TARGET)
+	$(CC) $(LDFLAGS) $(OBJS) $(LDLIB) -o $(NAME) $(MLXFLAGS)
+	${info }
+	${info ${BOLD}Created -> ./$(NAME)}
 
+$(LIBS_TARGET):
+	$(MAKE) -C $(@D)
+	
 $(BUILD_DIR)/%.o: $(SRC_DIR)/%.c
 	$(DIR_DUP)
-	$(CC) $(CFLAGS) $(CPPFLAGS) -c -o $@ $<
-	${info ${BOLD}[$(percent)%]	Compiling -> ${YELLOW}$@${NO_COLOR}}
+	@$(CC) $(CFLAGS) $(CPPFLAGS) -c $< -o $@
+	@$(eval CURRENT_COUNT := $(shell echo $$(($(CURRENT_COUNT) + 1))))
+	@$(eval TOTAL_COUNT := $(shell echo $(words $(SRCS))))
+	@$(eval PERCENT := $(shell echo $$((($(CURRENT_COUNT) * 100) / \
+	$(TOTAL_COUNT)))))
+	@printf "\r\033[K[${BOLD}%d%%${NO_COLOR}] ${BOLD}${BLUE}miniRT${NO_COLOR}\
+	${BOLD}-> Compiling -> ${BLUE}$(@:$(BUILD_DIR)/%=%)${NO_COLOR}" $(PERCENT)
+	@if [ $(PERCENT) -eq 100 ]; then \
+		printf "\r\033[K[${BOLD}%d%%${NO_COLOR}] ${BOLD}${BLUE}miniRT\
+	${NO_COLOR}\n" $(PERCENT);\
+	fi
 
 -include $(DEPS)
 
-vector:
-	make -sC $(LIB_VECTOR)
-
-vector_clean:
-	make clean -sC $(LIB_VECTOR)
-
-vector_fclean:
-	make fclean -sC $(LIB_VECTOR)
-
-clean: vector_clean
+clean:
+	for f in $(dir $(LIBS_TARGET)); do $(MAKE) -C $$f clean; done
 	$(RM) $(BUILD_DIR)
 	${info }
-	${info ${BOLD}${YELLOW}Cleaning in progress...${NO_COLOR}    🧹 🧹 🧹}
+	${info ${BOLD}${YELLOW}Cleaning in progress...${NO_COLOR}	🧹 🧹 🧹}
 
 fclean: clean
-	$(RM) $(NAME) $(NAME_CLIENT)
-
-re: vector_fclean
+	for f in $(dir $(LIBS_TARGET)); do $(MAKE) -C $$f fclean; done
+	$(RM) $(NAME)
+	
+re:
 	$(MAKE) fclean
 	$(MAKE) all
-
-bonus: all
 
 # Style ----------------------------------------------------------------------->
 
@@ -111,19 +108,17 @@ CYAN		:= ${shell tput setaf 6}
 NO_COLOR	:= ${shell tput sgr0}
 BOLD		:= ${shell tput bold}
 
-ECHO_BLUE	:= \033[34m
-ECHO_BOLD	:= \033[1m
-ECHO_UNSET	:= \033[0m
-
 banner:
-	@echo "${ECHO_BLUE}"'    ___       ___       ___       ___       ___       ___'
-	@echo "${ECHO_BLUE}"'   /\__\     /\  \     /\__\     /\  \     /\  \     /\  \'
-	@echo "${ECHO_BLUE}"'  /::L_L_   _\:\  \   /:| _|_   _\:\  \   /::\  \    \:\  \'
-	@echo "${ECHO_BLUE}"' /:/L:\__\ /\/::\__\ /::|/\__\ /\/::\__\ /::\:\__\   /::\__\'
-	@echo "${ECHO_BLUE}"' \/_/:/  / \::/\/__/ \/|::/  / \::/\/__/ \;:::/  /  /:/\/__/'
-	@echo "${ECHO_BLUE}"'   /:/  /   \:\__\     |:/  /   \:\__\    |:\/__/   \/__/'
-	@echo "${ECHO_BLUE}"'   \/__/     \/__/     \/__/     \/__/     \|__|'
-	@echo
-	@echo "${ECHO_BOLD}"'            ✨ My first RayTracer with miniLibX ✨${ECHO_UNSET}'
+	@echo '${BLUE}'
+	@echo '    ___       ___       ___       ___       ___       ___   '
+	@echo '   /\__\     /\  \     /\__\     /\  \     /\  \     /\  \  '
+	@echo '  /::L_L_   _\:\  \   /:| _|_   _\:\  \   /::\  \    \:\  \ '
+	@echo ' /:/L:\__\ /\/::\__\ /::|/\__\ /\/::\__\ /::\:\__\   /::\__\'
+	@echo ' \/_/:/  / \::/\/__/ \/|::/  / \::/\/__/ \;:::/  /  /:/\/__/'
+	@echo '   /:/  /   \:\__\     |:/  /   \:\__\    |:\/__/   \/__/   '
+	@echo '   \/__/     \/__/     \/__/     \/__/     \|__|            '
+	@echo ''
+	@echo '        ✨ My first RayTracer with miniLibX ✨'
+	@echo '${NO_COLOR}'
 
 # ------------------------------------------------------------------------------
