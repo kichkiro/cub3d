@@ -15,8 +15,10 @@
 
 [ ] Invalid read of size 1 at: get_value (get_value.c:21)
 
+[ ] ambient->rgb ritorna 0,0,0 indipendentemenre da cosa c'e' scritto nella scena
+
 ### anvannin ------------------------------------------------------------------>
-[ ] libreria vector
+[x] libreria vector
 - [x] Makefile
 - [x] spostare struttura t_coords in vector.h
 - [x] funzioni base

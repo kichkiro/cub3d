@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minirt.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: anvannin <anvannin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 00:00:19 by kichkiro          #+#    #+#             */
-/*   Updated: 2023/07/29 13:23:48 by kichkiro         ###   ########.fr       */
+/*   Updated: 2023/08/01 18:24:29 by anvannin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,8 +92,9 @@ void		window_destroy(t_mlx *mlx);
 int			hooks_init(t_mlx *mlx);
 
 // color.c -------------------------------------------------------------------->
-
 int			rgb_to_int(t_rgb *rgb);
+void		print_rgb_int(t_rgb *rgb);
+void		print_rgb_hex(t_rgb *rgb);
 
 // errors_handler.c ----------------------------------------------------------->
 

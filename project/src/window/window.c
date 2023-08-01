@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   window.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: anvannin <anvannin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/26 19:40:10 by anvannin          #+#    #+#             */
-/*   Updated: 2023/07/29 14:16:59 by kichkiro         ###   ########.fr       */
+/*   Updated: 2023/08/01 18:28:01 by anvannin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,7 @@ static void	window_amblight(t_mlx *mlx, t_scene *scene)
 	}
 
 	ambient = ((t_ambient_lightning *)scene->data);
-	printf("%d\t%d\t%d\n", ambient->rgb->red, ambient->rgb->green,
-		ambient->rgb->blue);
+	print_rgb_hex(ambient->rgb);
 
 	color = rgb_to_int(ambient->rgb);
 	i = -1;
@@ -42,7 +41,7 @@ static void	window_amblight(t_mlx *mlx, t_scene *scene)
 	{
 		j = -1;
 		while (++j < WIN_HEIGHT)
-			my_pixel_put(mlx->img, i, j, color);
+			my_pixel_put(mlx->img, i, j, HEX_BLACK);
 	}
 
 	while (scene->prev)
@@ -52,13 +51,6 @@ static void	window_amblight(t_mlx *mlx, t_scene *scene)
 static void	window_center(t_mlx *mlx, t_scene *scene)
 {
 	window_amblight(mlx, scene);
-
-	my_pixel_put(mlx->img, WIN_WIDTH / 2, WIN_HEIGHT / 2, HEX_WHITE);
-	my_pixel_put(mlx->img, WIN_WIDTH / 2 + 1, WIN_HEIGHT / 2, HEX_WHITE);
-	my_pixel_put(mlx->img, WIN_WIDTH / 2 - 1, WIN_HEIGHT / 2, HEX_WHITE);
-	my_pixel_put(mlx->img, WIN_WIDTH / 2, WIN_HEIGHT / 2 + 1, HEX_WHITE);
-	my_pixel_put(mlx->img, WIN_WIDTH / 2, WIN_HEIGHT / 2 - 1, HEX_WHITE);
-
 	mlx_put_image_to_window(mlx->mlx_ptr, mlx->win_ptr, mlx->img.img_ptr, 0, 0);
 	window_labels(mlx);
 }
