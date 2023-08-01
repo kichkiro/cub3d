@@ -6,7 +6,7 @@
 /*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/01 13:07:49 by kichkiro          #+#    #+#             */
-/*   Updated: 2023/07/06 14:25:43 by kichkiro         ###   ########.fr       */
+/*   Updated: 2023/07/30 09:34:27 by kichkiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,8 @@ double	get_value(char **line)
 		tmp = ft_char_append(tmp, **line, true);
 		(*line)++;
 	}
-	(*line)++;
+	if (line && *line && **line)
+		(*line)++;
 	value = ft_atof(tmp);
 	ft_free((void **)&tmp);
 	return (value);
@@ -42,7 +43,6 @@ t_coords	*get_coords(char **line)
 	coords->x = get_value(line);
 	coords->y = get_value(line);
 	coords->z = get_value(line);
-	// printf("x: %f\ny: %f\nz: %f\n", coords->x, coords->y, coords->z);
 	return (coords);
 }
 
@@ -58,6 +58,5 @@ t_rgb	*get_rgb(char **line)
 	rgb->red = get_value(line);
 	rgb->green = get_value(line);
 	rgb->blue = get_value(line);
-	// printf("red: %d\ngreen: %d\nblue: %d\n", rgb->red, rgb->green, rgb->blue);
 	return (rgb);
 }
