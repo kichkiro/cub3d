@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   hooks.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: anvannin <anvannin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/26 19:40:47 by anvannin          #+#    #+#             */
-/*   Updated: 2023/07/06 14:16:40 by kichkiro         ###   ########.fr       */
+/*   Updated: 2023/08/01 19:56:41 by anvannin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,21 +15,14 @@
 static int	mlx_exit(t_mlx *mlx)
 {
 	mlx_loop_end(mlx->mlx_ptr);
-	// mlx_clear_window(mlx->mlx_ptr, mlx->win_ptr);
-	// mlx_destroy_window(mlx->mlx_ptr, mlx->win_ptr);
-	// mlx_destroy_image(mlx->mlx_ptr, mlx->img.img_ptr);
-	// mlx_destroy_display(mlx->mlx_ptr);
-	// free(mlx->mlx_ptr);
-	// free(mlx);
-	// exit(0);
 }
 
 static int	mouse_handler(int key, int x, int y, t_mlx *mlx)
 {
 	if (key == 1)
-		printf("right button pressed: %d %d\n", x, y);
-	else if (key == 2)
 		printf("left button pressed: %d %d\n", x, y);
+	else if (key == 3)
+		printf("right button pressed: %d %d\n", x, y);
 	else
 		return (0);
 	return (1);

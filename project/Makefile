@@ -6,7 +6,7 @@
 #    By: anvannin <anvannin@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/30 14:51:06 by kichkiro          #+#    #+#              #
-#    Updated: 2023/07/29 21:44:39 by anvannin         ###   ########.fr        #
+#    Updated: 2023/08/01 18:42:47 by anvannin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,6 +34,7 @@ SRCS        := \
 				parser/display_obj.c \
 				parser/geometric_obj.c \
 				parser/lighting_obj.c \
+				render/render.c \
 				_lst/t_scene_add_back.c \
 				_lst/t_scene_new.c \
 				_lst/t_scene_set_to_head.c \
@@ -63,7 +64,7 @@ all: banner $(NAME)
 $(NAME): $(OBJS) $(LIBS_TARGET)
 	$(CC) $(LDFLAGS) $(OBJS) $(LDLIB) -o $(NAME) $(MLXFLAGS)
 	${info }
-	${info ${BOLD}Created -> ./$(NAME)}
+	${info ${BOLD}Created -> ./$(NAME)${NO_COLOR} 🎉}
 
 $(LIBS_TARGET):
 	$(MAKE) -C $(@D)

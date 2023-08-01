@@ -6,7 +6,7 @@
 /*   By: anvannin <anvannin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 00:00:19 by kichkiro          #+#    #+#             */
-/*   Updated: 2023/08/01 18:24:29 by anvannin         ###   ########.fr       */
+/*   Updated: 2023/08/01 20:14:37 by anvannin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ void		t_scene_set_to_head(t_scene **scene);
 void		t_scene_free(t_scene **scene);
 
 // window.c ------------------------------------------------------------------->
-
+void		window_labels(t_mlx *mlx);
 int			window_init(t_mlx *mlx, t_scene *scene);
 void		my_pixel_put(t_img100 img, int x, int y, int color);
 void		window_destroy(t_mlx *mlx);
@@ -93,8 +93,12 @@ int			hooks_init(t_mlx *mlx);
 
 // color.c -------------------------------------------------------------------->
 int			rgb_to_int(t_rgb *rgb);
+int			rgb_to_int2(int r, int g, int b);
 void		print_rgb_int(t_rgb *rgb);
 void		print_rgb_hex(t_rgb *rgb);
+
+// render.c ------------------------------------------------------------------->
+void		render(t_mlx *mlx, t_scene *scene);
 
 // errors_handler.c ----------------------------------------------------------->
 
