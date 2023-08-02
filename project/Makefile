@@ -6,7 +6,7 @@
 #    By: anvannin <anvannin@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/30 14:51:06 by kichkiro          #+#    #+#              #
-#    Updated: 2023/08/01 18:42:47 by anvannin         ###   ########.fr        #
+#    Updated: 2023/08/02 20:28:18 by anvannin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,6 +29,8 @@ SRCS        := \
 				main/errors_handler.c \
 				window/window.c \
 				window/hooks.c \
+				window/keyboard_hooks.c \
+				window/window_labels.c \
 				parser/parser.c \
 				parser/get_value.c \
 				parser/display_obj.c \

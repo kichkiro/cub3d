@@ -6,36 +6,29 @@
 /*   By: anvannin <anvannin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/26 19:40:47 by anvannin          #+#    #+#             */
-/*   Updated: 2023/08/01 19:56:41 by anvannin         ###   ########.fr       */
+/*   Updated: 2023/08/02 20:40:08 by anvannin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-static int	mlx_exit(t_mlx *mlx)
-{
-	mlx_loop_end(mlx->mlx_ptr);
-}
-
+// left click: select object to move
+// right click: deselect object
+// scroll up/down: zoom in/out
 static int	mouse_handler(int key, int x, int y, t_mlx *mlx)
 {
 	if (key == 1)
 		printf("left button pressed: %d %d\n", x, y);
 	else if (key == 3)
 		printf("right button pressed: %d %d\n", x, y);
+	else if (key == 4)
+		printf("scroll up\n");
+	else if (key == 5)
+		printf("scroll down\n");
 	else
 		return (0);
 	return (1);
 	mlx_exit(mlx);
-}
-
-static int	key_hook(int keycode, t_mlx *mlx)
-{
-	if (keycode == XK_Escape)
-		return (mlx_exit(mlx));
-	else
-		return (0);
-	return (1);
 }
 
 int	hooks_init(t_mlx *mlx)

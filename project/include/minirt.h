@@ -6,7 +6,7 @@
 /*   By: anvannin <anvannin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 00:00:19 by kichkiro          #+#    #+#             */
-/*   Updated: 2023/08/01 20:14:37 by anvannin         ###   ########.fr       */
+/*   Updated: 2023/08/02 20:30:35 by anvannin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,14 +82,19 @@ void		t_scene_set_to_head(t_scene **scene);
 void		t_scene_free(t_scene **scene);
 
 // window.c ------------------------------------------------------------------->
-void		window_labels(t_mlx *mlx);
-int			window_init(t_mlx *mlx, t_scene *scene);
+int			window_init(t_mlx *mlx);
 void		my_pixel_put(t_img100 img, int x, int y, int color);
+int			mlx_exit(t_mlx *mlx);
 void		window_destroy(t_mlx *mlx);
 
-// hooks.c -------------------------------------------------------------------->
+// window_labels.c ------------------------------------------------------------>
+void		window_labels(t_mlx *mlx);
 
+// hooks.c -------------------------------------------------------------------->
 int			hooks_init(t_mlx *mlx);
+
+// keyboard_hooks.c ----------------------------------------------------------->
+int			key_hook(int keycode, t_mlx *mlx);
 
 // color.c -------------------------------------------------------------------->
 int			rgb_to_int(t_rgb *rgb);
@@ -101,7 +106,6 @@ void		print_rgb_hex(t_rgb *rgb);
 void		render(t_mlx *mlx, t_scene *scene);
 
 // errors_handler.c ----------------------------------------------------------->
-
 void		errors_handler(char *msg, t_mlx *mlx, t_scene **scene);
 
 #endif

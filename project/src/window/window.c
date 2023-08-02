@@ -6,23 +6,13 @@
 /*   By: anvannin <anvannin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/26 19:40:10 by anvannin          #+#    #+#             */
-/*   Updated: 2023/08/01 20:14:23 by anvannin         ###   ########.fr       */
+/*   Updated: 2023/08/02 20:29:10 by anvannin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-void	window_labels(t_mlx *mlx)
-{
-	mlx_string_put(mlx->mlx_ptr, mlx->win_ptr, 10, 15, HEX_WHITE,
-		"'ESC': close window");
-	mlx_string_put(mlx->mlx_ptr, mlx->win_ptr, 10, 30, HEX_WHITE,
-		"Right click: right click");
-	mlx_string_put(mlx->mlx_ptr, mlx->win_ptr, 10, 45, HEX_WHITE,
-		"Left click: left click");
-}
-
-int	window_init(t_mlx *mlx, t_scene *scene)
+int	window_init(t_mlx *mlx)
 {
 	if (!mlx)
 		return (0);
@@ -38,9 +28,7 @@ int	window_init(t_mlx *mlx, t_scene *scene)
 		return (0);
 	mlx->img.addr = mlx_get_data_addr(mlx->img.img_ptr,
 			&mlx->img.bits_per_pixel, &mlx->img.line_length, &mlx->img.endian);
-	render(mlx, scene);
 	return (1);
-	(void)scene;
 }
 
 void	my_pixel_put(t_img100 img, int x, int y, int color)
@@ -49,6 +37,11 @@ void	my_pixel_put(t_img100 img, int x, int y, int color)
 
 	pixel = img.addr + (y * img.line_length + x * (img.bits_per_pixel / 8));
 	*(unsigned int *)pixel = color;
+}
+
+int	mlx_exit(t_mlx *mlx)
+{
+	mlx_loop_end(mlx->mlx_ptr);
 }
 
 void	window_destroy(t_mlx *mlx)
@@ -61,3 +54,4 @@ void	window_destroy(t_mlx *mlx)
 	free(mlx->mlx_ptr);
 	free(mlx);
 }
+
