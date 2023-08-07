@@ -12,12 +12,12 @@
 - [ ] PARSING
 	- [ ] Una scena per essere valida deve contenere: Ambient light, Camera, Luce, massimo 1 oggetto per tipo, altrimenti stampa "Error\n"
 	- [ ] ambient->rgb contiene 0,0,0 indipendentemenre da cosa c'e' scritto nella scena
+	- [ ] i colori degli oggetti sono invertiti, [255,0,255] dovrebbe essere viola, ma ritorna giallo (hai invertito il verde con il blu nel parsing)
 
 - [ ] aggiungere proprietà a oggetti della scena is_selected, per selezionare un oggetto e modificare le sue proprietà
 - [ ] aggiungere un campo a t_scene per tenere traccia del tipo di oggetto (proporrei un enum, piu' elegante, ma non so se e' conforme alla norma, anche una macro o una stringa puo' andare bene) e rendere l'id univoco per ogni singolo oggetto
 - [ ] Aggiungere funzione find_object_by_id(il nome puo' anhe cambiare) per ritornare un puntatore ad un oggetto nella scena in base all'id
 - [ ] Aggiungere funzione find_object_by_type(il nome puo' anhe cambiare) per ritornare un array di puntatori agli oggetti nella scena in base al tipo (da definire prima di implementare)
-
 
 ### anvannin ------------------------------------------------------------------>
 
@@ -45,7 +45,10 @@
 - [x] disgna il cielo
 
 [ ] rendering
-- [x] disegna una sfera
-- [ ] asse x e y della sfera devono risulare in uno shift di pixel nella scena dal centro dello schermo [WIN_WIDHT/2, WIN_HEIGHT/2], non dai pixel [0, 0]
+- [ ] disegna una sfera
+	- [ ] il controllo sull'area deve essere fatta in base al centro della sfera, non dello schermo
+- [X] asse x e y della sfera devono risulare in uno shift di pixel nella scena dal centro dello schermo [WIN_WIDHT/2, WIN_HEIGHT/2], non dai pixel [0, 0]
 
 ### altro --------------------------------------------------------------------->
+
+- [ ] get_sphere non funziona (segmetation fault): `./project/src/sphere.c:15`

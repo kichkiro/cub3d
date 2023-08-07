@@ -6,7 +6,7 @@
 /*   By: anvannin <anvannin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 18:29:24 by anvannin          #+#    #+#             */
-/*   Updated: 2023/08/01 19:26:41 by anvannin         ###   ########.fr       */
+/*   Updated: 2023/08/07 18:55:41 by anvannin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,11 +36,6 @@ int	rgb_to_int2(int red, int green, int blue)
 	return ((red << 16) | (blue << 8) | green);
 }
 
-// t_rgb	ray_color()
-// {
-
-// }
-
 /*!
 	@brief	Print the RGB values of a t_rgb structure as integers.
 	@param	rgb rgb structure.
@@ -56,5 +51,5 @@ void	print_rgb_int(t_rgb *rgb)
 */
 void	print_rgb_hex(t_rgb *rgb)
 {
-	printf("0x%X\n", rgb_to_int(rgb));
+	printf("0xFF%X\n", rgb_to_int(rgb));
 }

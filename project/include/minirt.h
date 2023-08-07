@@ -6,7 +6,7 @@
 /*   By: anvannin <anvannin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 00:00:19 by kichkiro          #+#    #+#             */
-/*   Updated: 2023/08/02 20:30:35 by anvannin         ###   ########.fr       */
+/*   Updated: 2023/08/07 20:50:44 by anvannin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,9 @@
 
 // Structures ----------------------------------------------------------------->
 
+// References to structs ------------------------------------------------------>
 typedef struct s_rgb	t_rgb;
+typedef struct s_sphere	t_sphere;
 
 typedef struct s_img100
 {
@@ -104,8 +106,15 @@ void		print_rgb_hex(t_rgb *rgb);
 
 // render.c ------------------------------------------------------------------->
 void		render(t_mlx *mlx, t_scene *scene);
+void		render_sky_gradient(t_mlx *mlx, int win_x, int win_y);
+
+// render/sphere.c ------------------------------------------------------------>
+void		render_sphere(t_mlx *mlx, t_scene *scene);
 
 // errors_handler.c ----------------------------------------------------------->
 void		errors_handler(char *msg, t_mlx *mlx, t_scene **scene);
+
+// logs.c --------------------------------------------------------------------->
+void		log_sphere(t_sphere *sph);
 
 #endif

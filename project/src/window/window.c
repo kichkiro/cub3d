@@ -6,7 +6,7 @@
 /*   By: anvannin <anvannin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/26 19:40:10 by anvannin          #+#    #+#             */
-/*   Updated: 2023/08/02 20:29:10 by anvannin         ###   ########.fr       */
+/*   Updated: 2023/08/07 20:55:59 by anvannin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,4 +54,3 @@ void	window_destroy(t_mlx *mlx)
 	free(mlx->mlx_ptr);
 	free(mlx);
 }
-
