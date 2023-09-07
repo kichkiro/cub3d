@@ -6,7 +6,7 @@
 /*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 20:47:30 by anvannin          #+#    #+#             */
-/*   Updated: 2023/09/07 11:17:47 by kichkiro         ###   ########.fr       */
+/*   Updated: 2023/09/07 16:19:04 by kichkiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,11 +45,12 @@ static t_sphere	*get_sphere(t_scene *scene)
 
 /*!
  * @brief 
-	Determine if a point on the window hits a sphere.
-	This function checks if a point on the screen, specified by its x and y 
-	coordinates, intersects with a given sphere. 
-	It calculates the boundaries of the sphere on the screen and checks if the 
-	point falls within those boundaries.
+	Check if a point is inside a sphere on a window with a centered coordinate 
+	system.
+	This function calculates whether a given point in the window coordinate 
+	system is inside a sphere represented by the `t_sphere` structure.
+	The window coordinate system has its origin at the center of the window, 
+	with positive x-axis to the right and positive y-axis downward.
  * @param sphere 
 	A pointer to the sphere to be checked.
  * @param win_x 
@@ -62,17 +63,15 @@ static t_sphere	*get_sphere(t_scene *scene)
 static bool	hit_sphere(t_sphere *sphere, int win_x, int win_y)
 {
 	t_coords	*coords;
-	int			left;
-	int			right;
-	int			top;
-	int			bottom;
+	double		sphere_x;
+	double		sphere_y;
+	double		distance;
 
 	coords = sphere->coords;
-	left = (int)(coords->x - sphere->diameter / 2) + WIN_WIDTH / 2;
-	right = (int)(coords->x + sphere->diameter / 2) + WIN_WIDTH / 2;
-	top = (int)(coords->y - sphere->diameter / 2) + WIN_HEIGHT / 2;
-	bottom = (int)(coords->y + sphere->diameter / 2) + WIN_HEIGHT / 2;
-	if ((win_x >= left && win_x <= right && win_y >= top && win_y <= bottom))
+	sphere_x = coords->x + (double)WIN_WIDTH / 2.0;
+	sphere_y = coords->y + (double)WIN_HEIGHT / 2.0;
+	distance = sqrt(pow(sphere_x - win_x, 2) + pow(sphere_y - win_y, 2));
+	if (distance <= sphere->diameter / 2.0)
 		return (true);
 	return (false);
 }
