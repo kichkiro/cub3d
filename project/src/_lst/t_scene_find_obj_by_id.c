@@ -1,19 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   t_scene_set_to_head.c                              :+:      :+:    :+:   */
+/*   t_scene_find_obj_by_id.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/06 14:08:36 by kichkiro          #+#    #+#             */
-/*   Updated: 2023/09/07 12:11:28 by kichkiro         ###   ########.fr       */
+/*   Created: 2023/09/07 11:46:40 by kichkiro          #+#    #+#             */
+/*   Updated: 2023/09/07 12:13:41 by kichkiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parser.h"
 
-void	t_scene_set_to_head(t_scene **scene)
+t_scene	*t_scene_find_obj_by_id(t_scene *scene, int id)
 {
-	while (scene && *scene && (*scene)->prev)
-		*scene = (*scene)->prev;
+	t_scene_set_to_head(&scene);
+	while (scene && scene->id != id)
+		scene = scene->next;
+	return (scene);
 }

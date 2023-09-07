@@ -6,7 +6,7 @@
 /*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 20:47:30 by anvannin          #+#    #+#             */
-/*   Updated: 2023/09/03 20:34:57 by kichkiro         ###   ########.fr       */
+/*   Updated: 2023/09/07 11:17:47 by kichkiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static t_sphere	*get_sphere(t_scene *scene)
 
 	while (scene->next)
 	{
-		if (scene->id == SPHERE)
+		if (scene->type == SPHERE)
 		{
 			found = true;
 			break ;
@@ -97,7 +97,7 @@ void	render_sphere(t_mlx *mlx, t_scene *scene)
 
 	while (scene->next)
 	{
-		if (scene->id == SPHERE)
+		if (scene->type == SPHERE)
 			break ;
 		scene = scene->next;
 	}

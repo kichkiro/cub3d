@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: anvannin <anvannin@student.42.fr>          +#+  +:+       +#+         #
+#    By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/30 14:51:06 by kichkiro          #+#    #+#              #
-#    Updated: 2023/08/07 20:49:38 by anvannin         ###   ########.fr        #
+#    Updated: 2023/09/07 11:51:01 by kichkiro         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,6 +42,7 @@ SRCS        := \
 				_lst/t_scene_new.c \
 				_lst/t_scene_set_to_head.c \
 				_lst/t_scene_free.c \
+				_lst/t_scene_find_obj_by_id.c \
 				color/color.c \
 				logs/logs.c
 SRCS        := $(SRCS:%=$(SRC_DIR)/%)

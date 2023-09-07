@@ -6,7 +6,7 @@
 /*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/30 09:45:57 by kichkiro          #+#    #+#             */
-/*   Updated: 2023/07/29 14:31:10 by kichkiro         ###   ########.fr       */
+/*   Updated: 2023/09/07 12:09:58 by kichkiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,13 +30,6 @@ typedef struct s_scene	t_scene;
 # define CYLINDER			6
 
 // Structures ----------------------------------------------------------------->
-
-// typedef struct s_coords
-// {
-// 	double	x;
-// 	double	y;
-// 	double	z;
-// }	t_coords;
 
 typedef struct s_rgb
 {
@@ -87,6 +80,24 @@ typedef struct s_cylinder
 	double		height;
 	t_rgb		*rgb;
 }	t_cylinder;
+
+// Linked Lists --------------------------------------------------------------->
+
+typedef struct s_scene
+{
+	int				id;
+	char			type;
+	bool			unique;
+	void			*data;
+	struct s_scene	*prev;
+	struct s_scene	*next;
+}	t_scene;
+
+t_scene		*t_scene_new(int id, char type, bool unique, void *data);
+void		t_scene_add_back(t_scene **lst, t_scene *new);
+void		t_scene_set_to_head(t_scene **scene);
+void		t_scene_free(t_scene **scene);
+t_scene		*t_scene_find_obj_by_id(t_scene *scene, int id);
 
 // Functions ------------------------------------------------------------------>
 
