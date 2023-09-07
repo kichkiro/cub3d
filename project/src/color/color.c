@@ -3,23 +3,23 @@
 /*                                                        :::      ::::::::   */
 /*   color.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anvannin <anvannin@student.42.fr>          +#+  +:+       +#+        */
+/*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 18:29:24 by anvannin          #+#    #+#             */
-/*   Updated: 2023/08/07 18:55:41 by anvannin         ###   ########.fr       */
+/*   Updated: 2023/09/04 17:30:22 by kichkiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
 /*!
-* @brief
+ * @brief
 	Converts a t_rgb structure to an int.
-*@param	rgb
-	rgb structure.
-*@return
-	integer color.
-*@note
+ * @param rgb
+	RGB structure.
+ * @return
+	Integer color.
+ * @note
 	The colors are stored in separate integer variables inside the structure.
 	We shift the bits of each color by the appropriate number of bits
 	(red by 16, green by 8, and blue by 0),
@@ -31,14 +31,23 @@ int	rgb_to_int(t_rgb *rgb)
 	return ((rgb->red << 16) | (rgb->blue << 8) | rgb->green);
 }
 
+/*!
+ * @brief 
+ * @param red 
+ * @param green 
+ * @param blue 
+ * @return 
+ */
 int	rgb_to_int2(int red, int green, int blue)
 {
 	return ((red << 16) | (blue << 8) | green);
 }
 
 /*!
-	@brief	Print the RGB values of a t_rgb structure as integers.
-	@param	rgb rgb structure.
+ * @brief
+ 	Print the RGB values of a t_rgb structure as integers.
+ * @param rgb
+	RGB structure.
 */
 void	print_rgb_int(t_rgb *rgb)
 {
@@ -46,8 +55,10 @@ void	print_rgb_int(t_rgb *rgb)
 }
 
 /*!
-	@brief	Print the RGB values of a t_rgb structure as hexadecimal.
-	@param	rgb rgb structure.
+ * @brief
+	Print the RGB values of a t_rgb structure as hexadecimal.
+ * @param rgb
+	RGB structure.
 */
 void	print_rgb_hex(t_rgb *rgb)
 {
