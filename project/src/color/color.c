@@ -6,7 +6,7 @@
 /*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 18:29:24 by anvannin          #+#    #+#             */
-/*   Updated: 2023/09/04 17:30:22 by kichkiro         ###   ########.fr       */
+/*   Updated: 2023/09/07 20:44:56 by kichkiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@
 */
 int	rgb_to_int(t_rgb *rgb)
 {
-	return ((rgb->red << 16) | (rgb->blue << 8) | rgb->green);
+	return ((rgb->red << 16) | (rgb->green << 8) | rgb->blue);
 }
 
 /*!
@@ -40,7 +40,7 @@ int	rgb_to_int(t_rgb *rgb)
  */
 int	rgb_to_int2(int red, int green, int blue)
 {
-	return ((red << 16) | (blue << 8) | green);
+	return ((red << 16) | (green << 8) | blue);
 }
 
 /*!

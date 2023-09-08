@@ -6,7 +6,7 @@
 /*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/01 18:40:50 by anvannin          #+#    #+#             */
-/*   Updated: 2023/09/07 15:02:12 by kichkiro         ###   ########.fr       */
+/*   Updated: 2023/09/07 20:36:30 by kichkiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	render_sky_gradient(t_mlx *mlx, int win_x, int win_y)
 	t = (double)win_y / ((double)WIN_HEIGHT - 1);
 	blend_value = (int)(t * 255.999);
 	my_pixel_put(mlx->img, win_x, win_y,
-		rgb_to_int2(blend_value, 255, blend_value));
+		rgb_to_int2(blend_value, blend_value, 255));
 }
 
 /*!

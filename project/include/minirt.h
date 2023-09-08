@@ -6,7 +6,7 @@
 /*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 00:00:19 by kichkiro          #+#    #+#             */
-/*   Updated: 2023/09/07 11:13:17 by kichkiro         ###   ########.fr       */
+/*   Updated: 2023/09/07 20:47:10 by kichkiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,8 @@
 
 // Window -------------------------------------------------------------------->>
 
-# define WIN_WIDTH 1920
-# define WIN_HEIGHT 995
+# define WIN_WIDTH 1910
+# define WIN_HEIGHT 985
 
 // Colors -------------------------------------------------------------------->>
 
@@ -62,8 +62,8 @@ typedef struct s_img100
 
 typedef struct s_mlx
 {
-	void	*mlx_ptr;
-	void	*win_ptr;
+	void		*mlx_ptr;
+	void		*win_ptr;
 	t_img100	img;
 }	t_mlx;
 
