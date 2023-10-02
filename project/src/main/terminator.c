@@ -1,27 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   t_scene_add_back.c                                 :+:      :+:    :+:   */
+/*   terminator.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/30 19:47:25 by kichkiro          #+#    #+#             */
-/*   Updated: 2023/09/28 10:33:07 by kichkiro         ###   ########.fr       */
+/*   Created: 2023/09/28 10:54:12 by kichkiro          #+#    #+#             */
+/*   Updated: 2023/09/28 11:00:10 by kichkiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "parser.h"
+#include "minirt.h"
 
-void	t_scene_add_back(t_scene **lst, t_scene *new)
+void	terminator(t_scene **scene, t_mlx *mlx)
 {
-	if (lst && *lst)
-	{
-		while ((*lst)->next)
-			*lst = (*lst)->next;
-		new->prev = *lst;
-		(*lst)->next = new;
-	}
-	else
-		*lst = new;
-	// *lst = (*lst)->next;
+	t_scene_free(scene);
+	window_destroy(mlx);
 }

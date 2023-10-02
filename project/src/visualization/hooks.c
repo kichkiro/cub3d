@@ -1,16 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   keyboard_hooks.c                                   :+:      :+:    :+:   */
+/*   hooks.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/02 20:23:35 by anvannin          #+#    #+#             */
-/*   Updated: 2023/09/13 08:49:23 by kichkiro         ###   ########.fr       */
+/*   Created: 2023/06/26 19:40:47 by anvannin          #+#    #+#             */
+/*   Updated: 2023/09/28 10:47:13 by kichkiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
+
 
 // left/right arrows: move object left/right
 // up/down arrows: move object farther/closer
@@ -71,4 +72,23 @@ int	key_hook(int keycode, t_mlx *mlx)
 	else
 		return (0);
 	return (1);
+}
+
+// left click: select object to move
+// right click: deselect object
+// scroll up/down: zoom in/out
+int	mouse_hooks(int key, int x, int y, t_mlx *mlx)
+{
+	if (key == 1)
+		printf("left button pressed: %d %d\n", x, y);
+	else if (key == 3)
+		printf("right button pressed: %d %d\n", x, y);
+	else if (key == 4)
+		printf("scroll up\n");
+	else if (key == 5)
+		printf("scroll down\n");
+	else
+		return (0);
+	return (1);
+	mlx_exit(mlx);
 }

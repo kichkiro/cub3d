@@ -78,7 +78,7 @@
 		  Luce, massimo 1 oggetto per tipo, altrimenti stampa "Error\n"
 	- [ ] ambient->rgb contiene 0,0,0 indipendentemenre da cosa c'e' scritto 
 		  nella scena
-	- [ ] i colori degli oggetti sono invertiti, [255,0,255] dovrebbe essere 
+	- [v] i colori degli oggetti sono invertiti, [255,0,255] dovrebbe essere 
 		  viola, ma ritorna giallo (hai invertito il verde con il blu nel 
 		  parsing)
 

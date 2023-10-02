@@ -6,7 +6,7 @@
 /*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/28 14:18:44 by kichkiro          #+#    #+#             */
-/*   Updated: 2023/09/13 08:49:38 by kichkiro         ###   ########.fr       */
+/*   Updated: 2023/09/28 10:38:37 by kichkiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,10 +71,10 @@ static void	*get_data(char *line, char type)
 		line++;
 	if (type == AMBIENT_LIGHTNING)
 		return (parse_ambient_lightning(line));
-	else if (type == CAMERA)
-		return (parse_camera(line));
 	else if (type == LIGHT)
 		return (parse_light(line));
+	else if (type == CAMERA)
+		return (parse_camera(line));
 	else if (type == SPHERE)
 		return (parse_sphere(line));
 	else if (type == PLANE)
@@ -84,9 +84,8 @@ static void	*get_data(char *line, char type)
 	return (NULL);
 }
 
-t_scene	*get_scene(char	*filename)
+void	parser(char *filename, t_scene **scene)
 {
-	t_scene	*scene;
 	char	*line;
 	int		id;
 	char	type;
@@ -94,8 +93,7 @@ t_scene	*get_scene(char	*filename)
 
 	fd = open(filename, O_RDONLY);
 	if (fd == -1)
-		errors_handler("open()", NULL, &scene);
-	scene = NULL;
+		errors_handler("open()", NULL, NULL);
 	id = 0;
 	while (true)
 	{
@@ -105,10 +103,9 @@ t_scene	*get_scene(char	*filename)
 		else if (*line == 10 && !ft_free((void **)&line))
 			continue ;
 		type = get_type(line);
-		t_scene_add_back(&scene, t_scene_new(id, type, get_unique(line, scene, \
+		t_scene_add_back(scene, t_scene_new(id, type, get_unique(line, *scene, \
 			type), get_data(line, type)));
 		ft_free((void **)&line);
 		id++;
 	}
-	return (scene);
 }

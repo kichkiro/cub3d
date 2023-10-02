@@ -3,20 +3,22 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: anvannin <anvannin@student.42.fr>          +#+  +:+       +#+         #
+#    By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/28 19:07:36 by anvannin          #+#    #+#              #
-#    Updated: 2023/07/29 21:39:59 by anvannin         ###   ########.fr        #
+#    Updated: 2023/09/30 11:21:01 by kichkiro         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # Config ---------------------------------------------------------------------->
 
-NAME        := libvec.a
+NAME        := libvec3.a
 SRCS        := \
-				vector_base.c \
-				vector_adv.c \
-				vector_rot.c
+				vec3_basic.c \
+				vec3_basic2.c \
+				vec3_adv.c \
+				vec3_rot.c \
+				vec3_trig.c
 SRC_DIR     := src
 BUILD_DIR   := .build
 SRCS        := $(SRCS:%=$(SRC_DIR)/%)
@@ -47,10 +49,10 @@ $(BUILD_DIR)/%.o: $(SRC_DIR)/%.c
 	@$(eval TOTAL_COUNT := $(shell echo $(words $(SRCS))))
 	@$(eval PERCENT := $(shell echo $$((($(CURRENT_COUNT) * 100) / \
 	$(TOTAL_COUNT)))))
-	@printf "\r\033[K[${BOLD}%d%%${NO_COLOR}] ${BOLD}${CYAN}LibVEC${NO_COLOR} \
+	@printf "\r\033[K[${BOLD}%d%%${NO_COLOR}] ${BOLD}${CYAN}LibVec3${NO_COLOR} \
 	${BOLD}-> Compiling -> ${CYAN}$(@:$(BUILD_DIR)/%=%)${NO_COLOR}" $(PERCENT)
 	@if [ $(PERCENT) -eq 100 ]; then \
-		printf "\r\033[K[${BOLD}%d%%${NO_COLOR}] ${BOLD}${CYAN}LibVEC\
+		printf "\r\033[K[${BOLD}%d%%${NO_COLOR}] ${BOLD}${CYAN}LibVec3\
 	 -> ./$(NAME)${NO_COLOR}\n" $(PERCENT);\
 	fi
 

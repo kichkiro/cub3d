@@ -6,11 +6,11 @@
 /*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 18:29:24 by anvannin          #+#    #+#             */
-/*   Updated: 2023/09/13 08:50:39 by kichkiro         ###   ########.fr       */
+/*   Updated: 2023/10/02 16:08:53 by kichkiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minirt.h"
+#include "render.h"
 
 /*!
  * @brief
@@ -28,7 +28,7 @@
 */
 int	rgb_to_int(t_rgb *rgb)
 {
-	return ((rgb->red << 16) | (rgb->green << 8) | rgb->blue);
+	return (((int)rgb->red << 16) | ((int)rgb->green << 8) | (int)rgb->blue);
 }
 
 /*!
@@ -63,4 +63,24 @@ void	print_rgb_int(t_rgb *rgb)
 void	print_rgb_hex(t_rgb *rgb)
 {
 	printf("0xFF%X\n", rgb_to_int(rgb));
+}
+
+t_rgb	v3_to_rgb(t_v3 v)
+{
+	t_rgb	rgb;
+
+	rgb.red = v.x;
+	rgb.green = v.y;
+	rgb.blue = v.z;
+	return (rgb);
+}
+
+t_v3	rgb_to_v3(t_rgb rgb)
+{
+	t_v3	v;
+
+	v.x = rgb.red;
+	v.y = rgb.green;
+	v.z = rgb.blue;
+	return (v);
 }

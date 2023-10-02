@@ -6,11 +6,12 @@
 /*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 20:13:53 by anvannin          #+#    #+#             */
-/*   Updated: 2023/09/13 08:50:42 by kichkiro         ###   ########.fr       */
+/*   Updated: 2023/09/30 11:45:13 by kichkiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
+#include "render.h"
 
 void	log_sphere(t_sphere *sph)
 {

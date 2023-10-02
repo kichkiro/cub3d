@@ -1,27 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   errors_handler.c                                   :+:      :+:    :+:   */
+/*   check_errors.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/30 11:09:31 by kichkiro          #+#    #+#             */
-/*   Updated: 2023/09/13 09:10:20 by kichkiro         ###   ########.fr       */
+/*   Created: 2023/09/28 10:05:03 by kichkiro          #+#    #+#             */
+/*   Updated: 2023/09/28 10:52:23 by kichkiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-void	errors_handler(char *msg, t_mlx *mlx, t_scene **scene)
+static bool	check_filename(char *filename)
 {
-	ft_putstr_fd(RED, 2);
-	ft_putstr_fd("Error -> ", 2);
-	ft_putstr_fd(msg, 2);
-	ft_putstr_fd("\n", 2);
-	ft_putstr_fd(RESET, 2);
-	if (scene)
-		t_scene_free(scene);
-	if (mlx)
-		window_destroy(mlx);
-	exit(1);
+	int	i;
+
+	i = 0;
+	while (filename[i])
+		i++;
+	if (!ft_strncmp(filename + (i - 3), ".rt", 3))
+		return (true);
+	return (false);
+}
+
+void    validator(int argc, char **argv)
+{
+    if (argc != 2)
+		errors_handler("usage: ./minirt <path_scene>.rt", NULL, NULL);
+	else if (!check_filename(argv[1]))
+		errors_handler("invalid filename: it must end with .rt", NULL, NULL);
 }

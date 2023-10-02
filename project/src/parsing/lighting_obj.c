@@ -6,7 +6,7 @@
 /*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/01 12:46:26 by kichkiro          #+#    #+#             */
-/*   Updated: 2023/09/13 08:50:46 by kichkiro         ###   ########.fr       */
+/*   Updated: 2023/10/02 17:01:29 by kichkiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,21 @@
 
 void	*parse_ambient_lightning(char *line)
 {
-	t_ambient_lightning	*ambient_l;
+	t_ambient_lightning	*am_light;
 
-	ambient_l = (t_ambient_lightning *)malloc(sizeof(t_ambient_lightning));
-	if (!ambient_l)
+	am_light = (t_ambient_lightning *)malloc(sizeof(t_ambient_lightning));
+	if (!am_light)
 		errors_handler("malloc()", NULL, NULL);
-	ambient_l->ratio = get_value(&line);
+	am_light->ratio = get_value(&line);
 	while (line && *line && (ft_isdigit(*line) || *line == 46))
 		line++;
 	while (line && *line && (*line == 9 || *line == 32))
 		line++;
-	ambient_l->rgb = get_rgb(&line);
-	return ((void *)ambient_l);
+	am_light->rgb = get_rgb(&line);
+	am_light->rgb->red /= 255;
+	am_light->rgb->green /= 255;
+	am_light->rgb->blue /= 255;
+	return ((void *)am_light);
 }
 
 void	*parse_light(char *line)
@@ -40,5 +43,8 @@ void	*parse_light(char *line)
 		line++;
 	light->brightness = get_value(&line);
 	light->rgb = get_rgb(&line);
+	light->rgb->red /= 255;
+	light->rgb->green /= 255;
+	light->rgb->blue /= 255;
 	return ((void *)light);
 }

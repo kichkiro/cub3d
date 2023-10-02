@@ -6,7 +6,7 @@
 /*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/01 13:07:49 by kichkiro          #+#    #+#             */
-/*   Updated: 2023/09/13 08:50:45 by kichkiro         ###   ########.fr       */
+/*   Updated: 2023/10/01 23:48:31 by kichkiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ double	get_value(char **line)
 	double	value;
 
 	tmp = ft_calloc(1, sizeof(char));
+	while (line && *line && (**line == 9 || **line == 32))
+		(*line)++;
 	while (line && *line && **line && **line != 44 && **line != 32 && \
 		**line != 9)
 	{
@@ -31,11 +33,11 @@ double	get_value(char **line)
 	return (value);
 }
 
-t_coords	*get_coords(char **line)
+t_v3	*get_coords(char **line)
 {
-	t_coords	*coords;
+	t_v3	*coords;
 
-	coords = (t_coords *)malloc(sizeof(t_coords));
+	coords = (t_v3 *)malloc(sizeof(t_v3));
 	if (!coords)
 		errors_handler("malloc()", NULL, NULL);
 	while (line && *line && (**line == 9 || **line == 32))

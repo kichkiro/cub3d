@@ -6,7 +6,7 @@
 /*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/30 09:45:57 by kichkiro          #+#    #+#             */
-/*   Updated: 2023/09/13 08:48:49 by kichkiro         ###   ########.fr       */
+/*   Updated: 2023/10/02 13:15:51 by kichkiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,6 @@
 
 # include "minirt.h"
 # include <fcntl.h>
-
-typedef struct s_scene	t_scene;
 
 // Defines -------------------------------------------------------------------->
 
@@ -31,86 +29,96 @@ typedef struct s_scene	t_scene;
 
 // Structures ----------------------------------------------------------------->
 
-typedef struct s_rgb
+typedef struct s_scene	t_scene;
+
+typedef struct 		s_rgb
 {
-	unsigned char	red;
-	unsigned char	green;
-	unsigned char	blue;
+	double			red;
+	double			green;
+	double			blue;
 }	t_rgb;
 
-typedef struct s_ambient_lightning
+typedef struct 		s_ambient_lightning
 {
-	double	ratio;
-	t_rgb	*rgb;
+	double			ratio;
+	t_rgb			*rgb;
 }	t_ambient_lightning;
 
-typedef struct s_camera
+typedef struct 		s_camera
 {
-	t_coords		*coords;
-	t_coords		*norm_vect;
-	unsigned char	fov;
+	t_v3			*coords;
+	t_v3			*norm_vect;
+	double			fov;
+	
+	t_v3			u;
+	t_v3			v;
+	t_v3			w;
+	double			d;
 }	t_camera;
 
-typedef struct s_light
+typedef struct 		s_light
 {
-	t_coords	*coords;
-	double		brightness;
-	t_rgb		*rgb;
+	t_v3			*coords;
+	double			brightness;
+	t_rgb			*rgb;
 }	t_light;
 
-typedef struct s_sphere
+typedef struct 		s_sphere
 {
-	t_coords	*coords;
-	double		diameter;
-	t_rgb		*rgb;
+	t_v3			*coords;
+	double			diameter;
+	t_rgb			*rgb;
 }	t_sphere;
 
-typedef struct s_plane
+typedef struct 		s_plane
 {
-	t_coords	*coords;
-	t_coords	*norm_vect;
-	t_rgb		*rgb;
+	t_v3			*coords;
+	t_v3			*norm_vect;
+	t_rgb			*rgb;
 }	t_plane;
 
-typedef struct s_cylinder
+typedef struct 		s_cylinder
 {
-	t_coords	*coords;
-	t_coords	*norm_vect;
-	double		diameter;
-	double		height;
-	t_rgb		*rgb;
+	t_v3			*coords;
+	t_v3			*norm_vect;
+	double			diameter;
+	double			height;
+	t_rgb			*rgb;
 }	t_cylinder;
 
 // Linked Lists --------------------------------------------------------------->
 
-typedef struct s_scene
+typedef struct 		s_scene
 {
 	int				id;
-	char			type;
+	unsigned char	type;
 	bool			unique;
 	void			*data;
 	struct s_scene	*prev;
 	struct s_scene	*next;
 }	t_scene;
 
-t_scene		*t_scene_new(int id, char type, bool unique, void *data);
-void		t_scene_add_back(t_scene **lst, t_scene *new);
-void		t_scene_set_to_head(t_scene **scene);
-void		t_scene_free(t_scene **scene);
-t_scene		*t_scene_find_obj_by_id(t_scene *scene, int id);
-bool		t_scene_check_unique(t_scene *scene, char type, bool unique);
+t_scene				*t_scene_new(int id, char type, bool unique, void *data);
+void				t_scene_add_back(t_scene **lst, t_scene *new);
+void				t_scene_set_to_head(t_scene **scene);
+void				t_scene_free(t_scene **scene);
+t_scene				*t_scene_find_obj_by_id(t_scene *scene, int id);
+bool				t_scene_check_unique(t_scene *scene, char type, bool unique);
+t_camera    		*t_scene_get_camera(t_scene *scene);
+t_light				*t_scene_get_light(t_scene *scene);
+t_ambient_lightning	*t_scene_get_ambient_light(t_scene *scene);
 
 // Functions ------------------------------------------------------------------>
 
-t_scene		*get_scene(char	*filename);
-t_coords	*get_coords(char **line);
-t_rgb		*get_rgb(char **line);
-double		get_value(char **line);
-void		*parse_ambient_lightning(char *line);
-void		*parse_camera(char *line);
-void		*parse_light(char *line);
-void		*parse_sphere(char *line);
-void		*parse_plane(char *line);
-void		*parse_cylinder(char *line);
+void				parser(char *filename, t_scene **scene);
+t_v3				*get_coords(char **line);
+t_rgb				*get_rgb(char **line);
+double				get_value(char **line);
+void				*parse_ambient_lightning(char *line);
+void				*parse_camera(char *line);
+void				*parse_light(char *line);
+void				*parse_sphere(char *line);
+void				*parse_plane(char *line);
+void				*parse_cylinder(char *line);
 
 #endif

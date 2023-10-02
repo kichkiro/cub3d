@@ -6,7 +6,7 @@
 /*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 00:00:19 by kichkiro          #+#    #+#             */
-/*   Updated: 2023/09/13 08:48:18 by kichkiro         ###   ########.fr       */
+/*   Updated: 2023/10/02 16:30:16 by kichkiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,12 @@
 
 # include "../lib/libft/include/libft.h"
 # include "../lib/libmlx/include/mlx.h"
-# include "../lib/libvec/include/vector.h"
+# include "../lib/libvec3/include/vec3.h"
 # include "parser.h"
 # include <unistd.h>
 # include <stdlib.h>
 # include <stdbool.h>
 # include <stdio.h>
-# include <math.h>
 # include <X11/keysym.h>
 # include <X11/X.h>
 
@@ -31,19 +30,19 @@
 
 // Window -------------------------------------------------------------------->>
 
-# define WIN_WIDTH 1910
-# define WIN_HEIGHT 985
+# define WIN_WIDTH 		1917
+# define WIN_HEIGHT 	987
 
 // Colors -------------------------------------------------------------------->>
 
-# define HEX_WHITE 0x00FFFFFF
-# define HEX_BLACK 0x00000000
-# define HEX_RED 0x00FF0000
-# define HEX_GREEN 0x0000FF00
-# define HEX_BLUE 0x000000FF
-# define HEX_YELLOW 0x00FFFF00
-# define HEX_MAGENTA 0x00FF00FF
-# define HEX_CYAN 0x0000FFFF
+# define HEX_WHITE 		0x00FFFFFF
+# define HEX_BLACK 		0x00000000
+# define HEX_RED 		0x00FF0000
+# define HEX_GREEN 		0x0000FF00
+# define HEX_BLUE 		0x000000FF
+# define HEX_YELLOW 	0x00FFFF00
+# define HEX_MAGENTA 	0x00FF00FF
+# define HEX_CYAN 		0x0000FFFF
 
 // Structures ----------------------------------------------------------------->
 
@@ -69,38 +68,23 @@ typedef struct s_mlx
 
 // Functions ------------------------------------------------------------------>
 
-// window.c ------------------------------------------------------------------>>
+// main ---------------------------------------------------------------------->>
+
+void    	initializer(t_mlx **mlx, t_scene **scene);
+void    	validator(int argc, char **argv);
+void		errors_handler(char *msg, t_mlx *mlx, t_scene **scene);
+void		terminator(t_scene **scene, t_mlx *mlx);
+
+// visualizator -------------------------------------------------------------->>
+
+int			visualizator(t_mlx *mlx);
 int			window_init(t_mlx *mlx);
 void		my_pixel_put(t_img100 img, int x, int y, int color);
 int			mlx_exit(t_mlx *mlx);
 void		window_destroy(t_mlx *mlx);
-
-// window_labels.c ----------------------------------------------------------->>
 void		window_labels(t_mlx *mlx);
-
-// hooks.c ------------------------------------------------------------------->>
-int			hooks_init(t_mlx *mlx);
-
-// keyboard_hooks.c ---------------------------------------------------------->>
 int			key_hook(int keycode, t_mlx *mlx);
-
-// color.c ------------------------------------------------------------------->>
-int			rgb_to_int(t_rgb *rgb);
-int			rgb_to_int2(int r, int g, int b);
-void		print_rgb_int(t_rgb *rgb);
-void		print_rgb_hex(t_rgb *rgb);
-
-// render.c ------------------------------------------------------------------>>
-void		render(t_mlx *mlx, t_scene *scene);
-void		render_sky_gradient(t_mlx *mlx, int win_x, int win_y);
-
-// render/sphere.c ----------------------------------------------------------->>
-void		render_sphere(t_mlx *mlx, t_scene *scene);
-
-// errors_handler.c ---------------------------------------------------------->>
-void		errors_handler(char *msg, t_mlx *mlx, t_scene **scene);
-
-// logs.c -------------------------------------------------------------------->>
+int			mouse_hooks(int key, int x, int y, t_mlx *mlx);
 void		log_sphere(t_sphere *sph);
 
 #endif

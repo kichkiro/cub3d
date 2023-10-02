@@ -6,7 +6,7 @@
 #    By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/17 18:02:07 by kichkiro          #+#    #+#              #
-#    Updated: 2023/07/29 14:11:54 by kichkiro         ###   ########.fr        #
+#    Updated: 2023/09/29 20:44:53 by kichkiro         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -76,11 +76,11 @@ $(BUILD_DIR)/%.o: $(SRC_DIR)/%.c
 	@$(eval TOTAL_COUNT := $(shell echo $(words $(SRCS))))
 	@$(eval PERCENT := $(shell echo $$((($(CURRENT_COUNT) * 100) / \
 	$(TOTAL_COUNT)))))
-	@printf "\r\033[K[${BOLD}%d%%${NO_COLOR}] ${BOLD}${RED}LibMLX${NO_COLOR} \
-	${BOLD}-> Compiling -> ${RED}$(@:$(BUILD_DIR)/%=%)${NO_COLOR}" $(PERCENT)
+	@printf "\r\033[K[${BOLD}%d%%${NO_COLOR}] ${BOLD}${RED}LibMlx${NO_COLOR} \
+	${BOLD}-> Compiling  -> ${RED}$(@:$(BUILD_DIR)/%=%)${NO_COLOR}" $(PERCENT)
 	@if [ $(PERCENT) -eq 100 ]; then \
-		printf "\r\033[K[${BOLD}%d%%${NO_COLOR}] ${BOLD}${RED}LibMLX\
-	 -> ./$(NAME)${NO_COLOR}\n" $(PERCENT);\
+		printf "\r\033[K[${BOLD}%d%%${NO_COLOR}] ${BOLD}${RED}LibMlx\
+	  -> ./$(NAME)${NO_COLOR}\n" $(PERCENT);\
 	fi
 
 -include $(DEPS)

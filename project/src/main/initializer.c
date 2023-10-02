@@ -1,27 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   t_scene_add_back.c                                 :+:      :+:    :+:   */
+/*   initializer.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/30 19:47:25 by kichkiro          #+#    #+#             */
-/*   Updated: 2023/09/28 10:33:07 by kichkiro         ###   ########.fr       */
+/*   Created: 2023/09/28 10:35:49 by kichkiro          #+#    #+#             */
+/*   Updated: 2023/09/28 10:57:52 by kichkiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "parser.h"
+#include "minirt.h"
 
-void	t_scene_add_back(t_scene **lst, t_scene *new)
+void    initializer(t_mlx **mlx, t_scene **scene)
 {
-	if (lst && *lst)
-	{
-		while ((*lst)->next)
-			*lst = (*lst)->next;
-		new->prev = *lst;
-		(*lst)->next = new;
-	}
-	else
-		*lst = new;
-	// *lst = (*lst)->next;
+    *mlx = (t_mlx *)ft_calloc(sizeof(t_mlx), 1);
+    if (!*mlx)
+        errors_handler("malloc()", NULL, NULL);
+    window_init(*mlx);
+    *scene = NULL;
 }

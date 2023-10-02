@@ -6,46 +6,55 @@
 #    By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/30 14:51:06 by kichkiro          #+#    #+#              #
-#    Updated: 2023/09/13 08:47:51 by kichkiro         ###   ########.fr        #
+#    Updated: 2023/10/02 16:15:49 by kichkiro         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # Config ---------------------------------------------------------------------->
 
 NAME        := miniRT
-LIBS        := ft mlx vec
+LIBS        := ft mlx vec3
 LIBS_TARGET := \
 				lib/libft/libft.a \
 				lib/libmlx/libmlx.a \
-				lib/libvec/libvec.a
+				lib/libvec3/libvec3.a
 INCS        := \
 				include \
 				lib/libft/include \
 				lib/libmlx/include \
-				lib/libvec/include
+				lib/libvec3/include
 SRC_DIR     := src
 SRCS        := \
 				main/main.c \
+				main/initializer.c \
 				main/errors_handler.c \
-				window/window.c \
-				window/hooks.c \
-				window/keyboard_hooks.c \
-				window/window_labels.c \
-				parser/parser.c \
-				parser/get_value.c \
-				parser/display_obj.c \
-				parser/geometric_obj.c \
-				parser/lighting_obj.c \
-				render/render.c \
-				render/sphere.c \
+				main/validator.c \
+				main/terminator.c \
+				\
+				parsing/parser.c \
+				parsing/get_value.c \
+				parsing/camera.c \
+				parsing/geometric_obj.c \
+				parsing/lighting_obj.c \
+				\
+				rendering/render.c \
+				rendering/intersections.c \
+				rendering/raycaster.c \
+				rendering/color.c \
+				\
+				visualization/visualizator.c \
+				visualization/hooks.c \
+				visualization/window.c \
+				visualization/window_labels.c \
+				visualization/logs.c \
+				\
 				_lst/t_scene_add_back.c \
 				_lst/t_scene_new.c \
 				_lst/t_scene_set_to_head.c \
 				_lst/t_scene_free.c \
 				_lst/t_scene_find_obj_by_id.c \
 				_lst/t_scene_check_unique.c \
-				color/color.c \
-				logs/logs.c
+				_lst/t_scene_get_obj.c 
 SRCS        := $(SRCS:%=$(SRC_DIR)/%)
 BUILD_DIR   := .build
 OBJS        := $(SRCS:$(SRC_DIR)/%.c=$(BUILD_DIR)/%.o)
