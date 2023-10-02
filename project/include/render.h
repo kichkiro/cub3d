@@ -6,7 +6,7 @@
 /*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/15 20:35:53 by kichkiro          #+#    #+#             */
-/*   Updated: 2023/10/02 16:55:41 by kichkiro         ###   ########.fr       */
+/*   Updated: 2023/10/02 19:27:53 by kichkiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,7 +98,7 @@ typedef struct s_hit
 
 // Functions ------------------------------------------------------------------>
 
-void		render(t_mlx *mlx, t_scene *scene);
+void		render(t_mlx **mlx, t_scene *scene);
 int			raycaster(t_scene *scene, t_camera *cam, int x, int y);
 void		intersections(t_scene *scene, t_ray ray, t_intersec *isec);
 

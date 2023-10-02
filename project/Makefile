@@ -6,7 +6,7 @@
 #    By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/30 14:51:06 by kichkiro          #+#    #+#              #
-#    Updated: 2023/10/02 16:15:49 by kichkiro         ###   ########.fr        #
+#    Updated: 2023/10/02 20:11:33 by kichkiro         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,6 @@ INCS        := \
 SRC_DIR     := src
 SRCS        := \
 				main/main.c \
-				main/initializer.c \
 				main/errors_handler.c \
 				main/validator.c \
 				main/terminator.c \
@@ -44,8 +43,6 @@ SRCS        := \
 				\
 				visualization/visualizator.c \
 				visualization/hooks.c \
-				visualization/window.c \
-				visualization/window_labels.c \
 				visualization/logs.c \
 				\
 				_lst/t_scene_add_back.c \

@@ -6,7 +6,7 @@
 /*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/28 14:18:44 by kichkiro          #+#    #+#             */
-/*   Updated: 2023/09/28 10:38:37 by kichkiro         ###   ########.fr       */
+/*   Updated: 2023/10/02 20:00:43 by kichkiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static char	get_type(char *line)
 	else if (!ft_strncmp(line, "L", 1) || !ft_strncmp(line, "l", 1))
 		return (LIGHT);
 	else
-		errors_handler("Invalid identifier", NULL, NULL);
+		errors_handler("parser: invalid identifier", NULL, NULL);
 	return (0);
 }
 
@@ -58,29 +58,29 @@ static bool	get_unique(char *line, t_scene *scene, char type)
 		unique = false;
 	else
 		errors_handler("parser: the first character of the type must be a "\
-			"letter", NULL, NULL);
+			"letter", NULL, &scene);
 	if (!t_scene_check_unique(scene, type, unique))
 		errors_handler("parser: there can be a single object of the same type "\
-			"if its type starts with a capital letter ", NULL, NULL);
+			"if its type starts with a capital letter ", NULL, &scene);
 	return (unique);
 }
 
-static void	*get_data(char *line, char type)
+static void	*get_data(char *line, char type, t_scene *scene)
 {
 	while (*line != 32 && *line != 9)
 		line++;
 	if (type == AMBIENT_LIGHTNING)
-		return (parse_ambient_lightning(line));
+		return (parse_ambient_lightning(line, scene));
 	else if (type == LIGHT)
-		return (parse_light(line));
+		return (parse_light(line, scene));
 	else if (type == CAMERA)
-		return (parse_camera(line));
+		return (parse_camera(line, scene));
 	else if (type == SPHERE)
-		return (parse_sphere(line));
+		return (parse_sphere(line, scene));
 	else if (type == PLANE)
-		return (parse_plane(line));
+		return (parse_plane(line, scene));
 	else if (type == CYLINDER)
-		return (parse_cylinder(line));
+		return (parse_cylinder(line, scene));
 	return (NULL);
 }
 
@@ -93,7 +93,7 @@ void	parser(char *filename, t_scene **scene)
 
 	fd = open(filename, O_RDONLY);
 	if (fd == -1)
-		errors_handler("open()", NULL, NULL);
+		errors_handler("parser: open()", NULL, NULL);
 	id = 0;
 	while (true)
 	{
@@ -104,7 +104,7 @@ void	parser(char *filename, t_scene **scene)
 			continue ;
 		type = get_type(line);
 		t_scene_add_back(scene, t_scene_new(id, type, get_unique(line, *scene, \
-			type), get_data(line, type)));
+			type), get_data(line, type, *scene)));
 		ft_free((void **)&line);
 		id++;
 	}

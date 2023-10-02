@@ -6,7 +6,7 @@
 /*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/06 10:58:44 by kichkiro          #+#    #+#             */
-/*   Updated: 2023/09/13 08:50:11 by kichkiro         ###   ########.fr       */
+/*   Updated: 2023/10/02 19:51:59 by kichkiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static void	free_lighting_obj(t_scene **scene)
 	}
 	else if ((*scene)->type == LIGHT)
 	{
-		free(((t_light *)(*scene)->data)->coords);
+		free(((t_light *)(*scene)->data)->origin);
 		free(((t_light *)(*scene)->data)->rgb);
 		free(((t_light *)(*scene)->data));
 	}
@@ -31,8 +31,8 @@ static void	free_display_obj(t_scene **scene)
 {
 	if ((*scene)->type == CAMERA)
 	{
-		free(((t_camera *)(*scene)->data)->coords);
-		free(((t_camera *)(*scene)->data)->norm_vect);
+		free(((t_camera *)(*scene)->data)->origin);
+		free(((t_camera *)(*scene)->data)->direction);
 		free(((t_camera *)(*scene)->data));
 	}
 }
@@ -41,21 +41,21 @@ static void	free_geometric_obj(t_scene **scene)
 {
 	if ((*scene)->type == SPHERE)
 	{
-		free(((t_sphere *)(*scene)->data)->coords);
+		free(((t_sphere *)(*scene)->data)->origin);
 		free(((t_sphere *)(*scene)->data)->rgb);
 		free(((t_sphere *)(*scene)->data));
 	}
 	else if ((*scene)->type == PLANE)
 	{
-		free(((t_plane *)(*scene)->data)->coords);
-		free(((t_plane *)(*scene)->data)->norm_vect);
+		free(((t_plane *)(*scene)->data)->origin);
+		free(((t_plane *)(*scene)->data)->direction);
 		free(((t_plane *)(*scene)->data)->rgb);
 		free(((t_plane *)(*scene)->data));
 	}
 	else if ((*scene)->type == CYLINDER)
 	{
-		free(((t_cylinder *)(*scene)->data)->coords);
-		free(((t_cylinder *)(*scene)->data)->norm_vect);
+		free(((t_cylinder *)(*scene)->data)->origin);
+		free(((t_cylinder *)(*scene)->data)->direction);
 		free(((t_cylinder *)(*scene)->data)->rgb);
 		free(((t_cylinder *)(*scene)->data));
 	}

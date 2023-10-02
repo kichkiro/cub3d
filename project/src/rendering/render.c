@@ -6,7 +6,7 @@
 /*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/01 18:40:50 by anvannin          #+#    #+#             */
-/*   Updated: 2023/10/02 17:08:50 by kichkiro         ###   ########.fr       */
+/*   Updated: 2023/10/02 19:30:45 by kichkiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ static void	render_center_cross(t_mlx *mlx)
  * @param scene
  	Pointer to the scene to be rendered.
  */
-void	render(t_mlx *mlx, t_scene *scene)
+void	render(t_mlx **mlx, t_scene *scene)
 {
 	int	x;
 	int	y;
@@ -53,9 +53,9 @@ void	render(t_mlx *mlx, t_scene *scene)
 	{
 		x = -1;
 		while (++x < WIN_WIDTH)
-			my_pixel_put(mlx->img, x, y, raycaster(scene, t_scene_get_camera(scene), x, y));
+			my_pixel_put((*mlx)->img, x, y, raycaster(scene, t_scene_get_camera(scene), x, y));
 	}
-	render_center_cross(mlx);
-	mlx_put_image_to_window(mlx->mlx_ptr, mlx->win_ptr, mlx->img.img_ptr, 0, 0);
-	window_labels(mlx);
+	render_center_cross(*mlx);
+	mlx_put_image_to_window((*mlx)->mlx_ptr, (*mlx)->win_ptr, (*mlx)->img.img_ptr, 0, 0);
+	window_labels(*mlx);
 }

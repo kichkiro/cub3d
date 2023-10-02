@@ -6,7 +6,7 @@
 /*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 18:29:24 by anvannin          #+#    #+#             */
-/*   Updated: 2023/10/02 16:08:53 by kichkiro         ###   ########.fr       */
+/*   Updated: 2023/10/02 20:07:57 by kichkiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ int	rgb_to_int2(int red, int green, int blue)
 */
 void	print_rgb_int(t_rgb *rgb)
 {
-	printf("%d\t%d\t%d\n", rgb->red, rgb->green, rgb->blue);
+	printf("%lf\t%lf\t%lf\n", rgb->red, rgb->green, rgb->blue);
 }
 
 /*!

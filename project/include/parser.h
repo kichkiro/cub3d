@@ -6,7 +6,7 @@
 /*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/30 09:45:57 by kichkiro          #+#    #+#             */
-/*   Updated: 2023/10/02 13:15:51 by kichkiro         ###   ########.fr       */
+/*   Updated: 2023/10/02 19:55:32 by kichkiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,8 @@ typedef struct 		s_ambient_lightning
 
 typedef struct 		s_camera
 {
-	t_v3			*coords;
-	t_v3			*norm_vect;
+	t_v3			*origin;
+	t_v3			*direction;
 	double			fov;
 	
 	t_v3			u;
@@ -58,29 +58,29 @@ typedef struct 		s_camera
 
 typedef struct 		s_light
 {
-	t_v3			*coords;
+	t_v3			*origin;
 	double			brightness;
 	t_rgb			*rgb;
 }	t_light;
 
 typedef struct 		s_sphere
 {
-	t_v3			*coords;
+	t_v3			*origin;
 	double			diameter;
 	t_rgb			*rgb;
 }	t_sphere;
 
 typedef struct 		s_plane
 {
-	t_v3			*coords;
-	t_v3			*norm_vect;
+	t_v3			*origin;
+	t_v3			*direction;
 	t_rgb			*rgb;
 }	t_plane;
 
 typedef struct 		s_cylinder
 {
-	t_v3			*coords;
-	t_v3			*norm_vect;
+	t_v3			*origin;
+	t_v3			*direction;
 	double			diameter;
 	double			height;
 	t_rgb			*rgb;
@@ -111,14 +111,14 @@ t_ambient_lightning	*t_scene_get_ambient_light(t_scene *scene);
 // Functions ------------------------------------------------------------------>
 
 void				parser(char *filename, t_scene **scene);
-t_v3				*get_coords(char **line);
-t_rgb				*get_rgb(char **line);
-double				get_value(char **line);
-void				*parse_ambient_lightning(char *line);
-void				*parse_camera(char *line);
-void				*parse_light(char *line);
-void				*parse_sphere(char *line);
-void				*parse_plane(char *line);
-void				*parse_cylinder(char *line);
+t_v3				*get_coords(char **line, t_scene *scene);
+t_rgb				*get_rgb(char **line, t_scene *scene);
+double				get_value(char **line, t_scene *scene);
+void				*parse_ambient_lightning(char *line, t_scene *scene);
+void				*parse_camera(char *line, t_scene *scene);
+void				*parse_light(char *line, t_scene *scene);
+void				*parse_sphere(char *line, t_scene *scene);
+void				*parse_plane(char *line, t_scene *scene);
+void				*parse_cylinder(char *line, t_scene *scene);
 
 #endif

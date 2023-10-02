@@ -6,7 +6,7 @@
 /*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 00:00:19 by kichkiro          #+#    #+#             */
-/*   Updated: 2023/10/02 16:30:16 by kichkiro         ###   ########.fr       */
+/*   Updated: 2023/10/02 19:22:41 by kichkiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,11 +52,11 @@ typedef struct s_scene	t_scene;
 
 typedef struct s_img100
 {
-	void	*img_ptr;
-	char	*addr;
-	int		bits_per_pixel;
-	int		line_length;
-	int		endian;
+	void		*img_ptr;
+	char		*addr;
+	int			bits_per_pixel;
+	int			line_length;
+	int			endian;
 }	t_img100;
 
 typedef struct s_mlx
@@ -70,21 +70,21 @@ typedef struct s_mlx
 
 // main ---------------------------------------------------------------------->>
 
-void    	initializer(t_mlx **mlx, t_scene **scene);
-void    	validator(int argc, char **argv);
-void		errors_handler(char *msg, t_mlx *mlx, t_scene **scene);
-void		terminator(t_scene **scene, t_mlx *mlx);
+// void    initializer(t_mlx **mlx);
+void    validator(int argc, char **argv);
+void	errors_handler(char *msg, t_mlx *mlx, t_scene **scene);
+void	terminator(t_scene **scene, t_mlx *mlx);
 
 // visualizator -------------------------------------------------------------->>
 
-int			visualizator(t_mlx *mlx);
-int			window_init(t_mlx *mlx);
-void		my_pixel_put(t_img100 img, int x, int y, int color);
-int			mlx_exit(t_mlx *mlx);
-void		window_destroy(t_mlx *mlx);
-void		window_labels(t_mlx *mlx);
-int			key_hook(int keycode, t_mlx *mlx);
-int			mouse_hooks(int key, int x, int y, t_mlx *mlx);
-void		log_sphere(t_sphere *sph);
+void	visualizator(t_mlx *mlx);
+void	window_init(t_mlx **mlx);
+void	my_pixel_put(t_img100 img, int x, int y, int color);
+int		mlx_exit(t_mlx *mlx);
+void	window_destroy(t_mlx *mlx);
+void	window_labels(t_mlx *mlx);
+int		key_hook(int keycode, t_mlx *mlx);
+int		mouse_hooks(int key, int x, int y, t_mlx *mlx);
+void	log_sphere(t_sphere *sph);
 
 #endif

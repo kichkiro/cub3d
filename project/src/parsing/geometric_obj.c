@@ -6,59 +6,59 @@
 /*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/30 20:44:38 by kichkiro          #+#    #+#             */
-/*   Updated: 2023/09/13 08:50:44 by kichkiro         ###   ########.fr       */
+/*   Updated: 2023/10/02 19:59:26 by kichkiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parser.h"
 
-void	*parse_sphere(char *line)
+void	*parse_sphere(char *line, t_scene *scene)
 {
 	t_sphere	*spere;
 
 	spere = (t_sphere *)malloc(sizeof(t_sphere));
 	if (!spere)
-		errors_handler("malloc()", NULL, NULL);
-	spere->coords = get_coords(&line);
+		errors_handler("parser: malloc()", NULL, &scene);
+	spere->origin = get_coords(&line, scene);
 	while (line && *line && (*line == 9 || *line == 32))
 		line++;
-	spere->diameter = get_value(&line);
-	spere->rgb = get_rgb(&line);
+	spere->diameter = get_value(&line, scene);
+	spere->rgb = get_rgb(&line, scene);
 	return ((void *)spere);
 }
 
-void	*parse_plane(char *line)
+void	*parse_plane(char *line, t_scene *scene)
 {
 	t_plane	*plane;
 
 	plane = (t_plane *)malloc(sizeof(t_plane));
 	if (!plane)
-		errors_handler("malloc()", NULL, NULL);
-	plane->coords = get_coords(&line);
+		errors_handler("parser: malloc()", NULL, &scene);
+	plane->origin = get_coords(&line, scene);
 	while (line && *line && (*line == 9 || *line == 32))
 		line++;
-	plane->norm_vect = get_coords(&line);
+	plane->direction = get_coords(&line, scene);
 	while (line && *line && (*line == 9 || *line == 32))
 		line++;
-	plane->rgb = get_rgb(&line);
+	plane->rgb = get_rgb(&line, scene);
 	return ((void *)plane);
 }
 
-void	*parse_cylinder(char *line)
+void	*parse_cylinder(char *line, t_scene *scene)
 {
 	t_cylinder	*cylinder;
 
 	cylinder = (t_cylinder *)malloc(sizeof(t_cylinder));
 	if (!cylinder)
-		errors_handler("malloc()", NULL, NULL);
-	cylinder->coords = get_coords(&line);
+		errors_handler("parser: malloc()", NULL, &scene);
+	cylinder->origin = get_coords(&line, scene);
 	while (line && *line && (*line == 9 || *line == 32))
 		line++;
-	cylinder->norm_vect = get_coords(&line);
+	cylinder->direction = get_coords(&line, scene);
 	while (line && *line && (*line == 9 || *line == 32))
 		line++;
-	cylinder->diameter = get_value(&line);
-	cylinder->height = get_value(&line);
-	cylinder->rgb = get_rgb(&line);
+	cylinder->diameter = get_value(&line, scene);
+	cylinder->height = get_value(&line, scene);
+	cylinder->rgb = get_rgb(&line, scene);
 	return ((void *)cylinder);
 }
