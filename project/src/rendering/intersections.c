@@ -6,7 +6,7 @@
 /*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/16 16:38:44 by kichkiro          #+#    #+#             */
-/*   Updated: 2023/10/02 19:51:59 by kichkiro         ###   ########.fr       */
+/*   Updated: 2023/10/04 19:38:15 by kichkiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,8 @@ void	intersections(t_scene *scene, t_ray ray, t_intersec *isec)
 			intersec_sphere(&ray, (t_sphere *)scene->data, &isec);
 		else if (scene->type == PLANE)
 			intersec_plane(&ray, (t_plane *)scene->data, &isec);
+		// else if (scene->type == CYLINDER)
+		// 	intersec_cylinder(&ray, (t_cylinder *)scene->data, &isec);
 		scene = scene->next;
 	}
 }

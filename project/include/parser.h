@@ -6,7 +6,7 @@
 /*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/30 09:45:57 by kichkiro          #+#    #+#             */
-/*   Updated: 2023/10/02 19:55:32 by kichkiro         ###   ########.fr       */
+/*   Updated: 2023/10/04 19:30:30 by kichkiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,7 +102,6 @@ t_scene				*t_scene_new(int id, char type, bool unique, void *data);
 void				t_scene_add_back(t_scene **lst, t_scene *new);
 void				t_scene_set_to_head(t_scene **scene);
 void				t_scene_free(t_scene **scene);
-t_scene				*t_scene_find_obj_by_id(t_scene *scene, int id);
 bool				t_scene_check_unique(t_scene *scene, char type, bool unique);
 t_camera    		*t_scene_get_camera(t_scene *scene);
 t_light				*t_scene_get_light(t_scene *scene);

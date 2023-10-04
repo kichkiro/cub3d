@@ -6,18 +6,27 @@
 /*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/16 11:56:40 by kichkiro          #+#    #+#             */
-/*   Updated: 2023/10/02 19:47:08 by kichkiro         ###   ########.fr       */
+/*   Updated: 2023/10/04 19:24:02 by kichkiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "render.h"
 
-// typedef struct 		s_light
-// {
-// 	t_v3			*coords;
-// 	double			brightness;
-// 	t_rgb			*rgb;
-// }	t_light;
+static void	limit_range(t_rgb *rgb)
+{
+	if (rgb->red > 255)
+		(*rgb).red = 255;
+	else if (rgb->red < 0)
+		(*rgb).red = 0;
+	if (rgb->green > 255)
+		(*rgb).green = 255;
+	else if (rgb->green < 0)
+		(*rgb).green = 0;
+	if (rgb->blue > 255)
+		(*rgb).blue = 255;
+	else if (rgb->blue < 0)
+		(*rgb).blue = 0;
+}
 
 /*!
  * @brief
@@ -38,16 +47,17 @@ static void	lighting(t_scene *scene, t_intersec *isec)
 	al = t_scene_get_ambient_light(scene);
 	lg = t_scene_get_light(scene);
 
-	l.ambient = v_mult(rgb_to_v3(*al->rgb), al->ratio * lg->brightness);
+	l.ambient = v_mult(rgb_to_v3(*al->rgb), al->ratio);
 	l.light = v_unit(v_sub_vec((*lg->origin), isec->point));
 	l.dfactor = fmax(0.0, v_dot_product(isec->normal, l.light));
-	l.diffuse = v_mult(rgb_to_v3(*al->rgb), l.dfactor * 0.6 * lg->brightness);
+	l.diffuse = v_mult(rgb_to_v3(*al->rgb), l.dfactor * 0.6);
 	l.viewdir = v_unit(v_sub_vec((*cam->origin), isec->point));
 	l.reflect = v_unit(v_sub_vec(v_mult(isec->normal, (2.0 * v_dot_product(l.light, isec->normal))), l.light));
 	l.sfactor = pow(fmax(v_dot_product(l.viewdir, l.reflect), 0.0), 32);
-	l.specular = v_mult(rgb_to_v3(*al->rgb), l.sfactor * 0.5 * lg->brightness);
+	l.specular = v_mult(rgb_to_v3(*al->rgb), l.sfactor * 0.5);
 	l.color = v_add_vec(v_add_vec(l.ambient, l.diffuse), l.specular);
 	isec->color = v3_to_rgb(v_mult_vec(l.color, rgb_to_v3(isec->color)));
+	limit_range(&isec->color);
 }
 
 /*!

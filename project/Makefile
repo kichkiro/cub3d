@@ -6,7 +6,7 @@
 #    By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/30 14:51:06 by kichkiro          #+#    #+#              #
-#    Updated: 2023/10/02 20:11:33 by kichkiro         ###   ########.fr        #
+#    Updated: 2023/10/04 19:30:23 by kichkiro         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -49,7 +49,6 @@ SRCS        := \
 				_lst/t_scene_new.c \
 				_lst/t_scene_set_to_head.c \
 				_lst/t_scene_free.c \
-				_lst/t_scene_find_obj_by_id.c \
 				_lst/t_scene_check_unique.c \
 				_lst/t_scene_get_obj.c 
 SRCS        := $(SRCS:%=$(SRC_DIR)/%)

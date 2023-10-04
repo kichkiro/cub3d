@@ -20,7 +20,7 @@
 - [ ] You need at least these 3 simple geometric objects: plane, sphere, 
 	  cylinder.
 
-- [ ] If applicable, all possible intersections and the inside of the object 
+- [v] If applicable, all possible intersections and the inside of the object 
 	  must be handled correctly.
 
 - [ ] Your program must be able to resize the object’s unique properties: 
@@ -30,7 +30,7 @@
       transformation to objects, lights and cameras (except for spheres and 
 	  lights that cannot be rotated).
 
-- [ ] Light management: spot brightness, hard shadows, ambiance lighting 
+- [v] Light management: spot brightness, hard shadows, ambiance lighting 
 	  (objects are Never completely in the dark). You must implement Ambient 
 	  and diffuse lighting.
 
@@ -64,8 +64,7 @@
 ## kichkiro ------------------------------------------------------------------>
 
 - [v] leaks parser
-- [ ] aggiungere struttura mlx a t_scene
-- [ ] gestire errori in caso di scena invalida
+- [v] gestire errori in caso di scena invalida
 - [v] spostare definizione lista in minirt.h
 - [v] ri-aggiungere libft e minilbx (puoi aggiungerle come submodule per 
 		evitare ridondanze di file)
@@ -76,8 +75,6 @@
 - [ ] PARSING
 	- [ ] Una scena per essere valida deve contenere: Ambient light, Camera, 
 		  Luce, massimo 1 oggetto per tipo, altrimenti stampa "Error\n"
-	- [ ] ambient->rgb contiene 0,0,0 indipendentemenre da cosa c'e' scritto 
-		  nella scena
 	- [v] i colori degli oggetti sono invertiti, [255,0,255] dovrebbe essere 
 		  viola, ma ritorna giallo (hai invertito il verde con il blu nel 
 		  parsing)
@@ -86,14 +83,6 @@
 	  (proporrei un enum, piu' elegante, ma non so se e' conforme alla norma,
 	  anche una macro o una stringa puo' andare bene) e rendere l'id univoco 
 	  per ogni singolo oggetto.
-- [ ] aggiungere proprietà a oggetti della scena is_selected, per selezionare 
-	  un oggetto e modificare le sue proprietà
-- [v] Aggiungere funzione find_object_by_id(il nome puo' anhe cambiare) per 
-	  ritornare un puntatore ad un oggetto nella scena in base all'id
-- [ ] Aggiungere funzione find_object_by_type(il nome puo' anhe cambiare) per 
-	  ritornare un array di puntatori agli oggetti nella scena in base al 
-	  tipo (da definire prima di implementare)
-
 
 ## anvannin ------------------------------------------------------------------>
 
@@ -130,4 +119,4 @@
 
 ## bugs ---------------------------------------------------------------------->
 
-- [ ] get_sphere non funziona (segmetation fault): `./project/src/sphere.c:15`
+- [v] get_sphere non funziona (segmetation fault): `./project/src/sphere.c:15`
