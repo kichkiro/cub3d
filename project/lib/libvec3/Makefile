@@ -6,7 +6,7 @@
 #    By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/28 19:07:36 by anvannin          #+#    #+#              #
-#    Updated: 2023/09/30 11:21:01 by kichkiro         ###   ########.fr        #
+#    Updated: 2023/10/11 20:27:27 by kichkiro         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,8 @@ SRCS        := \
 				vec3_basic2.c \
 				vec3_adv.c \
 				vec3_rot.c \
-				vec3_trig.c
+				vec3_trig.c \
+				vec3_pointer.c
 SRC_DIR     := src
 BUILD_DIR   := .build
 SRCS        := $(SRCS:%=$(SRC_DIR)/%)

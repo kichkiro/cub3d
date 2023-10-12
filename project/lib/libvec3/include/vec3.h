@@ -6,7 +6,7 @@
 /*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 18:27:32 by anvannin          #+#    #+#             */
-/*   Updated: 2023/09/30 11:19:43 by kichkiro         ###   ########.fr       */
+/*   Updated: 2023/10/11 20:27:03 by kichkiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 // Libraries ------------------------------------------------------------------>
 
+# include <stdlib.h>
 # include <math.h>
 
 // Defines -------------------------------------------------------------------->
@@ -52,5 +53,7 @@ double	v_sin(t_v3 a, t_v3 b);
 t_v3	v_rotate_x(t_v3 v, double angle);
 t_v3	v_rotate_y(t_v3 v, double angle);
 t_v3	v_rotate_z(t_v3 v, double angle);
+
+t_v3	*v_pointer(t_v3 v);
 
 #endif
