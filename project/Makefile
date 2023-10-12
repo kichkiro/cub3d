@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+         #
+#    By: anvannin <anvannin@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/30 14:51:06 by kichkiro          #+#    #+#              #
-#    Updated: 2023/10/04 19:30:23 by kichkiro         ###   ########.fr        #
+#    Updated: 2023/10/12 21:39:36 by anvannin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,17 +40,22 @@ SRCS        := \
 				rendering/intersections.c \
 				rendering/raycaster.c \
 				rendering/color.c \
+				rendering/color2.c \
 				\
 				visualization/visualizator.c \
 				visualization/hooks.c \
-				visualization/logs.c \
+				visualization/window_labels.c \
+				\
+				log/log.c \
+				\
+				transform/traslate.c \
 				\
 				_lst/t_scene_add_back.c \
 				_lst/t_scene_new.c \
 				_lst/t_scene_set_to_head.c \
 				_lst/t_scene_free.c \
 				_lst/t_scene_check_unique.c \
-				_lst/t_scene_get_obj.c 
+				_lst/t_scene_get_obj.c
 SRCS        := $(SRCS:%=$(SRC_DIR)/%)
 BUILD_DIR   := .build
 OBJS        := $(SRCS:$(SRC_DIR)/%.c=$(BUILD_DIR)/%.o)

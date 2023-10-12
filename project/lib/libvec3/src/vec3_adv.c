@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   vec3_adv.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: anvannin <anvannin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 18:54:13 by anvannin          #+#    #+#             */
-/*   Updated: 2023/10/01 23:20:06 by kichkiro         ###   ########.fr       */
+/*   Updated: 2023/10/12 21:44:55 by anvannin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,8 @@ float	v_distance(t_v3 a, t_v3 b)
  * @return
 	The dot product of two vectors.
  * @note
- 	The dot product or scalar product is an algebraic operation that takes two 
-	equal-length sequences of numbers (usually coordinate vectors), and returns 
+ 	The dot product or scalar product is an algebraic operation that takes two
+	equal-length sequences of numbers (usually coordinate vectors), and returns
 	a single number.
 */
 double	v_dot_product(t_v3 a, t_v3 b)
@@ -56,7 +56,7 @@ double	v_dot_product(t_v3 a, t_v3 b)
  * @return
  	The cross product of two vectors.
  * @note
- 	The cross product of two vectors a and b is a vector that is perpendicular 
+ 	The cross product of two vectors a and b is a vector that is perpendicular
 	to both a and b, and thus normal to the plane containing them.
 */
 t_v3	v_cross(t_v3 a, t_v3 b)
@@ -74,40 +74,17 @@ t_v3	v_unit(t_v3 a)
 }
 
 /*!
- * @brief	
+ * @brief
 	Module of a vector.
- * @param a	
+ * @param a
  	The vector.
  * @return
  	The module of the vector.
  * @note
- 	The module of a vector is found by the square root of the dot product of the 
+ 	The module of a vector is found by the square root of the dot product of the
 	vector by itself.
 */
 double	v_module(t_v3 a)
 {
 	return (sqrt(v_dot_product(a, a)));
-}
-
-/*!
- * @brief 
-	Normalize a vector.
- * @param a 
-	The vector.
- * @return 
-	The normalized vector.
- * @note
-	The normalized vector is found by dividing each component of the vector by 
-	its module.
- */
-t_v3	v_normalize(t_v3 a)
-{
-	double	module;
-	t_v3	norm;
-
-	module = v_module(a);
-	norm.x = a.x / module;
-	norm.y = a.y / module;
-	norm.z = a.z / module;
-	return (norm);
 }

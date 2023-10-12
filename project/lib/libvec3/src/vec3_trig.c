@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   vec3_trig.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: anvannin <anvannin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/28 18:56:00 by anvannin          #+#    #+#             */
-/*   Updated: 2023/09/30 11:19:07 by kichkiro         ###   ########.fr       */
+/*   Updated: 2023/10/12 21:45:23 by anvannin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,12 @@
  	Cosinus of two vectors.
  * @param a
  	First vector.
- * @param b	
+ * @param b
 	Second vector.
  * @return
 	The cosinus of two vectors.
- * @note	
- 	The cosinus of two vectors is found by dividing the dot product of the two 
+ * @note
+ 	The cosinus of two vectors is found by dividing the dot product of the two
 	vectors by the product of their modules.
 */
 double	v_cos(t_v3 a, t_v3 b)
@@ -40,7 +40,7 @@ double	v_cos(t_v3 a, t_v3 b)
  * @return
  	The sinus of two vectors.
  * @note
- 	The sinus of two vectors can be found by dividing by finding the inverse of 
+ 	The sinus of two vectors can be found by dividing by finding the inverse of
 	the cosinus of the two vectors.
 */
 double	v_sin(t_v3 a, t_v3 b)

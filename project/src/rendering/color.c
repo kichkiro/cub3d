@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   color.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: anvannin <anvannin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 18:29:24 by anvannin          #+#    #+#             */
-/*   Updated: 2023/10/02 20:07:57 by kichkiro         ###   ########.fr       */
+/*   Updated: 2023/10/12 21:34:56 by anvannin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,11 +32,11 @@ int	rgb_to_int(t_rgb *rgb)
 }
 
 /*!
- * @brief 
- * @param red 
- * @param green 
- * @param blue 
- * @return 
+ * @brief
+ * @param red
+ * @param green
+ * @param blue
+ * @return
  */
 int	rgb_to_int2(int red, int green, int blue)
 {
@@ -73,14 +73,4 @@ t_rgb	v3_to_rgb(t_v3 v)
 	rgb.green = v.y;
 	rgb.blue = v.z;
 	return (rgb);
-}
-
-t_v3	rgb_to_v3(t_rgb rgb)
-{
-	t_v3	v;
-
-	v.x = rgb.red;
-	v.y = rgb.green;
-	v.z = rgb.blue;
-	return (v);
 }

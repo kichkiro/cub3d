@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lighting_obj.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: anvannin <anvannin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/01 12:46:26 by kichkiro          #+#    #+#             */
-/*   Updated: 2023/10/04 19:26:49 by kichkiro         ###   ########.fr       */
+/*   Updated: 2023/10/12 21:33:40 by anvannin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,8 @@ void	*parse_ambient_lightning(char *line, t_scene *scene)
 		errors_handler("parser: malloc()", NULL, &scene);
 	am_light->ratio = get_value(&line, scene);
 	if (am_light->ratio < 0 || am_light->ratio > 1)
-		errors_handler("parser: ambient lighting ratio must be in range 0.0-1.0", NULL, &scene);
+		errors_handler("parser: ambient lighting ratio must be in range \
+				0.0-1.0", NULL, &scene);
 	if (am_light->ratio < 0.01)
 		am_light->ratio = 0.01;
 	while (line && *line && (ft_isdigit(*line) || *line == 46))
@@ -47,7 +48,8 @@ void	*parse_light(char *line, t_scene *scene)
 		line++;
 	light->brightness = get_value(&line, scene);
 	if (light->brightness < 0 || light->brightness > 1)
-		errors_handler("parser: light brightness must be in range 0.0-1.0", NULL, &scene);
+		errors_handler("parser: light brightness must be in range 0.0-1.0",
+			NULL, &scene);
 	if (light->brightness < 0.01)
 		light->brightness = 0.01;
 	light->rgb = get_rgb(&line, scene);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: anvannin <anvannin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/28 14:18:44 by kichkiro          #+#    #+#             */
-/*   Updated: 2023/10/02 20:00:43 by kichkiro         ###   ########.fr       */
+/*   Updated: 2023/10/12 21:20:40 by anvannin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,20 +32,20 @@ static char	get_type(char *line)
 }
 
 /*!
- * @brief 
-	Checks whether the first character starts with lowercase or uppercase 
+ * @brief
+	Checks whether the first character starts with lowercase or uppercase
 	letter.
 	If it is unique, check that there are no other objects of the same type
 	in the list of objects in the scene.
-	If it is not unique, it checks that there is no other object of the same 
-	type labeled as unique. 
+	If it is not unique, it checks that there is no other object of the same
+	type labeled as unique.
  * @param line
 	The line of the .rt file to be parsed.
- * @param scene 
+ * @param scene
 	Pointer to the linked list that contains the objects in the scene.
- * @param type 
+ * @param type
 	The type of the scene object.
- * @return 
+ * @return
 	true if obj is unique, false otherwise.
  */
 static bool	get_unique(char *line, t_scene *scene, char type)
@@ -108,4 +108,5 @@ void	parser(char *filename, t_scene **scene)
 		ft_free((void **)&line);
 		id++;
 	}
+	close(fd);
 }

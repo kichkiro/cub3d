@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: anvannin <anvannin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/30 09:45:57 by kichkiro          #+#    #+#             */
-/*   Updated: 2023/10/04 19:30:30 by kichkiro         ###   ########.fr       */
+/*   Updated: 2023/10/12 21:42:50 by anvannin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,53 +31,53 @@
 
 typedef struct s_scene	t_scene;
 
-typedef struct 		s_rgb
+typedef struct s_rgb
 {
 	double			red;
 	double			green;
 	double			blue;
 }	t_rgb;
 
-typedef struct 		s_ambient_lightning
+typedef struct s_ambient_lightning
 {
 	double			ratio;
 	t_rgb			*rgb;
 }	t_ambient_lightning;
 
-typedef struct 		s_camera
+typedef struct s_camera
 {
 	t_v3			*origin;
 	t_v3			*direction;
 	double			fov;
-	
+
 	t_v3			u;
 	t_v3			v;
 	t_v3			w;
 	double			d;
 }	t_camera;
 
-typedef struct 		s_light
+typedef struct s_light
 {
 	t_v3			*origin;
 	double			brightness;
 	t_rgb			*rgb;
 }	t_light;
 
-typedef struct 		s_sphere
+typedef struct s_sphere
 {
 	t_v3			*origin;
 	double			diameter;
 	t_rgb			*rgb;
 }	t_sphere;
 
-typedef struct 		s_plane
+typedef struct s_plane
 {
 	t_v3			*origin;
 	t_v3			*direction;
 	t_rgb			*rgb;
 }	t_plane;
 
-typedef struct 		s_cylinder
+typedef struct s_cylinder
 {
 	t_v3			*origin;
 	t_v3			*direction;
@@ -88,7 +88,7 @@ typedef struct 		s_cylinder
 
 // Linked Lists --------------------------------------------------------------->
 
-typedef struct 		s_scene
+typedef struct s_scene
 {
 	int				id;
 	unsigned char	type;
@@ -102,8 +102,8 @@ t_scene				*t_scene_new(int id, char type, bool unique, void *data);
 void				t_scene_add_back(t_scene **lst, t_scene *new);
 void				t_scene_set_to_head(t_scene **scene);
 void				t_scene_free(t_scene **scene);
-bool				t_scene_check_unique(t_scene *scene, char type, bool unique);
-t_camera    		*t_scene_get_camera(t_scene *scene);
+bool				t_scene_check_unique(t_scene *scene, char type, bool uniq);
+t_camera			*t_scene_get_camera(t_scene *scene);
 t_light				*t_scene_get_light(t_scene *scene);
 t_ambient_lightning	*t_scene_get_ambient_light(t_scene *scene);
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minirt.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: anvannin <anvannin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 00:00:19 by kichkiro          #+#    #+#             */
-/*   Updated: 2023/10/02 19:22:41 by kichkiro         ###   ########.fr       */
+/*   Updated: 2023/10/12 21:15:17 by anvannin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,25 +66,40 @@ typedef struct s_mlx
 	t_img100	img;
 }	t_mlx;
 
+typedef struct s_mlx_scene
+{
+	t_mlx		*mlx;
+	t_scene		*scene;
+}	t_mlx_scene;
+
 // Functions ------------------------------------------------------------------>
 
 // main ---------------------------------------------------------------------->>
 
-// void    initializer(t_mlx **mlx);
-void    validator(int argc, char **argv);
+// void	initializer(t_mlx **mlx);
+void	validator(int argc, char **argv);
 void	errors_handler(char *msg, t_mlx *mlx, t_scene **scene);
 void	terminator(t_scene **scene, t_mlx *mlx);
 
 // visualizator -------------------------------------------------------------->>
 
-void	visualizator(t_mlx *mlx);
+int		visualizator(t_mlx *mlx, t_scene **scene);
 void	window_init(t_mlx **mlx);
 void	my_pixel_put(t_img100 img, int x, int y, int color);
 int		mlx_exit(t_mlx *mlx);
 void	window_destroy(t_mlx *mlx);
 void	window_labels(t_mlx *mlx);
-int		key_hook(int keycode, t_mlx *mlx);
+int		key_hook(int keycode, t_mlx_scene *mlx_scene);
 int		mouse_hooks(int key, int x, int y, t_mlx *mlx);
+
+// transform ----------------------------------------------------------------->>
+
+void	traslate(t_mlx_scene *mlx_scene, int keycode);
+
+// log ---------------------------------------------------------------------->>
+
 void	log_sphere(t_sphere *sph);
+void	log_key_hook(int keycode);
+void	log_mouse_hook(int key, int x, int y);
 
 #endif

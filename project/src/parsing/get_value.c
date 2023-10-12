@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_value.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: anvannin <anvannin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/01 13:07:49 by kichkiro          #+#    #+#             */
-/*   Updated: 2023/10/02 20:07:14 by kichkiro         ###   ########.fr       */
+/*   Updated: 2023/10/12 21:34:49 by anvannin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,7 @@ t_rgb	*get_rgb(char **line, t_scene *scene)
 	rgb->blue = get_value(line, scene);
 	if (rgb->red < 0 || rgb->red > 255 || rgb->green < 0 || rgb->green > 255 \
 		|| rgb->blue < 0 || rgb->blue > 255)
-		errors_handler("parser: rgb value must be in range 0-255", NULL, &scene);
+		errors_handler("parser: rgb value must be in range 0-255", NULL,
+			&scene);
 	return (rgb);
 }

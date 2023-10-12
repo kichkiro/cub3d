@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycaster.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: anvannin <anvannin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/16 11:56:40 by kichkiro          #+#    #+#             */
-/*   Updated: 2023/10/04 19:24:02 by kichkiro         ###   ########.fr       */
+/*   Updated: 2023/10/12 21:36:34 by anvannin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,13 +46,13 @@ static void	lighting(t_scene *scene, t_intersec *isec)
 	cam = t_scene_get_camera(scene);
 	al = t_scene_get_ambient_light(scene);
 	lg = t_scene_get_light(scene);
-
 	l.ambient = v_mult(rgb_to_v3(*al->rgb), al->ratio);
 	l.light = v_unit(v_sub_vec((*lg->origin), isec->point));
 	l.dfactor = fmax(0.0, v_dot_product(isec->normal, l.light));
 	l.diffuse = v_mult(rgb_to_v3(*al->rgb), l.dfactor * 0.6);
 	l.viewdir = v_unit(v_sub_vec((*cam->origin), isec->point));
-	l.reflect = v_unit(v_sub_vec(v_mult(isec->normal, (2.0 * v_dot_product(l.light, isec->normal))), l.light));
+	l.reflect = v_unit(v_sub_vec(v_mult(isec->normal,
+					(2.0 * v_dot_product(l.light, isec->normal))), l.light));
 	l.sfactor = pow(fmax(v_dot_product(l.viewdir, l.reflect), 0.0), 32);
 	l.specular = v_mult(rgb_to_v3(*al->rgb), l.sfactor * 0.5);
 	l.color = v_add_vec(v_add_vec(l.ambient, l.diffuse), l.specular);
@@ -74,16 +74,17 @@ static void	lighting(t_scene *scene, t_intersec *isec)
  */
 static void	ray_for_pixel(t_ray *ray, t_camera *cam, size_t x, size_t y)
 {
-	t_texture_coords    map;
+	t_texture_coords	map;
 
-	map.u = (2 * ((x + 0.5) / (double)WIN_WIDTH) - 1) * (double)(WIN_WIDTH / (double)WIN_HEIGHT);
+	map.u = (2 * ((x + 0.5) / (double)WIN_WIDTH) - 1)
+		* (double)(WIN_WIDTH / (double)WIN_HEIGHT);
 	map.v = (1 - 2 * (y + 0.5) / (double)WIN_HEIGHT);
 	ray->origin = (*cam->origin);
-    ray->direction = v_unit((t_v3){
-        map.u * cam->u.x + map.v * cam->v.x - cam->d * cam->w.x,
-        map.u * cam->u.y + map.v * cam->v.y - cam->d * cam->w.y,
-        map.u * cam->u.z + map.v * cam->v.z - cam->d * cam->w.z
-    });
+	ray->direction = v_unit((t_v3){
+			map.u * cam->u.x + map.v * cam->v.x - cam->d * cam->w.x,
+			map.u * cam->u.y + map.v * cam->v.y - cam->d * cam->w.y,
+			map.u * cam->u.z + map.v * cam->v.z - cam->d * cam->w.z
+		});
 }
 
 /*!

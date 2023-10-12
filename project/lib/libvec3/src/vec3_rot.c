@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   vec3_rotations.c                                   :+:      :+:    :+:   */
+/*   vec3_rot.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: anvannin <anvannin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/29 15:48:50 by anvannin          #+#    #+#             */
-/*   Updated: 2023/09/30 11:13:38 by kichkiro         ###   ########.fr       */
+/*   Updated: 2023/10/12 21:45:16 by anvannin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
  * @return
  	The rotated vector.
  * @note
- 	The rotation of a vector around the X axis is found by the following 
+ 	The rotation of a vector around the X axis is found by the following
 	formula:
 		x' = x * 1
 		y' = y * cos(angle) + z * -sin(angle)
@@ -31,7 +31,7 @@
 t_v3	v_rotate_x(t_v3 v, double angle)
 {
 	t_v3	new;
-	double		rad;
+	double	rad;
 
 	rad = angle * PI / 180;
 	new.x = v.x * 1;
@@ -50,7 +50,7 @@ t_v3	v_rotate_x(t_v3 v, double angle)
  * @return
  	The rotated vector.
  * @note
- 	The rotation of a vector around the Y axis is found by the following 
+ 	The rotation of a vector around the Y axis is found by the following
 	formula:
 		x' = x * cos(angle) + z * sin(angle)
 		y' = y * 1
@@ -59,7 +59,7 @@ t_v3	v_rotate_x(t_v3 v, double angle)
 t_v3	v_rotate_y(t_v3 v, double angle)
 {
 	t_v3	new;
-	double		rad;
+	double	rad;
 
 	rad = angle * PI / 180;
 	new.x = v.x * cos(rad) + v.z * sin(rad);
@@ -87,7 +87,7 @@ t_v3	v_rotate_y(t_v3 v, double angle)
 t_v3	v_rotate_z(t_v3 v, double angle)
 {
 	t_v3	new;
-	double		rad;
+	double	rad;
 
 	rad = angle * PI / 180;
 	new.x = v.x * cos(rad) + v.y * -sin(rad);

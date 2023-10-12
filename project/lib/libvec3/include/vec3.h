@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   vec3.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: anvannin <anvannin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 18:27:32 by anvannin          #+#    #+#             */
-/*   Updated: 2023/10/11 20:27:03 by kichkiro         ###   ########.fr       */
+/*   Updated: 2023/10/12 21:45:34 by anvannin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ t_v3	v_div(t_v3 a, double n);
 
 t_v3	v_add_vec(t_v3 a, t_v3 b);
 t_v3	v_sub_vec(t_v3 a, t_v3 b);
-t_v3    v_mult_vec(t_v3 a, t_v3 b);
+t_v3	v_mult_vec(t_v3 a, t_v3 b);
 
 float	v_distance(t_v3 a, t_v3 b);
 double	v_module(t_v3 a);

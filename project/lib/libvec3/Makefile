@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+         #
+#    By: anvannin <anvannin@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/28 19:07:36 by anvannin          #+#    #+#              #
-#    Updated: 2023/10/11 20:27:27 by kichkiro         ###   ########.fr        #
+#    Updated: 2023/10/12 21:44:45 by anvannin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,8 @@ SRCS        := \
 				vec3_adv.c \
 				vec3_rot.c \
 				vec3_trig.c \
-				vec3_pointer.c
+				vec3_pointer.c \
+				vec3_normalize.c
 SRC_DIR     := src
 BUILD_DIR   := .build
 SRCS        := $(SRCS:%=$(SRC_DIR)/%)

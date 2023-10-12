@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   visualizator.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: anvannin <anvannin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/26 19:40:10 by anvannin          #+#    #+#             */
-/*   Updated: 2023/10/02 20:10:52 by kichkiro         ###   ########.fr       */
+/*   Updated: 2023/10/12 21:39:58 by anvannin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,19 +15,21 @@
 void	window_init(t_mlx **mlx)
 {
 	*mlx = (t_mlx *)ft_calloc(sizeof(t_mlx), 1);
-    if (!*mlx)
-        errors_handler("visualizator: calloc()", *mlx, NULL);
+	if (!*mlx)
+		errors_handler("visualizator: calloc()", *mlx, NULL);
 	(*mlx)->mlx_ptr = mlx_init();
 	if (!(*mlx)->mlx_ptr)
 		errors_handler("visualizator: mlx()", *mlx, NULL);
-	(*mlx)->win_ptr = mlx_new_window((*mlx)->mlx_ptr, WIN_WIDTH, WIN_HEIGHT, "MiniRT");
+	(*mlx)->win_ptr = mlx_new_window((*mlx)->mlx_ptr, WIN_WIDTH, WIN_HEIGHT,
+			"MiniRT");
 	if (!(*mlx)->win_ptr)
 		errors_handler("visualizator: mlx()", *mlx, NULL);
 	(*mlx)->img.img_ptr = mlx_new_image((*mlx)->mlx_ptr, WIN_WIDTH, WIN_HEIGHT);
 	if (!((*mlx)->img.img_ptr))
 		errors_handler("visualizator: mlx()", *mlx, NULL);
-	(*mlx)->img.addr = mlx_get_data_addr((*mlx)->img.img_ptr, 
-		&(*mlx)->img.bits_per_pixel, &(*mlx)->img.line_length, &(*mlx)->img.endian);
+	(*mlx)->img.addr = mlx_get_data_addr((*mlx)->img.img_ptr,
+			&(*mlx)->img.bits_per_pixel, &(*mlx)->img.line_length,
+			&(*mlx)->img.endian);
 }
 
 void	my_pixel_put(t_img100 img, int x, int y, int color)
@@ -54,11 +56,18 @@ void	window_destroy(t_mlx *mlx)
 	free(mlx);
 }
 
-void	visualizator(t_mlx *mlx)
+int	visualizator(t_mlx *mlx, t_scene **scene)
 {
+	t_mlx_scene	*mlx_scene;
+
+	mlx_scene = malloc(sizeof(t_mlx_scene));
+	mlx_scene->mlx = mlx;
+	mlx_scene->scene = *scene;
 	mlx_do_key_autorepeaton(mlx->mlx_ptr);
 	mlx_hook(mlx->win_ptr, 17, 1L << 17, mlx_exit, mlx);
-	mlx_hook(mlx->win_ptr, 2, 1l << 0, &key_hook, mlx);
-	mlx_mouse_hook(mlx->win_ptr, &mouse_hooks, mlx);
+	mlx_hook(mlx->win_ptr, 2, 1l << 0, &key_hook, mlx_scene);
+	mlx_mouse_hook(mlx->win_ptr, &mouse_hooks, scene);
 	mlx_loop(mlx->mlx_ptr);
+	free(mlx_scene);
+	return (1);
 }

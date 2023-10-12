@@ -1,29 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   vec3_normalize.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: anvannin <anvannin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/18 23:59:30 by kichkiro          #+#    #+#             */
-/*   Updated: 2023/10/12 21:09:25 by anvannin         ###   ########.fr       */
+/*   Created: 2023/10/12 21:43:52 by anvannin          #+#    #+#             */
+/*   Updated: 2023/10/12 21:44:22 by anvannin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minirt.h"
-#include "render.h"
+#include "vec3.h"
 
-int	main(int argc, char **argv)
+/*!
+ * @brief
+	Normalize a vector.
+ * @param a
+	The vector.
+ * @return
+	The normalized vector.
+ * @note
+	The normalized vector is found by dividing each component of the vector by
+	its module.
+ */
+t_v3	v_normalize(t_v3 a)
 {
-	t_scene	*scene;
-	t_mlx	*mlx;
+	double	module;
+	t_v3	norm;
 
-	scene = NULL;
-	validator(argc, argv);
-	parser(argv[1], &scene);
-	window_init(&mlx);
-	render(&mlx, scene);
-	visualizator(mlx, &scene);
-	terminator(&scene, mlx);
-	return (0);
+	module = v_module(a);
+	norm.x = a.x / module;
+	norm.y = a.y / module;
+	norm.z = a.z / module;
+	return (norm);
 }

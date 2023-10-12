@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: anvannin <anvannin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/15 20:35:53 by kichkiro          #+#    #+#             */
-/*   Updated: 2023/10/02 19:27:53 by kichkiro         ###   ########.fr       */
+/*   Updated: 2023/10/12 21:43:15 by anvannin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 // Libraries ------------------------------------------------------------------>
 
-#include "minirt.h"
+# include "minirt.h"
 
 // Defines -------------------------------------------------------------------->
 
@@ -24,8 +24,8 @@
 // Structures ----------------------------------------------------------------->
 
 /*!
- * @brief 
-	It represents the record of an intersection between a ray and an object in a 
+ * @brief
+	It represents the record of an intersection between a ray and an object in a
 	3D scene.
  * @param has_intersec
 	Flag indicating whether an intersec occurred.
@@ -35,31 +35,31 @@
 	The surface normal at the intersec point.
  * @param color
 	The color of the surface at the intersec point.
- * @param nearest 
+ * @param nearest
   	The nearest intersec distance along the ray.
  * @param min
 	Minimum intersec distance to consider.
  * @param max
 	Maximum intersec distance to consider.
  */
-typedef struct	s_intersec
+typedef struct s_intersec
 {
-    bool 		has_intersec;   
-    t_v3		point;
-    t_v3		normal;
-    t_rgb		color;
-    double		nearest;
-    double		min;
-    double		max;
-} 	t_intersec;
+	bool		has_intersec;
+	t_v3		point;
+	t_v3		normal;
+	t_rgb		color;
+	double		nearest;
+	double		min;
+	double		max;
+}	t_intersec;
 
-typedef struct	s_ray
+typedef struct s_ray
 {
 	t_v3		origin;
 	t_v3		direction;
 }	t_ray;
 
-typedef struct 	s_texture_coords
+typedef struct s_texture_coords
 {
 	double		u;
 	double		v;

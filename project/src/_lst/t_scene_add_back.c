@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   t_scene_add_back.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: anvannin <anvannin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/30 19:47:25 by kichkiro          #+#    #+#             */
-/*   Updated: 2023/09/28 10:33:07 by kichkiro         ###   ########.fr       */
+/*   Updated: 2023/10/12 21:37:33 by anvannin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,5 +23,5 @@ void	t_scene_add_back(t_scene **lst, t_scene *new)
 	}
 	else
 		*lst = new;
-	// *lst = (*lst)->next;
 }
+// *lst = (*lst)->next;

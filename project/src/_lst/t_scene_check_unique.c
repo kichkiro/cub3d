@@ -3,31 +3,31 @@
 /*                                                        :::      ::::::::   */
 /*   t_scene_check_unique.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: anvannin <anvannin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/08 13:50:31 by kichkiro          #+#    #+#             */
-/*   Updated: 2023/09/13 08:50:27 by kichkiro         ###   ########.fr       */
+/*   Updated: 2023/10/12 21:42:39 by anvannin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parser.h"
 
 /*!
- * @brief 
+ * @brief
 	Check that there is only one object with unique type.
- * @param scene 
+ * @param scene
 	Pointer to the linked list that contains the objects in the scene.
- * @param type 
+ * @param type
 	Type to check.
- * @return 
+ * @return
 	true if there is only one object with unique type, false otherwise.
  */
-bool	t_scene_check_unique(t_scene *scene, char type, bool unique)
+bool	t_scene_check_unique(t_scene *scene, char type, bool uniq)
 {
 	t_scene_set_to_head(&scene);
 	while (scene)
 	{
-		if ((unique && scene->type == type) || (!unique && scene->type == type \
+		if ((uniq && scene->type == type) || (!uniq && scene->type == type \
 			&& scene->unique))
 			return (false);
 		scene = scene->next;
