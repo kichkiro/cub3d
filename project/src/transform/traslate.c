@@ -6,50 +6,48 @@
 /*   By: anvannin <anvannin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 18:52:26 by anvannin          #+#    #+#             */
-/*   Updated: 2023/10/12 21:48:25 by anvannin         ###   ########.fr       */
+/*   Updated: 2023/10/16 20:06:53 by anvannin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minirt.h"
+#include "render.h"
+
+static void	traslate_sphere(t_sphere *sphere, int keycode)
+{
+	if (keycode == XK_Shift_L)
+		sphere->origin->y += TRASTLATION_RATIO;
+	else if (keycode == XK_Control_L)
+		sphere->origin->y -= TRASTLATION_RATIO;
+	else if (keycode == XK_Up)
+		sphere->origin->z += TRASTLATION_RATIO;
+	else if (keycode == XK_Right)
+		sphere->origin->x -= TRASTLATION_RATIO;
+	else if (keycode == XK_Down)
+		sphere->origin->z -= TRASTLATION_RATIO;
+	else
+		sphere->origin->x += TRASTLATION_RATIO;
+
+	log_key_hook(keycode);
+	log_sphere(sphere);
+}
 
 void	traslate(t_mlx_scene *mlx_scene, int keycode)
 {
-	t_sphere	*sphere;
 	t_scene		**scene;
+	t_mlx		*mlx;
 
+	mlx = mlx_scene->mlx;
+	// t_scene_get_selected(scene);
 	scene = &mlx_scene->scene;
-	sphere = malloc(sizeof(t_sphere));
-	// while (scene && *scene && (*scene)->next)
-	// {
-	// 	if ((*scene)->type == SPHERE)
-	// 	{
-	// 		sphere = (t_sphere *)(*scene)->data;
-	// 		break ;
-	// 	}
-	// 	*scene = (*scene)->next;
-	// }
-
-	// if (keycode == XK_Shift_L)
-	// 	sphere->coords->y += 10;
-	// else if (keycode == XK_Control_L)
-	// 	sphere->coords->y -= 10;
-	// else if (keycode == XK_Up)
-	// 	sphere->coords->z += 10;
-	// else if (keycode == XK_Right)
-	// 	sphere->coords->x += 10;
-	// else if (keycode == XK_Down)
-	// 	sphere->coords->z -= 10;
-	// else
-	// 	sphere->coords->x -= 10;
-
-	// log_key_hook(keycode);
-	// log_sphere(sphere);
-	// mlx_destroy_image(mlx_scene->mlx->mlx_ptr, mlx_scene->mlx->img.img_ptr);
-
-	// visualizator(mlx_scene->mlx, scene);
-	// render(mlx_scene->mlx, scene);
+	while (scene && *scene && (*scene)->next)
+	{
+		if ((*scene)->type == SPHERE)
+			break ;
+		*scene = (*scene)->next;
+	}
+	if ((*scene)->type == SPHERE)
+		traslate_sphere((t_sphere *)(*scene)->data, keycode);
+	t_scene_set_to_head(scene);
+	render(&mlx, (*scene));
 	return ;
-	(void)scene;
-	(void)sphere;
-	(void)mlx_scene;
 }

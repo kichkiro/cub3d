@@ -6,7 +6,7 @@
 /*   By: anvannin <anvannin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 20:13:53 by anvannin          #+#    #+#             */
-/*   Updated: 2023/10/12 21:46:05 by anvannin         ###   ########.fr       */
+/*   Updated: 2023/10/16 20:08:20 by anvannin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,9 @@ void	log_sphere(t_sphere *sp)
 	print_rgb_hex(sp->rgb);
 	printf("center: [%d, %d]\n", (int)sp->origin->x + WIN_HEIGHT / 2,
 		(int)sp->origin->y + WIN_WIDTH / 2);
-	printf("\nleft: [%d, %d], right: [%d, %d]\n", left, WIN_HEIGHT / 2, right,
+	printf("\nleft: [%d, %d]\tright: [%d, %d]\n", left, WIN_HEIGHT / 2, right,
 		WIN_HEIGHT / 2);
-	printf("top: [%d, %d], bottom: [%d, %d]\n", top, WIN_WIDTH / 2, bottom,
+	printf("top: [%d, %d]\tbottom: [%d, %d]\n", top, WIN_WIDTH / 2, bottom,
 		WIN_WIDTH / 2);
 	printf("------------------------------------------------------------\n");
 }

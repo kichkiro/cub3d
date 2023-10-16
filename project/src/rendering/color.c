@@ -6,7 +6,7 @@
 /*   By: anvannin <anvannin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/07 18:29:24 by anvannin          #+#    #+#             */
-/*   Updated: 2023/10/12 21:34:56 by anvannin         ###   ########.fr       */
+/*   Updated: 2023/10/16 20:07:25 by anvannin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,8 @@ void	print_rgb_int(t_rgb *rgb)
 */
 void	print_rgb_hex(t_rgb *rgb)
 {
-	printf("0xFF%X\n", rgb_to_int(rgb));
+	printf("0xFF%X\t", rgb_to_int2((int)rgb->red, (int)rgb->green,
+			(int)rgb->blue));
 }
 
 t_rgb	v3_to_rgb(t_v3 v)
