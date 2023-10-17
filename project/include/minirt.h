@@ -6,7 +6,7 @@
 /*   By: anvannin <anvannin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 00:00:19 by kichkiro          #+#    #+#             */
-/*   Updated: 2023/10/16 19:48:06 by anvannin         ###   ########.fr       */
+/*   Updated: 2023/10/17 21:08:19 by anvannin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,11 +44,23 @@
 # define HEX_MAGENTA 	0x00FF00FF
 # define HEX_CYAN 		0x0000FFFF
 
+// Transform ----------------------------------------------------------------->>
+
+# define TRASTLATION_RATIO 1
+# define SCALE_RATIO 1
+# define ROTATION_RATIO 0.1
+
+// Other Defines ------------------------------------------------------------->>
+
+# define XK_MY_SEMICOLON 59
+
 // Structures ----------------------------------------------------------------->
 
-typedef struct s_rgb	t_rgb;
-typedef struct s_sphere	t_sphere;
-typedef struct s_scene	t_scene;
+typedef struct s_rgb		t_rgb;
+typedef struct s_sphere		t_sphere;
+typedef struct s_cylinder	t_cylinder;
+typedef struct s_scene		t_scene;
+typedef struct s_camera		t_camera;
 
 typedef struct s_img100
 {
@@ -95,10 +107,15 @@ int		mouse_hooks(int key, int x, int y, t_mlx *mlx);
 // transform ----------------------------------------------------------------->>
 
 void	traslate(t_mlx_scene *mlx_scene, int keycode);
+void	traslate_camera(t_mlx_scene *mlx_scene, int keycode);
+void	scale(t_mlx_scene *mlx_scene, int keycode);
+void	rotate_camera(t_mlx_scene *mlx_scene, int keycode);
 
 // log ---------------------------------------------------------------------->>
 
 void	log_sphere(t_sphere *sph);
+void	log_cylinder(t_cylinder *cy);
+void	log_camera(t_camera *cam);
 void	log_key_hook(int keycode);
 void	log_mouse_hook(int key, int x, int y);
 

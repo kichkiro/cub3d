@@ -1,65 +1,16 @@
 # TODO
 
-## Subject ------------------------------------------------------------------->
+## Mandatory ----------------------------------------------------------------->
 
-### Mandatory
+- [v] Light management
+	- [x] spot brightness
+	- [ ] hard shadows
+	- [?] ambient lighting
+	- [?] diffuse lighting
 
-- [?] You must use the miniLibX. Either the version that is available on the
-	  operating system, or from its sources. If you choose to work with the
-	  sources, you will need to apply the same rules for your libft as those
-	  written above in Common Instructions part.
+### bugs ---------------------------------------------------------------------->
 
-	  ***NOTE: Do we need to norminetting the mlx?***
-
-- [v] The management of your window must remain fluid: switching to another
-	  window, minimization, etc..
-
-- [v] When you change the resolution of the window, the content of the window
-	  must remain unchanged and be adjusted accordingly.
-
-- [ ] You need at least these 3 simple geometric objects: plane, sphere,
-	  cylinder.
-
-- [v] If applicable, all possible intersections and the inside of the object
-	  must be handled correctly.
-
-- [ ] Your program must be able to resize the object’s unique properties:
-	  diameter for a sphere and the width and height for a cylinder.
-
-- [ ] Your program must be able to apply translation and rotation
-      transformation to objects, lights and cameras (except for spheres and
-	  lights that cannot be rotated).
-
-- [v] Light management: spot brightness, hard shadows, ambiance lighting
-	  (objects are Never completely in the dark). You must implement Ambient
-	  and diffuse lighting.
-
-- [v] The program displays the image in window and respect the following rules:
-	- [v] Pressing ESC must close the window and quit the program cleanly.
-	- [v] Clicking on the red cross on the window’s frame must close the window
-		  and quit the program cleanly.
-	- [v] The use of images of the minilibX is strongly recommended.
-- [v] Your program must take as a first argument a scene description file with
-	  the .rt extension.
-	- [v] Each type of element can be separated by one or more line break(s).
-	- [v] Each type of information from an element can be separated by one or
-		  more space(s).
-	- [v] Each type of element can be set in any order in the file.
-	- [v] Elements which are defined by a capital letter can only be declared
-		  once in the scene.
-
-### Bonus
-
-- [ ] Add specular reflection to have a full Phong reflection model.
-
-- [ ] Color disruption: checkerboard.
-
-- [ ] Colored and multi-spot lights.
-
-- [ ] One other 2nd degree object: Cone, Hyperboloid, Paraboloid..
-
-- [ ] Handle bump map textures
-
+- [v] get_sphere non funziona (segmetation fault): `./project/src/sphere.c:15`
 
 ## kichkiro ------------------------------------------------------------------>
 
@@ -100,25 +51,41 @@
 		- [x] seno e coseno
 		- [x] rotazioni
 
-- [ ] window
+- [x] Window
 	- [x] init
-	- [x] destroy
-	- [x] suggerimenti
-	- [ ] update
+	- [x] close and destroy
+	- [x] labels
+		- [x] object rotation
+		- [x] resize height/width individually
+	- [x] update
 
-- [ ] raycasting
-	- [x] disegna il cielo
+- [ ] Transformations
+	- [ ] get selected object by clicking on it with the mouse
+	- [x] traslate
+		- [x] sphere
+		- [x] cylinder
+		- [x] camera
+	- [ ] scale
+		- [x] spere
+		- [ ] cylinder
+			- [x] height
+			- [ ] diameter
+	- [ ] rotate
+		- [ ] cylinder
+		- [ ] camera
 
-- [ ] log in file miniRT.log invece che sul terminale
+## Bonus -------------------------------------------------------------------->
 
-- [ ] rendering
-	- [ ] disegna una sfera
-		- [ ] il controllo sull'area deve essere fatta in base al centro della
-			  sfera, non dello schermo
-	- [X] asse x e y della sfera devono risulare in uno shift di pixel nella
-		  scena dal centro dello schermo [WIN_WIDHT/2, WIN_HEIGHT/2], non dai
-		  pixel [0, 0]
+- [ ] Add specular reflection to have a full Phong reflection model.
 
-## bugs ---------------------------------------------------------------------->
+- [ ] Color disruption: checkerboard.
 
-- [v] get_sphere non funziona (segmetation fault): `./project/src/sphere.c:15`
+- [ ] Colored and multi-spot lights.
+
+- [ ] One other 2nd degree object: Cone, Hyperboloid, Paraboloid..
+
+- [ ] Handle bump map textures
+
+### Extras ------------------------------------------------------------------->
+- [ ] logs in miniRT.log file instead of terminal
+- [ ] R key to reset scene

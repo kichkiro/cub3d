@@ -6,36 +6,43 @@
 /*   By: anvannin <anvannin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 20:13:53 by anvannin          #+#    #+#             */
-/*   Updated: 2023/10/16 20:08:20 by anvannin         ###   ########.fr       */
+/*   Updated: 2023/10/17 21:17:02 by anvannin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minirt.h"
 #include "render.h"
 
 void	log_sphere(t_sphere *sp)
 {
-	int	left;
-	int	right;
-	int	top;
-	int	bottom;
-
-	left = (int)(sp->origin->x - sp->diameter / 2) + WIN_HEIGHT / 2;
-	right = (int)(sp->origin->x + sp->diameter / 2) + WIN_HEIGHT / 2;
-	top = (int)(sp->origin->y - sp->diameter / 2) + WIN_WIDTH / 2;
-	bottom = (int)(sp->origin->y + sp->diameter / 2) + WIN_WIDTH / 2;
 	printf("---------------------------SPHERE---------------------------\n");
 	printf("x: %f\ty: %f\tz: %f\n", sp->origin->x, sp->origin->y,
 		sp->origin->z);
-	printf("radius: %f\tdiameter:%f\n", sp->diameter / 2, sp->diameter);
-	printf("color: ");
+	printf("diameter:%f\tcolor: ", sp->diameter);
 	print_rgb_hex(sp->rgb);
-	printf("center: [%d, %d]\n", (int)sp->origin->x + WIN_HEIGHT / 2,
-		(int)sp->origin->y + WIN_WIDTH / 2);
-	printf("\nleft: [%d, %d]\tright: [%d, %d]\n", left, WIN_HEIGHT / 2, right,
-		WIN_HEIGHT / 2);
-	printf("top: [%d, %d]\tbottom: [%d, %d]\n", top, WIN_WIDTH / 2, bottom,
-		WIN_WIDTH / 2);
+	printf("------------------------------------------------------------\n");
+}
+
+void	log_cylinder(t_cylinder *cy)
+{
+	printf("--------------------------CYLINDER--------------------------\n");
+	printf("x: %f\ty: %f\tz: %f\n", cy->origin->x, cy->origin->y,
+		cy->origin->z);
+	printf("diameter:%f height:%f\t", cy->diameter, cy->height);
+	printf("color: ");
+	print_rgb_hex(cy->rgb);
+	printf("direction: [%f, %f, %f]\n", cy->direction->x, cy->direction->y,
+		cy->direction->z);
+	printf("------------------------------------------------------------\n");
+}
+
+void	log_camera(t_camera *cam)
+{
+	printf("---------------------------CAMERA---------------------------\n");
+	printf("x: %f\ty: %f\tz: %f\n", cam->origin->x, cam->origin->y,
+		cam->origin->z);
+	printf("fov: %f\n", cam->fov);
+	printf("direction: [%f, %f, %f]\n", cam->direction->x, cam->direction->y,
+		cam->direction->z);
 	printf("------------------------------------------------------------\n");
 }
 

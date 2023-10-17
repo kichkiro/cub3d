@@ -6,7 +6,7 @@
 #    By: anvannin <anvannin@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/30 14:51:06 by kichkiro          #+#    #+#              #
-#    Updated: 2023/10/12 21:39:36 by anvannin         ###   ########.fr        #
+#    Updated: 2023/10/17 18:46:47 by anvannin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -49,6 +49,8 @@ SRCS        := \
 				log/log.c \
 				\
 				transform/traslate.c \
+				transform/rotate.c \
+				transform/scale.c \
 				\
 				_lst/t_scene_add_back.c \
 				_lst/t_scene_new.c \

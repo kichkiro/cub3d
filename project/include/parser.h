@@ -6,7 +6,7 @@
 /*   By: anvannin <anvannin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/30 09:45:57 by kichkiro          #+#    #+#             */
-/*   Updated: 2023/10/12 21:42:50 by anvannin         ###   ########.fr       */
+/*   Updated: 2023/10/17 19:11:31 by anvannin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,7 @@ typedef struct s_scene
 	int				id;
 	unsigned char	type;
 	bool			unique;
+	bool			selected;
 	void			*data;
 	struct s_scene	*prev;
 	struct s_scene	*next;
