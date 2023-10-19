@@ -6,7 +6,7 @@
 /*   By: anvannin <anvannin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/26 19:40:47 by anvannin          #+#    #+#             */
-/*   Updated: 2023/10/17 20:54:54 by anvannin         ###   ########.fr       */
+/*   Updated: 2023/10/19 19:15:39 by anvannin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,9 @@ static int	object_hooks(t_mlx_scene *mlx_scene, int keycode)
 	else if (keycode == XK_period || keycode == XK_MY_SEMICOLON
 		|| keycode == XK_comma || keycode == XK_slash)
 		scale(mlx_scene, keycode);
+	else if (keycode == XK_u || keycode == XK_j || keycode == XK_i
+		|| keycode == XK_k || keycode == XK_o || keycode == XK_l)
+		rotate(mlx_scene, keycode);
 	else
 		return (0);
 	return (1);
@@ -37,8 +40,8 @@ static int	camera_hooks(t_mlx_scene *mlx_scene, int keycode)
 	if (keycode == XK_w || keycode == XK_s || keycode == XK_a || keycode == XK_d
 		|| keycode == XK_q || keycode == XK_e)
 		traslate_camera(mlx_scene, keycode);
-	else if (keycode == XK_z || keycode == XK_x || keycode == XK_c
-		|| keycode == XK_v)
+	else if (keycode == XK_t || keycode == XK_f || keycode == XK_g
+		|| keycode == XK_h)
 		rotate_camera(mlx_scene, keycode);
 	else
 		return (0);

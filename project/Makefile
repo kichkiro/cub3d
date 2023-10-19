@@ -6,7 +6,7 @@
 #    By: anvannin <anvannin@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/30 14:51:06 by kichkiro          #+#    #+#              #
-#    Updated: 2023/10/17 18:46:47 by anvannin         ###   ########.fr        #
+#    Updated: 2023/10/19 19:52:52 by anvannin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,6 +38,7 @@ SRCS        := \
 				\
 				rendering/render.c \
 				rendering/intersections.c \
+				rendering/intersec_cylinder.c \
 				rendering/raycaster.c \
 				rendering/color.c \
 				rendering/color2.c \

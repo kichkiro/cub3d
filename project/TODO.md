@@ -8,9 +8,16 @@
 	- [?] ambient lighting
 	- [?] diffuse lighting
 
+- [ ] Camera management
+	- [ ] camera rotation
+	- [x] camera translation
+	- [x] camera FOV
+
 ### bugs ---------------------------------------------------------------------->
 
 - [v] get_sphere non funziona (segmetation fault): `./project/src/sphere.c:15`
+- [ ] render circle at an angle (correctly rotates the base of the cylinder,
+	but not the body)
 
 ## kichkiro ------------------------------------------------------------------>
 
@@ -65,13 +72,13 @@
 		- [x] sphere
 		- [x] cylinder
 		- [x] camera
-	- [ ] scale
+	- [x] scale
 		- [x] spere
-		- [ ] cylinder
+		- [x] cylinder
 			- [x] height
-			- [ ] diameter
+			- [x] diameter
 	- [ ] rotate
-		- [ ] cylinder
+		- [x] cylinder
 		- [ ] camera
 
 ## Bonus -------------------------------------------------------------------->
@@ -89,3 +96,8 @@
 ### Extras ------------------------------------------------------------------->
 - [ ] logs in miniRT.log file instead of terminal
 - [ ] R key to reset scene
+- [ ] Anti aliasing
+- [ ] get selected object by clicking on it with the mouse
+- [ ] read # as comment for .rt files, therefore ignore the object
+- [ ] Render light as little mono-color sphere
+	- [ ] for mandatory always white rays

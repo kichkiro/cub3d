@@ -6,7 +6,7 @@
 /*   By: anvannin <anvannin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 00:00:19 by kichkiro          #+#    #+#             */
-/*   Updated: 2023/10/17 21:08:19 by anvannin         ###   ########.fr       */
+/*   Updated: 2023/10/19 19:28:44 by anvannin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@
 
 # define TRASTLATION_RATIO 1
 # define SCALE_RATIO 1
-# define ROTATION_RATIO 0.1
+# define ROTATION_RATIO 2
 
 // Other Defines ------------------------------------------------------------->>
 
@@ -109,6 +109,7 @@ int		mouse_hooks(int key, int x, int y, t_mlx *mlx);
 void	traslate(t_mlx_scene *mlx_scene, int keycode);
 void	traslate_camera(t_mlx_scene *mlx_scene, int keycode);
 void	scale(t_mlx_scene *mlx_scene, int keycode);
+void	rotate(t_mlx_scene *mlx_scene, int keycode);
 void	rotate_camera(t_mlx_scene *mlx_scene, int keycode);
 
 // log ---------------------------------------------------------------------->>

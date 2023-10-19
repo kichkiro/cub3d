@@ -6,7 +6,7 @@
 /*   By: anvannin <anvannin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 21:38:32 by anvannin          #+#    #+#             */
-/*   Updated: 2023/10/17 20:53:49 by anvannin         ###   ########.fr       */
+/*   Updated: 2023/10/19 19:40:29 by anvannin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ static void	camera_labels(t_mlx *mlx)
 	mlx_string_put(mlx->mlx_ptr, mlx->win_ptr, 10, 120, HEX_WHITE,
 		"'Scroll up/down': zoom in/out");
 	mlx_string_put(mlx->mlx_ptr, mlx->win_ptr, 10, 135, HEX_WHITE,
-		"'Z/X/C/V': rotate camera");
+		"'T/F/G/H': rotate camera");
 }
 
 void	window_labels(t_mlx *mlx)
@@ -57,8 +57,6 @@ void	window_labels(t_mlx *mlx)
 		"+++SYSTEM+++");
 	mlx_string_put(mlx->mlx_ptr, mlx->win_ptr, 10, 30, HEX_WHITE,
 		"'Esc: close window");
-	mlx_string_put(mlx->mlx_ptr, mlx->win_ptr, 10, 45, HEX_WHITE,
-		"'R': reset scene");
 	object_labels(mlx);
 	camera_labels(mlx);
 }
