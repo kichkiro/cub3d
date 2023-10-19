@@ -3,22 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   ft_utoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: anvannin <anvannin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 16:00:21 by kichkiro          #+#    #+#             */
-/*   Updated: 2023/01/10 17:19:06 by kichkiro         ###   ########.fr       */
+/*   Updated: 2023/10/19 20:06:39 by anvannin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
 /*!
- * @brief 
-	Allocates (with malloc(3)) and returns a string representing the of unsigned 
+ * @brief
+	Allocates (with malloc(3)) and returns a string representing the of unsigned
 	integer received as an argument.
- * @param n 
+ * @param n
 	The unsigned integer to convert in string.
- * @return 
+ * @return
 	The string representing the unsigned integer.
 	NULL if the allocation fails.
  */
@@ -44,6 +44,6 @@ char	*ft_utoa(unsigned int nb)
 	{
 		str[len] = nb % 10 + '0';
 		nb /= 10;
-	}	
+	}
 	return (str);
 }

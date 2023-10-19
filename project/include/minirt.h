@@ -6,7 +6,7 @@
 /*   By: anvannin <anvannin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 00:00:19 by kichkiro          #+#    #+#             */
-/*   Updated: 2023/10/19 19:28:44 by anvannin         ###   ########.fr       */
+/*   Updated: 2023/10/19 20:09:28 by anvannin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@
 
 # define TRASTLATION_RATIO 1
 # define SCALE_RATIO 1
-# define ROTATION_RATIO 2
+# define ROTATION_RATIO 0.5
 
 // Other Defines ------------------------------------------------------------->>
 

@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: anvannin <anvannin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/07 10:15:10 by kichkiro          #+#    #+#             */
-/*   Updated: 2023/07/29 14:29:18 by kichkiro         ###   ########.fr       */
+/*   Updated: 2023/10/19 20:06:57 by anvannin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef  LIBFT_H
-# define  LIBFT_H
+#ifndef LIBFT_H
+# define LIBFT_H
 
 // Libraries ------------------------------------------------------------------>
 
@@ -97,8 +97,8 @@ char	*ft_ultoa_hex(uintptr_t n);
 double	ft_atof(char *s);
 
 /*!
- * @brief 
-	Structure containing the Longest Incremental/Decremental Subsequence and its 
+ * @brief
+	Structure containing the Longest Incremental/Decremental Subsequence and its
 	length.
  */
 typedef struct s_ls
@@ -125,8 +125,8 @@ char	*ft_get_next_line(int fd);
 // Printf --------------------------------------------------------------------->
 
 /*!
- * @brief 
-	Simple unidirectional linked list where the data of each node is a single 
+ * @brief
+	Simple unidirectional linked list where the data of each node is a single
 	char.
  */
 typedef struct char_node

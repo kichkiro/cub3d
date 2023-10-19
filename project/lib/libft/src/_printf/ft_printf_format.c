@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf_format.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: anvannin <anvannin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 18:40:34 by kichkiro          #+#    #+#             */
-/*   Updated: 2023/02/03 11:45:39 by kichkiro         ###   ########.fr       */
+/*   Updated: 2023/10/19 20:06:12 by anvannin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ static int	ft_printf_cs(va_list args, t_flags flags, char placeholder)
 			result = t_print_new(0);
 		else
 			result = t_print_split_str(arg_str, 0);
-	}		
+	}
 	ft_printf_assembly_line(&result, flags, placeholder);
 	return (ft_print_result(result, placeholder));
 }
@@ -111,15 +111,15 @@ static int	ft_printf_xp(va_list args, t_flags flags, char placeholder)
 }
 
 /*!
- * @brief 
+ * @brief
 	Handles the conversion of format string placeholders.
- * @param args 
+ * @param args
 	va_list with arguments.
- * @param ph 
+ * @param ph
 	Placeholder character.
- * @param flags 
+ * @param flags
 	Flags for the placeholder.
- * @return 
+ * @return
 	Number of characters printed.
  */
 int	ft_printf_format(va_list args, char ph, t_flags flags)

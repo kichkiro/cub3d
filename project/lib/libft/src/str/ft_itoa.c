@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: anvannin <anvannin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/14 16:53:15 by kichkiro          #+#    #+#             */
-/*   Updated: 2023/01/10 14:58:57 by kichkiro         ###   ########.fr       */
+/*   Updated: 2023/10/19 20:06:32 by anvannin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ static char	*ft_if_negative(long nb)
 	{
 		str[len] = nb % 10 + '0';
 		nb /= 10;
-	}	
+	}
 	return (str);
 }
 
@@ -69,18 +69,18 @@ static char	*ft_if_positive(long nb)
 	{
 		str[len] = nb % 10 + '0';
 		nb /= 10;
-	}	
+	}
 	return (str);
 }
 
 /*!
- * @brief 
-	Allocates (with malloc(3)) and returns a string	representing the integer 
+ * @brief
+	Allocates (with malloc(3)) and returns a string	representing the integer
 	received as an argument;
 	Negative numbers must be handled.
- * @param n 
+ * @param n
 	the integer to convert.
- * @return 
+ * @return
 	The string representing the integer.
 	NULL if the allocation fails.
  */
