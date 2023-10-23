@@ -6,11 +6,25 @@
 /*   By: anvannin <anvannin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/16 16:38:44 by kichkiro          #+#    #+#             */
-/*   Updated: 2023/10/19 19:55:39 by anvannin         ###   ########.fr       */
+/*   Updated: 2023/10/23 19:20:24 by anvannin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "render.h"
+
+static bool	intersec_sphere2(t_hit hit, t_ray *ray, t_sphere *sp,
+		t_intersec **isec)
+{
+	if (hit.t > (*isec)->nearest || hit.t < (*isec)->min
+		|| hit.t > (*isec)->max)
+		return (false);
+	(*isec)->has_intersec = true;
+	(*isec)->nearest = hit.t;
+	(*isec)->point = v_add_vec(ray->origin, v_mult(ray->direction, hit.t));
+	(*isec)->color = (*sp->rgb);
+	(*isec)->normal = v_unit(v_sub_vec((*isec)->point, (*sp->origin)));
+	return (true);
+}
 
 static bool	intersec_sphere(t_ray *ray, t_sphere *sp, t_intersec **isec)
 {
@@ -34,15 +48,7 @@ static bool	intersec_sphere(t_ray *ray, t_sphere *sp, t_intersec **isec)
 		if (hit.t < 0)
 			return (false);
 	}
-	if (hit.t > (*isec)->nearest || hit.t < (*isec)->min
-		|| hit.t > (*isec)->max)
-		return (false);
-	(*isec)->has_intersec = true;
-	(*isec)->nearest = hit.t;
-	(*isec)->point = v_add_vec(ray->origin, v_mult(ray->direction, hit.t));
-	(*isec)->color = (*sp->rgb);
-	(*isec)->normal = v_unit(v_sub_vec((*isec)->point, (*sp->origin)));
-	return (true);
+	return (intersec_sphere2(hit, ray, sp, isec));
 }
 
 static bool	intersec_plane(t_ray *ray, t_plane *pl, t_intersec **isec)

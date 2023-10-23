@@ -6,13 +6,13 @@
 /*   By: anvannin <anvannin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/19 19:51:28 by anvannin          #+#    #+#             */
-/*   Updated: 2023/10/19 19:55:16 by anvannin         ###   ########.fr       */
+/*   Updated: 2023/10/23 19:27:29 by anvannin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "render.h"
 
-static bool	intersec_cylinder_disc(t_cylinder *cy, t_ray *ray, \
+static bool	intersec_cylinder_base(t_cylinder *cy, t_ray *ray, \
 									t_intersec **isec, t_plane *pl)
 {
 	t_hit	hit;
@@ -37,6 +37,24 @@ static bool	intersec_cylinder_disc(t_cylinder *cy, t_ray *ray, \
 	return (false);
 }
 
+static bool	intersec_cylinder_body2(t_hit hit, t_ray *ray, t_cylinder *cy, \
+									t_intersec **isec)
+{
+	if (hit.t < (*isec)->nearest
+		&& fabs(v_dot_product(hit.diff, *cy->direction)) <= (cy->height / 2))
+	{
+		(*isec)->has_intersec = true;
+		(*isec)->nearest = hit.t;
+		(*isec)->point = v_add_vec(ray->origin, v_mult(ray->direction, hit.t));
+		(*isec)->color = (*cy->rgb);
+		hit.dtop = v_dot_product(hit.diff, *cy->direction);
+		hit.pcent = v_add_vec(*cy->origin, v_mult(*cy->direction, -hit.dtop));
+		(*isec)->normal = v_unit(v_sub_vec((*isec)->point, hit.pcent));
+		return (true);
+	}
+	return (false);
+}
+
 static bool	intersec_cylinder_body(t_ray *ray, t_cylinder *cy, \
 									t_intersec **isec)
 {
@@ -54,22 +72,9 @@ static bool	intersec_cylinder_body(t_ray *ray, t_cylinder *cy, \
 	hit.t = (-hit.hb - sqrt(hit.dis)) / hit.a;
 	hit.p = v_add_vec(ray->origin, v_mult(ray->direction, hit.t));
 	hit.diff = v_sub_vec(*cy->origin, hit.p);
-	if (hit.t > (*isec)->nearest || hit.t < (*isec)->min
-		| hit.t > (*isec)->max)
+	if (hit.t > (*isec)->nearest || hit.t < (*isec)->min | hit.t > (*isec)->max)
 		return (false);
-	if (hit.t < (*isec)->nearest
-		&& fabs(v_dot_product(hit.diff, *cy->direction)) <= (cy->height / 2))
-	{
-		(*isec)->has_intersec = true;
-		(*isec)->nearest = hit.t;
-		(*isec)->point = v_add_vec(ray->origin, v_mult(ray->direction, hit.t));
-		(*isec)->color = (*cy->rgb);
-		hit.dtop = v_dot_product(hit.diff, *cy->direction);
-		hit.pcent = v_add_vec(*cy->origin, v_mult(*cy->direction, -hit.dtop));
-		(*isec)->normal = v_unit(v_sub_vec((*isec)->point, hit.pcent));
-		return (true);
-	}
-	return (false);
+	return (intersec_cylinder_body2(hit, ray, cy, isec));
 }
 
 bool	intersec_cylinder(t_ray *ray, t_cylinder *cy, t_intersec **isec)
@@ -86,8 +91,8 @@ bool	intersec_cylinder(t_ray *ray, t_cylinder *cy, t_intersec **isec)
 	pl2.rgb = cy->rgb;
 	pl2.direction = v_pointer(v_mult(*cy->direction, -1));
 	if (intersec_cylinder_body(ray, cy, isec)
-		|| intersec_cylinder_disc(cy, ray, isec, &pl1)
-		|| intersec_cylinder_disc(cy, ray, isec, &pl2))
+		|| intersec_cylinder_base(cy, ray, isec, &pl1)
+		|| intersec_cylinder_base(cy, ray, isec, &pl2))
 		return (true);
 	else
 		return (false);
