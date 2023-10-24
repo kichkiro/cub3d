@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   intersections.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anvannin <anvannin@student.42.fr>          +#+  +:+       +#+        */
+/*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/16 16:38:44 by kichkiro          #+#    #+#             */
-/*   Updated: 2023/10/23 19:20:24 by anvannin         ###   ########.fr       */
+/*   Updated: 2023/10/24 21:57:08 by kichkiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static bool	intersec_sphere2(t_hit hit, t_ray *ray, t_sphere *sp,
 	return (true);
 }
 
-static bool	intersec_sphere(t_ray *ray, t_sphere *sp, t_intersec **isec)
+bool	intersec_sphere(t_ray *ray, t_sphere *sp, t_intersec **isec)
 {
 	t_hit	hit;
 
@@ -51,7 +51,7 @@ static bool	intersec_sphere(t_ray *ray, t_sphere *sp, t_intersec **isec)
 	return (intersec_sphere2(hit, ray, sp, isec));
 }
 
-static bool	intersec_plane(t_ray *ray, t_plane *pl, t_intersec **isec)
+bool	intersec_plane(t_ray *ray, t_plane *pl, t_intersec **isec)
 {
 	double	t;
 	double	denom;

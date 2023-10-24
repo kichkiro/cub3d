@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anvannin <anvannin@student.42.fr>          +#+  +:+       +#+        */
+/*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/15 20:35:53 by kichkiro          #+#    #+#             */
-/*   Updated: 2023/10/19 19:52:17 by anvannin         ###   ########.fr       */
+/*   Updated: 2023/10/24 21:57:43 by kichkiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,12 +67,14 @@ typedef struct s_texture_coords
 
 typedef struct s_raycaster
 {
+	double	sfactor;
+	double	dfactor;
+	double	len;
+	t_ray	shadow_ray;
 	t_v3	ambient;
 	t_v3	diffuse;
 	t_v3	light;
-	double	dfactor;
 	t_v3	specular;
-	double	sfactor;
 	t_v3	viewdir;
 	t_v3	reflect;
 	t_v3	color;
@@ -98,16 +100,18 @@ typedef struct s_hit
 
 // Functions ------------------------------------------------------------------>
 
-void		render(t_mlx **mlx, t_scene *scene);
-int			raycaster(t_scene *scene, t_camera *cam, int x, int y);
-void		intersections(t_scene *scene, t_ray ray, t_intersec *isec);
-bool		intersec_cylinder(t_ray *ray, t_cylinder *cy, t_intersec **isec);
+void	render(t_mlx **mlx, t_scene *scene);
+int		raycaster(t_scene *scene, t_camera *cam, int x, int y);
+void	intersections(t_scene *scene, t_ray ray, t_intersec *isec);
+bool	intersec_cylinder(t_ray *ray, t_cylinder *cy, t_intersec **isec);
+bool	intersec_sphere(t_ray *ray, t_sphere *sp, t_intersec **isec);
+bool	intersec_plane(t_ray *ray, t_plane *pl, t_intersec **isec);
 
-int			rgb_to_int(t_rgb *rgb);
-int			rgb_to_int2(int r, int g, int b);
-void		print_rgb_int(t_rgb *rgb);
-void		print_rgb_hex(t_rgb *rgb);
-t_rgb		v3_to_rgb(t_v3 v);
-t_v3		rgb_to_v3(t_rgb rgb);
+int		rgb_to_int(t_rgb *rgb);
+int		rgb_to_int2(int r, int g, int b);
+void	print_rgb_int(t_rgb *rgb);
+void	print_rgb_hex(t_rgb *rgb);
+t_rgb	v3_to_rgb(t_v3 v);
+t_v3	rgb_to_v3(t_rgb rgb);
 
 #endif
