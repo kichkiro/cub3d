@@ -6,7 +6,7 @@
 #    By: anvannin <anvannin@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/30 14:51:06 by kichkiro          #+#    #+#              #
-#    Updated: 2023/10/19 19:52:52 by anvannin         ###   ########.fr        #
+#    Updated: 2023/10/24 18:34:05 by anvannin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -47,7 +47,8 @@ SRCS        := \
 				visualization/hooks.c \
 				visualization/window_labels.c \
 				\
-				log/log.c \
+				log/log_obj.c \
+				log/log_hooks.c \
 				\
 				transform/traslate.c \
 				transform/rotate.c \

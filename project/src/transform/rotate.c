@@ -6,7 +6,7 @@
 /*   By: anvannin <anvannin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 18:46:37 by anvannin          #+#    #+#             */
-/*   Updated: 2023/10/23 19:54:39 by anvannin         ###   ########.fr       */
+/*   Updated: 2023/10/24 18:29:54 by anvannin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,6 @@ static void	rotate_cylinder(t_cylinder *cylinder, int keycode)
 		cylinder->direction->z += ROTATION_RATIO;
 	else
 		cylinder->direction->z -= ROTATION_RATIO;
-	log_key_hook(keycode);
-	log_cylinder(cylinder);
 }
 
 void	rotate_camera(t_mlx_scene *mlx_scene, int keycode)
@@ -35,16 +33,26 @@ void	rotate_camera(t_mlx_scene *mlx_scene, int keycode)
 	t_camera	*camera;
 
 	camera = t_scene_get_camera(mlx_scene->scene);
-	if (keycode == XK_t && camera->direction->x < 1)
-		(*camera).v.z -= ROTATION_CAMERA_RATIO;
-	else if (keycode == XK_g && camera->direction->x > -1)
-		(*camera).v.z += ROTATION_CAMERA_RATIO;
-	else if (keycode == XK_f && camera->direction->y < 1)
-		(*camera).v.x += ROTATION_CAMERA_RATIO;
-	else if (keycode == XK_h && camera->direction->y > -1)
-		(*camera).v.x -= ROTATION_CAMERA_RATIO;
-	log_key_hook(keycode);
-	log_camera(camera);
+	if (keycode == XK_t)
+	{
+		(*camera).v.y -= ROTATION_CAMERA_RATIO;
+		(*camera).w.y -= ROTATION_CAMERA_RATIO;
+	}
+	else if (keycode == XK_g)
+	{
+		(*camera).v.y += ROTATION_CAMERA_RATIO;
+		(*camera).w.y += ROTATION_CAMERA_RATIO;
+	}
+	else if (keycode == XK_f)
+	{
+		(*camera).u.x -= ROTATION_CAMERA_RATIO;
+		(*camera).w.x -= ROTATION_CAMERA_RATIO;
+	}
+	else if (keycode == XK_h)
+	{
+		(*camera).u.x += ROTATION_CAMERA_RATIO;
+		(*camera).w.x += ROTATION_CAMERA_RATIO;
+	}
 	render(&mlx_scene->mlx, mlx_scene->scene);
 }
 

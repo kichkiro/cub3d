@@ -8,16 +8,13 @@
 	- [?] ambient lighting
 	- [?] diffuse lighting
 
-- [ ] Camera management
-	- [ ] camera rotation
-	- [x] camera translation
-	- [x] camera FOV
-
 ### bugs ---------------------------------------------------------------------->
 
 - [v] get_sphere non funziona (segmetation fault): `./project/src/sphere.c:15`
-- [ ] render circle at an angle (correctly rotates the base of the cylinder,
+- [ ] render circle at an angle (correctly renders the base of the cylinder,
 	but not the body)
+- [ ] when moving the first object, for the first time, the second object
+	moves instead (try test.rt)
 
 ## kichkiro ------------------------------------------------------------------>
 
@@ -77,9 +74,9 @@
 		- [x] cylinder
 			- [x] height
 			- [x] diameter
-	- [ ] rotate
+	- [x] rotate
 		- [x] cylinder
-		- [ ] camera
+		- [x] camera
 
 ## Bonus -------------------------------------------------------------------->
 

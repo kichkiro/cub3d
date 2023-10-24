@@ -6,7 +6,7 @@
 /*   By: anvannin <anvannin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 18:52:26 by anvannin          #+#    #+#             */
-/*   Updated: 2023/10/17 21:17:19 by anvannin         ###   ########.fr       */
+/*   Updated: 2023/10/24 18:30:30 by anvannin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,6 @@ static void	traslate_sphere(t_sphere *sphere, int keycode)
 		sphere->origin->z -= TRASTLATION_RATIO;
 	else
 		sphere->origin->x += TRASTLATION_RATIO;
-	log_key_hook(keycode);
-	log_sphere(sphere);
 }
 
 static void	traslate_cylinder(t_cylinder *cylinder, int keycode)
@@ -44,8 +42,6 @@ static void	traslate_cylinder(t_cylinder *cylinder, int keycode)
 		cylinder->origin->z -= TRASTLATION_RATIO;
 	else
 		cylinder->origin->x += TRASTLATION_RATIO;
-	log_key_hook(keycode);
-	log_cylinder(cylinder);
 }
 
 void	traslate_camera(t_mlx_scene *mlx_scene, int keycode)
@@ -65,8 +61,6 @@ void	traslate_camera(t_mlx_scene *mlx_scene, int keycode)
 		camera->origin->y += TRASTLATION_RATIO;
 	else
 		camera->origin->y -= TRASTLATION_RATIO;
-	log_key_hook(keycode);
-	log_camera(camera);
 	render(&mlx_scene->mlx, mlx_scene->scene);
 }
 

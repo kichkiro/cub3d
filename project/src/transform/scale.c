@@ -6,7 +6,7 @@
 /*   By: anvannin <anvannin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 18:45:47 by anvannin          #+#    #+#             */
-/*   Updated: 2023/10/19 18:32:41 by anvannin         ###   ########.fr       */
+/*   Updated: 2023/10/24 18:30:30 by anvannin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,6 @@ void	scale_sphere(t_sphere *sphere, int keycode)
 		sphere->diameter += SCALE_RATIO;
 	else
 		sphere->diameter -= SCALE_RATIO;
-	log_key_hook(keycode);
-	log_sphere(sphere);
 }
 
 void	scale_cylinder(t_cylinder *cylinder, int keycode)
@@ -32,8 +30,6 @@ void	scale_cylinder(t_cylinder *cylinder, int keycode)
 		cylinder->diameter -= SCALE_RATIO;
 	else
 		cylinder->diameter += SCALE_RATIO;
-	log_key_hook(keycode);
-	log_cylinder(cylinder);
 }
 
 void	scale(t_mlx_scene *mlx_scene, int keycode)
