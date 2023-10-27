@@ -1,20 +1,13 @@
 # TODO
 
-## Mandatory ----------------------------------------------------------------->
-
-- [v] Light management
-	- [x] spot brightness
-	- [ ] hard shadows
-	- [?] ambient lighting
-	- [?] diffuse lighting
-
-### bugs ---------------------------------------------------------------------->
+## bugs ---------------------------------------------------------------------->
 
 - [v] get_sphere non funziona (segmetation fault): `./project/src/sphere.c:15`
-- [ ] render circle at an angle (correctly renders the base of the cylinder,
+- [ ] render cylinder at an angle (correctly renders the base of the cylinder,
 	but not the body)
-- [ ] when moving the first object, for the first time, the second object
-	moves instead (try test.rt)
+- [ ] shadow must not render through another object (try test.rt)
+- [ ] shadow is a bit "too big" (try test.rt)
+- [ ] rotation of the camera stretches along a single axis
 
 ## kichkiro ------------------------------------------------------------------>
 
@@ -38,6 +31,12 @@
 	  (proporrei un enum, piu' elegante, ma non so se e' conforme alla norma,
 	  anche una macro o una stringa puo' andare bene) e rendere l'id univoco
 	  per ogni singolo oggetto.
+
+- [v] Light management
+	- [x] spot brightness
+	- [x] hard shadows
+	- [x] ambient lighting
+	- [x] diffuse lighting
 
 ## anvannin ------------------------------------------------------------------>
 
@@ -63,8 +62,7 @@
 		- [x] resize height/width individually
 	- [x] update
 
-- [ ] Transformations
-	- [ ] get selected object by clicking on it with the mouse
+- [x] Transformations
 	- [x] traslate
 		- [x] sphere
 		- [x] cylinder
@@ -77,6 +75,14 @@
 	- [x] rotate
 		- [x] cylinder
 		- [x] camera
+
+- [x] when moving the first object, for the first time, the second object
+	moves instead (try test.rt)
+
+- [x] when multiple objects are present, the shadow of the first object is
+	rendered after moving the second object
+
+- [x] shadow of the cylinder is not rendered
 
 ## Bonus -------------------------------------------------------------------->
 

@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+         #
+#    By: anvannin <anvannin@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/30 14:51:06 by kichkiro          #+#    #+#              #
-#    Updated: 2023/10/24 21:45:28 by kichkiro         ###   ########.fr        #
+#    Updated: 2023/10/27 19:33:23 by anvannin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,6 +40,7 @@ SRCS        := \
 				rendering/intersections.c \
 				rendering/intersec_cylinder.c \
 				rendering/raycaster.c \
+				rendering/lighting.c \
 				rendering/color.c \
 				rendering/color2.c \
 				\

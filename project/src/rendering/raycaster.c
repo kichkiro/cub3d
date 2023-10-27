@@ -3,90 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   raycaster.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: anvannin <anvannin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/16 11:56:40 by kichkiro          #+#    #+#             */
-/*   Updated: 2023/10/24 21:56:39 by kichkiro         ###   ########.fr       */
+/*   Updated: 2023/10/27 19:35:14 by anvannin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "render.h"
-
-static bool	shadow(t_scene *scene, t_ray *ray, double len, t_intersec *isec)
-{
-	isec->has_intersec = false;
-	isec->nearest = INFINITY;
-	isec->min = EPSILON;
-	isec->max = INFINITY;
-	while (scene)
-	{
-		if (scene->type == SPHERE)
-			intersec_sphere(ray, (t_sphere *)scene->data, &isec);
-		else if (scene->type == PLANE)
-			intersec_plane(ray, (t_plane *)scene->data, &isec);
-		if (isec->has_intersec && isec->nearest < len)
-			return (true);
-		scene = scene->next;
-	}
-	return (false);
-}
-
-static void	limit_range(t_rgb *rgb)
-{
-	if (rgb->red > 255)
-		(*rgb).red = 255;
-	else if (rgb->red < 0)
-		(*rgb).red = 0;
-	if (rgb->green > 255)
-		(*rgb).green = 255;
-	else if (rgb->green < 0)
-		(*rgb).green = 0;
-	if (rgb->blue > 255)
-		(*rgb).blue = 255;
-	else if (rgb->blue < 0)
-		(*rgb).blue = 0;
-}
-
-/*!
- * @brief
- 	Perform lighting calculations for a scene and an intersection.
- * @param scene
- 	Pointer to the scene.
- * @param isec
- 	Pointer to the intersection structure.
- */
-static void	lighting(t_scene *scene, t_intersec *isec)
-{
-	t_lighting			l;
-	t_camera			*cam;
-	t_ambient_lightning	*al;
-	t_light				*lg;
-
-	cam = t_scene_get_camera(scene);
-	al = t_scene_get_ambient_light(scene);
-	lg = t_scene_get_light(scene);
-	l.ambient = v_mult(rgb_to_v3(*al->rgb), al->ratio);
-	l.shadow_ray.origin = v_add_vec(isec->point, v_mult(isec->normal, EPSILON));
-	l.shadow_ray.direction = v_sub_vec(*lg->origin, isec->point);
-	l.len = v_module(l.shadow_ray.direction);
-	l.shadow_ray.direction = v_unit(l.shadow_ray.direction);
-	if (shadow(scene, &l.shadow_ray, l.len, isec))
-		isec->color = v3_to_rgb(v_mult_vec(l.ambient, rgb_to_v3(isec->color)));
-	else
-	{
-		l.light = v_unit(v_sub_vec((*lg->origin), isec->point));
-		l.dfactor = fmax(0.0, v_dot_product(isec->normal, l.light));
-		l.diffuse = v_mult(rgb_to_v3(*al->rgb), l.dfactor * 0.6);
-		l.viewdir = v_unit(v_sub_vec((*cam->origin), isec->point));
-		l.reflect = v_unit(v_sub_vec(v_mult(isec->normal,
-			(2.0 * v_dot_product(l.light, isec->normal))), l.light));
-		l.sfactor = pow(fmax(v_dot_product(l.viewdir, l.reflect), 0.0), 32);
-		l.specular = v_mult(rgb_to_v3(*al->rgb), l.sfactor * 0.5);
-		l.color = v_add_vec(v_add_vec(l.ambient, l.diffuse), l.specular);
-		isec->color = v3_to_rgb(v_mult_vec(l.color, rgb_to_v3(isec->color)));
-		limit_range(&isec->color);
-	}
-}
 
 /*!
  * @brief

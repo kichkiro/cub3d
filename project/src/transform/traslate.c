@@ -6,7 +6,7 @@
 /*   By: anvannin <anvannin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 18:52:26 by anvannin          #+#    #+#             */
-/*   Updated: 2023/10/24 18:30:30 by anvannin         ###   ########.fr       */
+/*   Updated: 2023/10/27 19:49:22 by anvannin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,7 @@ void	traslate(t_mlx_scene *mlx_scene, int keycode)
 	t_scene		**scene;
 
 	scene = &mlx_scene->scene;
+	t_scene_set_to_head(scene);
 	while (scene && *scene && (*scene)->next)
 	{
 		if ((*scene)->type == SPHERE || (*scene)->type == CYLINDER)
