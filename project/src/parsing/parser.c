@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anvannin <anvannin@student.42.fr>          +#+  +:+       +#+        */
+/*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/28 14:18:44 by kichkiro          #+#    #+#             */
-/*   Updated: 2023/10/12 21:20:40 by anvannin         ###   ########.fr       */
+/*   Updated: 2023/10/28 18:33:17 by kichkiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,17 @@
 
 static char	get_type(char *line)
 {
-	if (!ft_strncmp(line, "SP", 2) || !ft_strncmp(line, "sp", 2))
+	if (!ft_strncmp(line, "sp", 2))
 		return (SPHERE);
-	else if (!ft_strncmp(line, "PL", 2) || !ft_strncmp(line, "pl", 2))
+	else if (!ft_strncmp(line, "pl", 2))
 		return (PLANE);
-	else if (!ft_strncmp(line, "CY", 2) || !ft_strncmp(line, "cy", 2))
+	else if (!ft_strncmp(line, "cy", 2))
 		return (CYLINDER);
-	else if (!ft_strncmp(line, "A", 1) || !ft_strncmp(line, "a", 1))
+	else if (!ft_strncmp(line, "A", 1))
 		return (AMBIENT_LIGHTNING);
-	else if (!ft_strncmp(line, "C", 1) || !ft_strncmp(line, "c", 1))
+	else if (!ft_strncmp(line, "C", 1))
 		return (CAMERA);
-	else if (!ft_strncmp(line, "L", 1) || !ft_strncmp(line, "l", 1))
+	else if (!ft_strncmp(line, "L", 1))
 		return (LIGHT);
 	else
 		errors_handler("parser: invalid identifier", NULL, NULL);
