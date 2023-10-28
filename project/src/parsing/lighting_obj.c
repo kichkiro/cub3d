@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lighting_obj.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anvannin <anvannin@student.42.fr>          +#+  +:+       +#+        */
+/*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/01 12:46:26 by kichkiro          #+#    #+#             */
-/*   Updated: 2023/10/12 21:33:40 by anvannin         ###   ########.fr       */
+/*   Updated: 2023/10/28 18:50:11 by kichkiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	*parse_ambient_lightning(char *line, t_scene *scene)
 	am_light->ratio = get_value(&line, scene);
 	if (am_light->ratio < 0 || am_light->ratio > 1)
 		errors_handler("parser: ambient lighting ratio must be in range \
-				0.0-1.0", NULL, &scene);
+			0.0-1.0", NULL, &scene);
 	if (am_light->ratio < 0.01)
 		am_light->ratio = 0.01;
 	while (line && *line && (ft_isdigit(*line) || *line == 46))
