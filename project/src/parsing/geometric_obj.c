@@ -6,7 +6,7 @@
 /*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/30 20:44:38 by kichkiro          #+#    #+#             */
-/*   Updated: 2023/10/02 19:59:26 by kichkiro         ###   ########.fr       */
+/*   Updated: 2023/10/28 18:54:05 by kichkiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,11 @@ void	*parse_plane(char *line, t_scene *scene)
 	while (line && *line && (*line == 9 || *line == 32))
 		line++;
 	plane->direction = get_coords(&line, scene);
+	if (plane->direction->x > 1 || plane->direction->x < -1 ||
+		plane->direction->y > 1 || plane->direction->y < -1 ||
+		plane->direction->z > 1 || plane->direction->z < -1)
+		errors_handler("parser: plane direction must be normalized in range \
+			-1.0-1.0", NULL, &scene);
 	while (line && *line && (*line == 9 || *line == 32))
 		line++;
 	plane->rgb = get_rgb(&line, scene);
@@ -55,6 +60,11 @@ void	*parse_cylinder(char *line, t_scene *scene)
 	while (line && *line && (*line == 9 || *line == 32))
 		line++;
 	cylinder->direction = get_coords(&line, scene);
+	if (cylinder->direction->x > 1 || cylinder->direction->x < -1 ||
+		cylinder->direction->y > 1 || cylinder->direction->y < -1 ||
+		cylinder->direction->z > 1 || cylinder->direction->z < -1)
+		errors_handler("parser: cylinder direction must be normalized in range \
+			-1.0-1.0", NULL, &scene);
 	while (line && *line && (*line == 9 || *line == 32))
 		line++;
 	cylinder->diameter = get_value(&line, scene);

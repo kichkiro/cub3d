@@ -6,12 +6,18 @@
 /*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/28 14:18:44 by kichkiro          #+#    #+#             */
-/*   Updated: 2023/10/28 18:45:07 by kichkiro         ###   ########.fr       */
+/*   Updated: 2023/10/28 18:49:30 by kichkiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parser.h"
 
+/*!
+ * @brief 
+	Checks whether the scene contains a camera, light, and ambient lightning.
+ * @param scene 
+	Pointer to the linked list that contains the objects in the scene.
+ */
 static void final_check(t_scene *scene)
 {
 	t_scene_get_camera(scene);
@@ -19,6 +25,15 @@ static void final_check(t_scene *scene)
 	t_scene_get_ambient_light(scene);
 }
 
+/*!
+ * @brief 
+	Checks the first two characters of the line and returns the type of the
+	object.
+ * @param line 
+	The line of the .rt file to be parsed.
+ * @return 
+	The type of the scene object.
+ */
 static char	get_type(char *line)
 {
 	if (!ft_strncmp(line, "sp", 2))
@@ -72,6 +87,19 @@ static bool	get_unique(char *line, t_scene *scene, char type)
 	return (unique);
 }
 
+/*!
+ * @brief 
+	Checks the type of the object and calls the corresponding function to
+	parse the object.
+ * @param line 
+	The line of the .rt file to be parsed.
+ * @param type 
+	The type of the scene object.
+ * @param scene 
+	Pointer to the linked list that contains the objects in the scene.
+ * @return 
+	Pointer to the object.
+ */
 static void	*get_data(char *line, char type, t_scene *scene)
 {
 	while (*line != 32 && *line != 9)
@@ -91,6 +119,14 @@ static void	*get_data(char *line, char type, t_scene *scene)
 	return (NULL);
 }
 
+/*!
+ * @brief 
+	Parses the .rt file and creates a linked list of objects in the scene.
+ * @param filename 
+	The name of the .rt file to be parsed.
+ * @param scene 
+	Pointer to the linked list that contains the objects in the scene.
+ */
 void	parser(char *filename, t_scene **scene)
 {
 	char	*line;
