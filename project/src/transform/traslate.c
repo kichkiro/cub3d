@@ -6,7 +6,7 @@
 /*   By: anvannin <anvannin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 18:52:26 by anvannin          #+#    #+#             */
-/*   Updated: 2023/10/27 19:49:22 by anvannin         ###   ########.fr       */
+/*   Updated: 2023/10/28 15:37:21 by anvannin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,9 +54,9 @@ void	traslate_camera(t_mlx_scene *mlx_scene, int keycode)
 	else if (keycode == XK_s)
 		camera->origin->z -= TRASTLATION_RATIO;
 	else if (keycode == XK_a)
-		camera->origin->x -= TRASTLATION_RATIO;
-	else if (keycode == XK_d)
 		camera->origin->x += TRASTLATION_RATIO;
+	else if (keycode == XK_d)
+		camera->origin->x -= TRASTLATION_RATIO;
 	else if (keycode == XK_q)
 		camera->origin->y += TRASTLATION_RATIO;
 	else

@@ -6,7 +6,7 @@
 /*   By: anvannin <anvannin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/26 19:40:47 by anvannin          #+#    #+#             */
-/*   Updated: 2023/10/19 19:15:39 by anvannin         ###   ########.fr       */
+/*   Updated: 2023/10/28 16:10:44 by anvannin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@ static int	object_hooks(t_mlx_scene *mlx_scene, int keycode)
 	else if (keycode == XK_period || keycode == XK_MY_SEMICOLON
 		|| keycode == XK_comma || keycode == XK_slash)
 		scale(mlx_scene, keycode);
-	else if (keycode == XK_u || keycode == XK_j || keycode == XK_i
-		|| keycode == XK_k || keycode == XK_o || keycode == XK_l)
+	else if (keycode == XK_i || keycode == XK_k || keycode == XK_j
+		|| keycode == XK_l)
 		rotate(mlx_scene, keycode);
 	else
 		return (0);

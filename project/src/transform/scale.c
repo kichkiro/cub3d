@@ -6,7 +6,7 @@
 /*   By: anvannin <anvannin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 18:45:47 by anvannin          #+#    #+#             */
-/*   Updated: 2023/10/24 18:30:30 by anvannin         ###   ########.fr       */
+/*   Updated: 2023/10/28 14:45:10 by anvannin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ void	scale(t_mlx_scene *mlx_scene, int keycode)
 	t_scene		**scene;
 
 	scene = &mlx_scene->scene;
+	t_scene_set_to_head(scene);
 	while (scene && *scene && (*scene)->next)
 	{
 		if ((*scene)->type == SPHERE || (*scene)->type == CYLINDER)

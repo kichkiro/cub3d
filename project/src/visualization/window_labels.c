@@ -6,7 +6,7 @@
 /*   By: anvannin <anvannin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 21:38:32 by anvannin          #+#    #+#             */
-/*   Updated: 2023/10/27 19:55:26 by anvannin         ###   ########.fr       */
+/*   Updated: 2023/10/28 17:06:24 by anvannin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,11 +30,7 @@ static void	object_labels(t_mlx *mlx)
 	mlx_string_put(mlx->mlx_ptr, mlx->win_ptr, width, 90, HEX_WHITE,
 		"', /': increase/decrease width");
 	mlx_string_put(mlx->mlx_ptr, mlx->win_ptr, width, 105, HEX_WHITE,
-		"'u/j': rotate around x axis");
-	mlx_string_put(mlx->mlx_ptr, mlx->win_ptr, width, 120, HEX_WHITE,
-		"'i/k': rotate around y axis");
-	mlx_string_put(mlx->mlx_ptr, mlx->win_ptr, width, 135, HEX_WHITE,
-		"'o/l': rotate around z axis");
+		"'I/J/K/L': rotate object");
 }
 
 static void	camera_labels(t_mlx *mlx)

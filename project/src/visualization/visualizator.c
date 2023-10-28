@@ -6,7 +6,7 @@
 /*   By: anvannin <anvannin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/26 19:40:10 by anvannin          #+#    #+#             */
-/*   Updated: 2023/10/12 21:39:58 by anvannin         ###   ########.fr       */
+/*   Updated: 2023/10/28 14:57:16 by anvannin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,8 +66,8 @@ int	visualizator(t_mlx *mlx, t_scene **scene)
 	mlx_do_key_autorepeaton(mlx->mlx_ptr);
 	mlx_hook(mlx->win_ptr, 17, 1L << 17, mlx_exit, mlx);
 	mlx_hook(mlx->win_ptr, 2, 1l << 0, &key_hook, mlx_scene);
-	mlx_mouse_hook(mlx->win_ptr, &mouse_hooks, scene);
 	mlx_loop(mlx->mlx_ptr);
 	free(mlx_scene);
 	return (1);
 }
+// mlx_mouse_hook(mlx->win_ptr, &mouse_hooks, scene);
