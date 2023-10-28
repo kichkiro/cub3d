@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anvannin <anvannin@student.42.fr>          +#+  +:+       +#+        */
+/*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/15 20:35:53 by kichkiro          #+#    #+#             */
-/*   Updated: 2023/10/27 19:34:34 by anvannin         ###   ########.fr       */
+/*   Updated: 2023/10/29 00:18:07 by kichkiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,11 +61,37 @@ typedef struct s_ray
 
 typedef struct s_texture_coords
 {
-	double		u;
-	double		v;
+	double	u;
+	double	v;
 }	t_texture_coords;
 
-typedef struct s_raycaster
+/*!
+ * @brief 
+	This structure contains the lighting information at an intersection point.
+ * @param sfactor
+	Specular reflection factor.
+ * @param dfactor
+	Diffuse reflection factor.
+ * @param len
+	Length of a shadow ray.
+ * @param shadow_ray
+	Shadow ray.
+ * @param ambient
+	Ambient light color.
+ * @param diffuse
+	Diffuse light color.
+ * @param light
+	Direction to the light source.
+ * @param specular
+	Specular reflection color.
+ * @param viewdir
+	Direction to the viewer.
+ * @param reflect
+	Direction of reflection.
+ * @param color
+	Final color at the intersection point.
+ */
+typedef struct s_lighting
 {
 	double	sfactor;
 	double	dfactor;
@@ -80,6 +106,38 @@ typedef struct s_raycaster
 	t_v3	color;
 }	t_lighting;
 
+/*!
+ * @brief 
+	Data structure for representing information about ray-object intersections.
+ * @param x
+	The point where the ray intersects the object.
+ * @param p
+	The surface normal at the intersection point.
+ * @param diff
+	The diffuse color of the object at the intersection point.
+ * @param pcent
+	The intersection point in a centered coordinate system.
+ * @param dv
+	The distance from the intersection point to the viewer.
+ * @param xv
+	The x-coordinate of the intersection point.
+ * @param a
+	The opacity or transparency of the object.
+ * @param hb
+	A bias to prevent self-intersections.
+ * @param c
+	The specular coefficient of the object.
+ * @param dis
+	The distance from the ray origin to the intersection point.
+ * @param t
+	The time at which the ray first intersects the object.
+ * @param t2
+	The time at which the ray re-enters the object (if applicable).
+ * @param sdis
+	The distance to a shadow ray intersection.
+ * @param dtop
+	The dot product with the object's top surface (if applicable).
+ */
 typedef struct s_hit
 {
 	t_v3	x;
@@ -103,7 +161,8 @@ typedef struct s_hit
 void	render(t_mlx **mlx, t_scene *scene);
 int		raycaster(t_scene *scene, t_camera *cam, int x, int y);
 void	lighting(t_scene *scene, t_intersec *isec);
-void	intersections(t_scene *scene, t_ray ray, t_intersec *isec);
+bool	intersections(t_scene *scene, t_ray ray, t_intersec *isec, double len);
+void	intersec_init(t_intersec **isec);
 bool	intersec_cylinder(t_ray *ray, t_cylinder *cy, t_intersec **isec);
 bool	intersec_sphere(t_ray *ray, t_sphere *sp, t_intersec **isec);
 bool	intersec_plane(t_ray *ray, t_plane *pl, t_intersec **isec);

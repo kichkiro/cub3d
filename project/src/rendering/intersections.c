@@ -6,7 +6,7 @@
 /*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/16 16:38:44 by kichkiro          #+#    #+#             */
-/*   Updated: 2023/10/24 21:57:08 by kichkiro         ###   ########.fr       */
+/*   Updated: 2023/10/28 23:25:22 by kichkiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ bool	intersec_plane(t_ray *ray, t_plane *pl, t_intersec **isec)
 	return (false);
 }
 
-static void	intersec_init(t_intersec **isec)
+void	intersec_init(t_intersec **isec)
 {
 	(*isec)->has_intersec = false;
 	(*isec)->nearest = INFINITY;
@@ -84,7 +84,7 @@ static void	intersec_init(t_intersec **isec)
 	(*isec)->max = INFINITY;
 }
 
-void	intersections(t_scene *scene, t_ray ray, t_intersec *isec)
+bool	intersections(t_scene *scene, t_ray ray, t_intersec *isec, double len)
 {
 	t_scene_set_to_head(&scene);
 	intersec_init(&isec);
@@ -96,6 +96,9 @@ void	intersections(t_scene *scene, t_ray ray, t_intersec *isec)
 			intersec_plane(&ray, (t_plane *)scene->data, &isec);
 		else if (scene->type == CYLINDER)
 			intersec_cylinder(&ray, (t_cylinder *)scene->data, &isec);
+		if (len && isec->has_intersec && isec->nearest < len)
+			return (true);
 		scene = scene->next;
 	}
+	return (false);
 }
