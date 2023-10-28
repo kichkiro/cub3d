@@ -3,11 +3,9 @@
 ## bugs ---------------------------------------------------------------------->
 
 - [v] get_sphere non funziona (segmetation fault): `./project/src/sphere.c:15`
-- [ ] render cylinder at an angle (correctly renders the base of the cylinder,
-	but not the body)
-- [ ] shadow must not render through another object (try test.rt)
+- [ ] shadow renders through another object (try test.rt)
 - [ ] shadow is a bit "too big" (try test.rt)
-- [ ] rotation of the camera stretches along a single axis
+- [ ] shadow should be black, regardless of object color
 
 ## kichkiro ------------------------------------------------------------------>
 
@@ -83,6 +81,10 @@
 	rendered after moving the second object
 
 - [x] shadow of the cylinder is not rendered
+
+- [x] render cylinder at an angle (correctly renders the base of the cylinder,
+	but not the body)
+- [x] rotation of the camera stretches along a single axis
 
 ## Bonus -------------------------------------------------------------------->
 
