@@ -6,11 +6,18 @@
 /*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/28 14:18:44 by kichkiro          #+#    #+#             */
-/*   Updated: 2023/10/28 18:33:17 by kichkiro         ###   ########.fr       */
+/*   Updated: 2023/10/28 18:45:07 by kichkiro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parser.h"
+
+static void final_check(t_scene *scene)
+{
+	t_scene_get_camera(scene);
+	t_scene_get_light(scene);
+	t_scene_get_ambient_light(scene);
+}
 
 static char	get_type(char *line)
 {
@@ -24,7 +31,7 @@ static char	get_type(char *line)
 		return (AMBIENT_LIGHTNING);
 	else if (!ft_strncmp(line, "C", 1))
 		return (CAMERA);
-	else if (!ft_strncmp(line, "L", 1))
+	else if (!ft_strncmp(line, "L", 1) || !ft_strncmp(line, "l", 1))
 		return (LIGHT);
 	else
 		errors_handler("parser: invalid identifier", NULL, NULL);
@@ -109,4 +116,5 @@ void	parser(char *filename, t_scene **scene)
 		id++;
 	}
 	close(fd);
+	final_check(*scene);
 }
