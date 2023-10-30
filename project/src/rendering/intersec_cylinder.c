@@ -6,7 +6,7 @@
 /*   By: anvannin <anvannin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/19 19:51:28 by anvannin          #+#    #+#             */
-/*   Updated: 2023/10/23 19:27:29 by anvannin         ###   ########.fr       */
+/*   Updated: 2023/10/30 19:02:35 by anvannin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,7 @@ bool	intersec_cylinder(t_ray *ray, t_cylinder *cy, t_intersec **isec)
 {
 	t_plane	pl1;
 	t_plane	pl2;
+	bool	ret;
 
 	pl1.origin = v_pointer(v_add_vec(*cy->origin, v_mult(*cy->direction,
 					(cy->height / 2))));
@@ -91,9 +92,13 @@ bool	intersec_cylinder(t_ray *ray, t_cylinder *cy, t_intersec **isec)
 	pl2.rgb = cy->rgb;
 	pl2.direction = v_pointer(v_mult(*cy->direction, -1));
 	if (intersec_cylinder_body(ray, cy, isec)
-		|| intersec_cylinder_base(cy, ray, isec, &pl1)
-		|| intersec_cylinder_base(cy, ray, isec, &pl2))
-		return (true);
+		|| intersec_cylinder_base(cy, ray, isec, &pl2)
+		|| intersec_cylinder_base(cy, ray, isec, &pl1))
+		ret = true;
 	else
-		return (false);
+		ret = false;
+	free(pl1.origin);
+	free(pl2.origin);
+	free(pl2.direction);
+	return (ret);
 }
