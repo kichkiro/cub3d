@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   t_scene_get_obj.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: anvannin <anvannin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/17 12:20:36 by kichkiro          #+#    #+#             */
-/*   Updated: 2023/10/28 18:44:33 by kichkiro         ###   ########.fr       */
+/*   Updated: 2023/11/02 18:14:32 by anvannin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ t_camera	*t_scene_get_camera(t_scene *scene)
 	while (scene && scene->type != CAMERA)
 		scene = scene->next;
 	if (!scene)
-		errors_handler("parser: no camera", NULL, &scene);	
+		errors_handler("parser: no camera", NULL, &scene);
 	return ((t_camera *)scene->data);
 }
 

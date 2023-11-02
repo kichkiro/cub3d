@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycaster.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: anvannin <anvannin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/16 11:56:40 by kichkiro          #+#    #+#             */
-/*   Updated: 2023/10/28 23:17:41 by kichkiro         ###   ########.fr       */
+/*   Updated: 2023/11/02 18:14:23 by anvannin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,10 +33,10 @@ static void	ray_for_pixel(t_ray *ray, t_camera *cam, size_t x, size_t y)
 	map.v = (1 - 2 * (y + 0.5) / (double)WIN_HEIGHT);
 	ray->origin = (*cam->origin);
 	ray->direction = v_unit((t_v3){
-		map.u * cam->u.x + map.v * cam->v.x - cam->d * cam->w.x,
-		map.u * cam->u.y + map.v * cam->v.y - cam->d * cam->w.y,
-		map.u * cam->u.z + map.v * cam->v.z - cam->d * cam->w.z
-	});
+			map.u * cam->u.x + map.v * cam->v.x - cam->d * cam->w.x,
+			map.u * cam->u.y + map.v * cam->v.y - cam->d * cam->w.y,
+			map.u * cam->u.z + map.v * cam->v.z - cam->d * cam->w.z
+		});
 }
 
 /*!

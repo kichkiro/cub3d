@@ -3,26 +3,26 @@
 /*                                                        :::      ::::::::   */
 /*   lighting.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: anvannin <anvannin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/27 19:27:21 by anvannin          #+#    #+#             */
-/*   Updated: 2023/10/29 00:10:13 by kichkiro         ###   ########.fr       */
+/*   Updated: 2023/11/02 18:14:00 by anvannin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "render.h"
 
 /*!
- * @brief 
+ * @brief
 	This function checks if an intersection point is in shadow by casting a
 	shadow ray from the intersection point to the light source.
- * @param scene 
+ * @param scene
  	Pointer to the scene.
- * @param isec 
+ * @param isec
  	Pointer to the intersection structure.
- * @param l 
+ * @param l
  	Lighting information.
- * @return 
+ * @return
  	True if the intersection point is in shadow, false otherwise.
  */
 static bool	render_shadow(t_scene *scene, t_intersec *isec, t_lighting l)
@@ -46,14 +46,14 @@ static bool	render_shadow(t_scene *scene, t_intersec *isec, t_lighting l)
 }
 
 /*!
- * @brief 
+ * @brief
 	This function calculates the lighting effects at an intersection point by
 	considering ambient, diffuse, and specular reflections.
- * @param scene 
-	Pointer to the scene.			
- * @param isec 
+ * @param scene
+	Pointer to the scene.
+ * @param isec
 	Pointer to the intersection structure.
- * @param l 
+ * @param l
 	Lighting information.
  */
 static void	render_object(t_scene *scene, t_intersec *isec, t_lighting l)
@@ -69,8 +69,8 @@ static void	render_object(t_scene *scene, t_intersec *isec, t_lighting l)
 	l.dfactor = fmax(0.0, v_dot_product(isec->normal, l.light));
 	l.diffuse = v_mult(rgb_to_v3(*al->rgb), l.dfactor * 0.6);
 	l.viewdir = v_unit(v_sub_vec((*cam->origin), isec->point));
-	l.reflect = v_unit(v_sub_vec(v_mult(isec->normal, (2.0 * v_dot_product(
-		l.light, isec->normal))), l.light));
+	l.reflect = v_unit(v_sub_vec(v_mult(isec->normal,
+					(2.0 * v_dot_product(l.light, isec->normal))), l.light));
 	l.sfactor = pow(fmax(v_dot_product(l.viewdir, l.reflect), 0.0), 32);
 	l.specular = v_mult(rgb_to_v3(*al->rgb), l.sfactor * 0.5);
 	l.color = v_add_vec(v_add_vec(l.ambient, l.diffuse), l.specular);
@@ -82,7 +82,7 @@ static void	render_object(t_scene *scene, t_intersec *isec, t_lighting l)
 	This function calculates the overall lighting at an intersection point:
 	- It first computes the ambient lighting and checks for shadows.
 	- If the point is in shadow, it attenuates the color with ambient light.
-	- If not, it calls `render_object` to calculate the full lighting effects 
+	- If not, it calls `render_object` to calculate the full lighting effects
 	  (ambient, diffuse, and specular) and updates the isec structure.
 	- The resulting color is clamped to the [0, 255] range for RGB components.
  * @param scene

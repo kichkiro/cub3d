@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   camera.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kichkiro <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: anvannin <anvannin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/01 12:46:19 by kichkiro          #+#    #+#             */
-/*   Updated: 2023/10/28 18:56:30 by kichkiro         ###   ########.fr       */
+/*   Updated: 2023/11/02 18:14:16 by anvannin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,9 @@ void	*parse_camera(char *line, t_scene *scene)
 	while (line && *line && (*line == 9 || *line == 32))
 		line++;
 	camera->direction = get_coords(&line, scene);
-	if (camera->direction->x > 1 || camera->direction->x < -1 ||
-		camera->direction->y > 1 || camera->direction->y < -1 ||
-		camera->direction->z > 1 || camera->direction->z < -1)
+	if (camera->direction->x > 1 || camera->direction->x < -1
+		|| camera->direction->y > 1 || camera->direction->y < -1
+		|| camera->direction->z > 1 || camera->direction->z < -1)
 		errors_handler("parser: camera direction must be normalized in range \
 			-1.0-1.0", NULL, &scene);
 	while (line && *line && (*line == 9 || *line == 32))
