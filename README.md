@@ -25,4 +25,15 @@
 
 <br>
 
-## Work in Progress...
+## 🛠️ - How to use?
+
+```
+git clone https://github.com/kichkiro/miniRT.git
+cd miniRT/project
+make
+./miniRT [map]
+```
+
+## ⚖️ - License
+
+See [LICENSE](LICENSE)
