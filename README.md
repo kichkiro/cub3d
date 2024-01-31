@@ -23,8 +23,6 @@
 
 #### <i>[subject](_subject/en.subject.pdf) v.7.2</i>
 
-<br>
-
 ## 🛠️ - How to use?
 
 ```
